@@ -1,0 +1,8 @@
+@font-face {
+	font-family: Manrope;
+	src: url("../font/Shone-Regular.otf");
+}
+* {
+	box-sizing: border-box;
+	font-family: Manrope;
+}
