@@ -47,6 +47,9 @@ function Navbar() {
 							<SearchInput type="search" placeholder="search" />
 							<SearchButton>
 								<Icon icon="ion:search-outline" />
+								<Dropdown>
+									<small>Search </small>
+								</Dropdown>
 							</SearchButton>
 						</div>
 						<Em>

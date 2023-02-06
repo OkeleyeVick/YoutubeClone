@@ -47,36 +47,69 @@ export const SearchWrapper = styled(Icon_et_logo)`
 export const SearchInput = styled.input`
 	min-height: 2.8rem;
 	border-radius: 100vw 0 0 100vw;
-	border: 1.5px solid #ccc;
+	border: 1.3px solid #ccc;
 	outline: none;
 	padding: 0.375rem 1rem 0.475rem 2.5rem;
-	min-width: 350px;
+	min-width: 450px;
 
 	&:focus {
 		border: 1.5px solid ${({ theme }) => theme.borderColor};
 	}
 `;
 
+export const Dropdown = styled.div`
+	position: absolute;
+	border-radius: ${({ theme }) => theme.smRadius};
+	background-color: rgba(0 0 0 / 40%);
+	box-shadow: ${({ theme }) => theme.smShadow};
+	padding: 0.7rem 0.8rem;
+	top: 110%;
+	left: 50%;
+	translate: -50% 0%;
+	visibility: hidden;
+	opacity: 0;
+	transition: ${({ theme }) => theme.transition};
+
+	& small {
+		font-size: 0.7rem;
+		letter-spacing: 0.2px;
+		width: max-content;
+		white-space: nowrap;
+		display: flex;
+		align-items: center;
+		color: #fff;
+	}
+`;
+
 export const SearchButton = styled.button`
 	background-color: #848383;
 	min-height: 2.8rem;
-	font-size: 1.3rem;
-	color: #848383;
+	font-size: 1.2rem;
+	color: #000;
+	position: relative;
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
-	padding: 0 10px;
+	padding: 0 1.2rem;
 	border-radius: 0 100vw 100vw 0;
-	border: 1.5px solid #ccc;
+	border: 1.3px solid #ccc;
 	border-left: none;
 	display: grid;
 	place-content: center;
+
+	&:hover {
+		background-color: #f0f0f0;
+	}
+	&:hover ${Dropdown} {
+		opacity: 1;
+		visibility: visible;
+	}
 `;
 
 export const Em = styled.em`
 	position: absolute;
 	top: 50%;
-	left: 1.2rem;
+	left: 1.3rem;
 	transform: translate(-50%, -50%);
 	line-height: 1;
 	display: flex;
@@ -97,29 +130,6 @@ export const IconName = styled.div`
 	align-items: center;
 	padding: 1rem;
 	border-radius: ${({ theme }) => theme.smRadius};
-`;
-
-export const Dropdown = styled.div`
-	position: absolute;
-	border-radius: ${({ theme }) => theme.smRadius};
-	background-color: rgba(0 0 0 / 50%);
-	box-shadow: ${({ theme }) => theme.smShadow};
-	padding: 0.7rem 0.8rem;
-	top: 110%;
-	left: 50%;
-	translate: -50% 0%;
-	visibility: hidden;
-	opacity: 0;
-	transition: ${({ theme }) => theme.transition};
-
-	& small {
-		font-size: 0.76rem;
-		width: max-content;
-		white-space: nowrap;
-		display: flex;
-		align-items: center;
-		color: #fff;
-	}
 `;
 
 export const AvaterContainer = styled(MenuToggler)`
