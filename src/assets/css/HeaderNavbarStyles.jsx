@@ -12,7 +12,7 @@ export const MenuToggler = styled.button.attrs({
 	type: "button",
 })`
 	border: none;
-	font-size: 1.4rem;
+	font-size: 1.7rem;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
@@ -60,7 +60,7 @@ export const SearchInput = styled.input`
 export const Dropdown = styled.div`
 	position: absolute;
 	border-radius: ${({ theme }) => theme.smRadius};
-	background-color: rgba(0 0 0 / 40%);
+	background-color: rgba(0 0 0 / 50%);
 	box-shadow: ${({ theme }) => theme.smShadow};
 	padding: 0.7rem 0.8rem;
 	top: 110%;
@@ -151,6 +151,7 @@ export const ClickedDropdown = styled.div`
 `;
 
 export const MicroPhone = styled(MenuToggler)`
+	font-size: 1.45rem;
 	&:hover ${Dropdown} {
 		opacity: 1;
 		visibility: visible;

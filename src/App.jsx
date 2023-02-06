@@ -1,10 +1,13 @@
 import React from "react";
 import "./index.css";
 import "./assets/css/nav.css";
-import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
-import MainBody from "./components/MainBody";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+
+//* components
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import MainBody from "./components/MainBody";
 
 const css_properties = {
 	borderColor: "hotpink",
@@ -15,15 +18,28 @@ const css_properties = {
 };
 
 const GlobalStyles = createGlobalStyle`
-	margin: 0;
+	body{
+		margin: 0;
+	}
+	:is(h1, h2, h3, h4, h5, h6){
+		font-weight: 500;
+	}
+	:is(ul, li){
+		list-style: none;
+		list-style-type: none;
+	}
+	a{
+		text-decoration: none
+	}
 `;
 
 function App() {
 	return (
 		<ThemeProvider theme={css_properties}>
-			<div>
-				<GlobalStyles />
-				<Navbar />
+			<GlobalStyles />
+			<Navbar />
+			<div className="sideBar_main_container">
+				<Sidebar />
 				<Routes>
 					<Route path="/" element={<MainBody />} />
 				</Routes>

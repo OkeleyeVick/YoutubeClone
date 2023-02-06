@@ -16,7 +16,7 @@ import {
 	SearchWrapper,
 	VideoIconWrapper,
 	YoutubeLogo,
-} from "../assets/css/Styles";
+} from "../assets/css/HeaderNavbarStyles";
 import youtubeSvg from "../assets/images/random-logo.svg";
 import AvatarImage from "../assets/images/vickkk.jpg";
 
