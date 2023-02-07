@@ -24,8 +24,8 @@ const AllPageLinks = [
 	{
 		path: "library",
 		linkname: "Library",
-		Icon: <Icon icon="ion:videocam-outline" />,
-		IconActive: <Icon icon="ion:videocam" />,
+		Icon: <Icon icon="mdi:play-box-multiple-outline" />,
+		IconActive: <Icon icon="mdi:play-box-multiple" />,
 	},
 ];
 
