@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const SideBarContainer = styled.div`
@@ -41,7 +41,7 @@ export const PageLinkContainer = styled.div`
 	row-gap: 1rem;
 `;
 
-export const SideBarLink = styled(Link)`
+export const SideBarLink = styled(NavLink)`
 	border-radius: 6px;
 	flex-direction: column;
 	display: flex;

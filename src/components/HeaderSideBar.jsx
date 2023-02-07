@@ -14,7 +14,7 @@ const AllPageLinks = [
 		Icon: <Icon icon="clarity:video-gallery-line" />,
 	},
 	{
-		path: "/",
+		path: "subscriptions",
 		linkname: "Subscriptions",
 		Icon: <Icon icon="teenyicons:money-stack-outline" />,
 	},
