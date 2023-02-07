@@ -8,6 +8,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Sidebar from "./components/Sidebar";
 import MainBody from "./components/MainBody";
 import ShortsPage from "./components/ShortsPage";
+import Librarypage from "./components/LibraryPage";
 
 const css_properties = {
 	borderColor: "hotpink",
@@ -40,12 +41,7 @@ function App() {
 		<ThemeProvider theme={css_properties}>
 			<GlobalStyles />
 			<Sidebar />
-			<MainBody>
-				<Routes>
-					<Route path="/" element={<MainBody />} />
-					<Route path="shorts" element={<ShortsPage />} />
-				</Routes>
-			</MainBody>
+			<MainBody />
 		</ThemeProvider>
 	);
 }

@@ -11,6 +11,7 @@ export const SideBarContainer = styled.div`
 	row-gap: 2rem;
 	left: 0;
 	top: 0;
+	z-index: 1;
 `;
 
 export const MenuToggler = styled.button.attrs({

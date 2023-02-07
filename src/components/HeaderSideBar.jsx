@@ -19,7 +19,7 @@ const AllPageLinks = [
 		Icon: <Icon icon="teenyicons:money-stack-outline" />,
 	},
 	{
-		path: "/",
+		path: "library",
 		linkname: "Library",
 		Icon: <Icon icon="ion:videocam-outline" />,
 	},

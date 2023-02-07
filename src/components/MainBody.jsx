@@ -1,4 +1,6 @@
+import { Route, Routes } from "react-router-dom";
 import { ContainerInner, MainBodyContainer } from "../assets/css/MainBodyStyles";
+import Librarypage from "./LibraryPage";
 import Navbar from "./Navbar";
 import ShortsPage from "./ShortsPage";
 
@@ -7,7 +9,10 @@ const MainBody = () => {
 		<MainBodyContainer>
 			<Navbar />
 			<ContainerInner>
-				<ShortsPage />
+				<Routes>
+					<Route path="shorts" element={<ShortsPage />} />
+					<Route path="library" element={<Librarypage />} />
+				</Routes>
 			</ContainerInner>
 		</MainBodyContainer>
 	);

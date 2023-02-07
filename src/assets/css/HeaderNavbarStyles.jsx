@@ -11,7 +11,8 @@ export const Nav = styled.nav`
 	background-color: #fff;
 	left: 0;
 	right: 0;
-	margin-left: 50px;
+	margin-left: 55px;
+	z-index: 1;
 `;
 
 export const MenuToggler = styled.button.attrs({
@@ -66,7 +67,7 @@ export const SearchInput = styled.input`
 export const Dropdown = styled.div`
 	position: absolute;
 	border-radius: ${({ theme }) => theme.smRadius};
-	background-color: rgba(0 0 0 / 50%);
+	background-color: rgba(0 0 0 / 75%);
 	box-shadow: ${({ theme }) => theme.smShadow};
 	padding: 0.7rem 0.8rem;
 	top: 110%;

@@ -6,8 +6,3 @@
 	box-sizing: border-box;
 	font-family: Manrope;
 }
-
-.sideBar_main_container {
-	display: flex;
-	position: relative;
-}
