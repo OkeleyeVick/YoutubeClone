@@ -27,6 +27,12 @@ const AllPageLinks = [
 		Icon: <Icon icon="mdi:play-box-multiple-outline" />,
 		IconActive: <Icon icon="mdi:play-box-multiple" />,
 	},
+	{
+		path: "Download",
+		linkname: "Download",
+		Icon: <Icon icon="ph:download" />,
+		IconActive: <Icon icon="ph:download-fill" />,
+	},
 ];
 
 const HeaderSideBar = () => {
