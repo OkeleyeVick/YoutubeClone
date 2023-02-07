@@ -120,7 +120,7 @@ export const Em = styled.em`
 	transform: translate(-50%, -50%);
 	line-height: 1;
 	display: flex;
-	font-size: 1.25rem;
+	font-size: 1.1rem;
 	color: #848383;
 `;
 
