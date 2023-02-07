@@ -7,6 +7,7 @@ const AllPageLinks = [
 		path: "/",
 		linkname: "Home",
 		Icon: <Icon icon="ci:home-fill" />,
+		IconActive: <Icon icon="teenyicons:home-outline" />,
 	},
 	{
 		path: "shorts",
@@ -17,11 +18,13 @@ const AllPageLinks = [
 		path: "subscriptions",
 		linkname: "Subscriptions",
 		Icon: <Icon icon="teenyicons:money-stack-outline" />,
+		IconActive: <Icon icon="teenyicons:money-stack-solid" />,
 	},
 	{
 		path: "library",
 		linkname: "Library",
 		Icon: <Icon icon="ion:videocam-outline" />,
+		IconActive: <Icon icon="ion:videocam" />,
 	},
 ];
 
@@ -33,10 +36,10 @@ const HeaderSideBar = () => {
 			</MenuToggler>
 			<PageLinkContainer>
 				{AllPageLinks.map((link, index) => {
-					const { path, linkname, Icon } = link;
+					const { path, linkname, Icon, IconActive } = link;
 					return (
 						<SideBarLink to={path} key={index}>
-							<Em>{Icon}</Em>
+							{({ isActive }) => (isActive ? <Em>{IconActive}</Em> : <Em>{Icon}</Em>)}
 							<LinkText>{linkname}</LinkText>
 						</SideBarLink>
 					);
