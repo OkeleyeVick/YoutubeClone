@@ -5,9 +5,9 @@ import { Route, Routes } from "react-router-dom";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 //* components
-import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import MainBody from "./components/MainBody";
+import ShortsPage from "./components/ShortsPage";
 
 const css_properties = {
 	borderColor: "hotpink",
@@ -15,6 +15,8 @@ const css_properties = {
 	smShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
 	smRadius: "6px",
 	mdRadius: "10px",
+	gray: "#e5e5e5",
+	"text-clr": "#0f0f0f",
 };
 
 const GlobalStyles = createGlobalStyle`
@@ -37,13 +39,13 @@ function App() {
 	return (
 		<ThemeProvider theme={css_properties}>
 			<GlobalStyles />
-			<Navbar />
-			<div className="sideBar_main_container">
-				<Sidebar />
+			<Sidebar />
+			<MainBody>
 				<Routes>
 					<Route path="/" element={<MainBody />} />
+					<Route path="shorts" element={<ShortsPage />} />
 				</Routes>
-			</div>
+			</MainBody>
 		</ThemeProvider>
 	);
 }

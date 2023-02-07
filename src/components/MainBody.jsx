@@ -1,5 +1,16 @@
+import { ContainerInner, MainBodyContainer } from "../assets/css/MainBodyStyles";
+import Navbar from "./Navbar";
+import ShortsPage from "./ShortsPage";
+
 const MainBody = () => {
-	return <div>Main body</div>;
+	return (
+		<MainBodyContainer>
+			<Navbar />
+			<ContainerInner>
+				<ShortsPage />
+			</ContainerInner>
+		</MainBodyContainer>
+	);
 };
 
 export default MainBody;

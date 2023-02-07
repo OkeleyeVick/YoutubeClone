@@ -6,8 +6,7 @@ import {
 	BellIconWrapper,
 	Dropdown,
 	Em,
-	Icon_et_logo,
-	MenuToggler,
+	IconLogo,
 	MicroPhone,
 	Nav,
 	RightIcons,
@@ -30,17 +29,14 @@ function Navbar() {
 	return (
 		<div>
 			<Nav>
-				<Icon_et_logo>
-					<MenuToggler>
-						<Icon icon="bytesize:menu" />
-					</MenuToggler>
+				<IconLogo>
 					<Link to="/" style={linkstyle}>
 						<YoutubeLogo src={youtubeSvg} />
 						<small>
 							<sup>NG</sup>
 						</small>
 					</Link>
-				</Icon_et_logo>
+				</IconLogo>
 				<SearchWrapper>
 					<div className="innerSearchWrapper" style={{ position: "relative" }}>
 						<div style={linkstyle}>

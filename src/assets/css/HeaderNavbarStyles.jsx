@@ -6,6 +6,12 @@ export const Nav = styled.nav`
 	justify-content: space-between;
 	padding: 0.5rem 1rem;
 	gap: 1rem;
+	position: fixed;
+	top: 0;
+	background-color: #fff;
+	left: 0;
+	right: 0;
+	margin-left: 50px;
 `;
 
 export const MenuToggler = styled.button.attrs({
@@ -33,19 +39,19 @@ export const YoutubeLogo = styled.img`
 	width: 6rem;
 `;
 
-export const Icon_et_logo = styled.div`
+export const IconLogo = styled.div`
 	display: flex;
 	gap: 1rem;
 	align-items: center;
 `;
 
-export const SearchWrapper = styled(Icon_et_logo)`
+export const SearchWrapper = styled(IconLogo)`
 	flex-grow: 2;
 	justify-content: center;
 `;
 
 export const SearchInput = styled.input`
-	min-height: 2.8rem;
+	min-height: 2.6rem;
 	border-radius: 100vw 0 0 100vw;
 	border: 1.3px solid #ccc;
 	outline: none;
@@ -83,7 +89,7 @@ export const Dropdown = styled.div`
 
 export const SearchButton = styled.button`
 	background-color: #848383;
-	min-height: 2.8rem;
+	min-height: 2.6rem;
 	font-size: 1.2rem;
 	color: #000;
 	position: relative;
@@ -113,7 +119,7 @@ export const Em = styled.em`
 	transform: translate(-50%, -50%);
 	line-height: 1;
 	display: flex;
-	font-size: 1.3rem;
+	font-size: 1.25rem;
 	color: #848383;
 `;
 
@@ -147,18 +153,17 @@ export const AvatarWrapper = styled.img`
 
 export const ClickedDropdown = styled.div`
 	position: absolute;
-	/* border-radius: ; */
 `;
 
 export const MicroPhone = styled(MenuToggler)`
-	font-size: 1.45rem;
+	font-size: 1.365rem;
 	&:hover ${Dropdown} {
 		opacity: 1;
 		visibility: visible;
 	}
 `;
 export const VideoIconWrapper = styled(MenuToggler)`
-	font-size: 1.3rem;
+	font-size: 1.26rem;
 	&:hover ${Dropdown} {
 		opacity: 1;
 		visibility: visible;
