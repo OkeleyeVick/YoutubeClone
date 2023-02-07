@@ -6,13 +6,14 @@ const AllPageLinks = [
 	{
 		path: "/",
 		linkname: "Home",
-		Icon: <Icon icon="ci:home-fill" />,
-		IconActive: <Icon icon="teenyicons:home-outline" />,
+		Icon: <Icon icon="ph:house" />,
+		IconActive: <Icon icon="ph:house-fill" />,
 	},
 	{
 		path: "shorts",
 		linkname: "Shorts",
 		Icon: <Icon icon="clarity:video-gallery-line" />,
+		IconActive: <Icon icon="clarity:video-gallery-solid" />,
 	},
 	{
 		path: "subscriptions",
@@ -39,7 +40,7 @@ const HeaderSideBar = () => {
 					const { path, linkname, Icon, IconActive } = link;
 					return (
 						<SideBarLink to={path} key={index}>
-							{({ isActive }) => (isActive ? <Em>{IconActive}</Em> : <Em>{Icon}</Em>)}
+							<Em>{IconActive ?? Icon}</Em>
 							<LinkText>{linkname}</LinkText>
 						</SideBarLink>
 					);
