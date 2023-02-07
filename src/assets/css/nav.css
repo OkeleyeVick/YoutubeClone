@@ -9,4 +9,5 @@
 
 .sideBar_main_container {
 	display: flex;
+	min-height: 90vh;
 }

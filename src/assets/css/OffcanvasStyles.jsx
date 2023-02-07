@@ -1,7 +1,7 @@
-import React from "react";
+import styled from "styled-components";
 
-const Offcanvas = () => {
-	return <div>Offcanvas</div>;
-};
-
-export default Offcanvas;
+export const OffcanvasHeader = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+`;
