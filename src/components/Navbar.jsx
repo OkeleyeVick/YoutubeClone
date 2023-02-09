@@ -16,7 +16,7 @@ import {
 	VideoIconWrapper,
 	YoutubeLogo,
 } from "../assets/css/HeaderNavbarStyles";
-import youtubeSvg from "../assets/images/random-logo.svg";
+import youtubeSvg from "../assets/images/youtube-image.jpg";
 import AvatarImage from "../assets/images/vickkk.jpg";
 
 const linkstyle = {
