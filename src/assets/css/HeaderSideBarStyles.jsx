@@ -2,6 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const SideBarContainer = styled.div`
+	position: relative;
+`;
+
+export const SideBarContainerInner = styled.div`
 	position: fixed;
 	width: 70px;
 	padding: 0.5rem 5px;
@@ -63,5 +67,6 @@ export const Em = styled.em`
 export const LinkText = styled.small`
 	font-size: 0.6rem;
 	padding: 0 5px;
+	text-align: center;
 	color: ${({ theme }) => theme["text-clr"]};
 `;

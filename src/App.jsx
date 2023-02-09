@@ -1,14 +1,12 @@
 import React from "react";
 import "./index.css";
 import "./assets/css/nav.css";
-import { Route, Routes } from "react-router-dom";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 //* components
 import Sidebar from "./components/Sidebar";
 import MainBody from "./components/MainBody";
-import ShortsPage from "./components/ShortsPage";
-import Librarypage from "./components/LibraryPage";
+import { OffcanvasContainer } from "./assets/css/OffcanvasStyles";
 
 const css_properties = {
 	borderColor: "hotpink",
@@ -42,6 +40,7 @@ function App() {
 	return (
 		<ThemeProvider theme={css_properties}>
 			<GlobalStyles />
+			<OffcanvasContainer></OffcanvasContainer>
 			<Sidebar />
 			<MainBody />
 		</ThemeProvider>

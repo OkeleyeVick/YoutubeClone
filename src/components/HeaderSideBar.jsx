@@ -1,6 +1,14 @@
 import { Icon } from "@iconify/react";
 import React from "react";
-import { Em, LinkText, MenuToggler, PageLinkContainer, SideBarContainer, SideBarLink } from "../assets/css/HeaderSideBarStyles";
+import {
+	Em,
+	LinkText,
+	MenuToggler,
+	PageLinkContainer,
+	SideBarContainer,
+	SideBarContainerInner,
+	SideBarLink,
+} from "../assets/css/HeaderSideBarStyles";
 
 const AllPageLinks = [
 	{
@@ -24,12 +32,12 @@ const AllPageLinks = [
 	{
 		path: "library",
 		linkname: "Library",
-		Icon: <Icon icon="mdi:play-box-multiple-outline" />,
-		IconActive: <Icon icon="mdi:play-box-multiple" />,
+		Icon: <Icon icon="fluent:library-20-regular" />,
+		IconActive: <Icon icon="fluent:library-20-filled" />,
 	},
 	{
-		path: "Download",
-		linkname: "Download",
+		path: "download",
+		linkname: "Download Videos",
 		Icon: <Icon icon="ph:download" />,
 		IconActive: <Icon icon="ph:download-fill" />,
 	},
@@ -38,24 +46,26 @@ const AllPageLinks = [
 const HeaderSideBar = () => {
 	return (
 		<SideBarContainer>
-			<MenuToggler>
-				<Icon icon="bytesize:menu" />
-			</MenuToggler>
-			<PageLinkContainer>
-				{AllPageLinks.map((link, index) => {
-					const { path, linkname, Icon, IconActive } = link;
-					return (
-						<SideBarLink to={path} key={index}>
-							{({ isActive }) => (
-								<>
-									<Em checkActive={isActive}>{isActive ? IconActive : Icon}</Em>
-									<LinkText>{linkname}</LinkText>
-								</>
-							)}
-						</SideBarLink>
-					);
-				})}
-			</PageLinkContainer>
+			<SideBarContainerInner>
+				<MenuToggler>
+					<Icon icon="bytesize:menu" />
+				</MenuToggler>
+				<PageLinkContainer>
+					{AllPageLinks.map((link, index) => {
+						const { path, linkname, Icon, IconActive } = link;
+						return (
+							<SideBarLink to={path} key={index}>
+								{({ isActive }) => (
+									<>
+										<Em checkActive={isActive}>{isActive ? IconActive : Icon}</Em>
+										<LinkText>{linkname}</LinkText>
+									</>
+								)}
+							</SideBarLink>
+						);
+					})}
+				</PageLinkContainer>
+			</SideBarContainerInner>
 		</SideBarContainer>
 	);
 };
