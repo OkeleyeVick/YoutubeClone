@@ -9,6 +9,7 @@ import {
 	SideBarContainerInner,
 	SideBarLink,
 } from "../assets/css/HeaderSideBarStyles";
+import Offcanvas from "./Offcanvas";
 
 const AllPageLinks = [
 	{
@@ -46,6 +47,7 @@ const AllPageLinks = [
 const HeaderSideBar = () => {
 	return (
 		<SideBarContainer>
+			<Offcanvas />
 			<SideBarContainerInner>
 				<MenuToggler>
 					<Icon icon="bytesize:menu" />

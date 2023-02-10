@@ -4,6 +4,7 @@ export const OffcanvasContainer = styled.div`
 	background-color: #fff;
 	transition: ${({ theme }) => theme.transition};
 	min-height: 100vh;
+	/* display: none; */
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	position: absolute;
 	top: 0;
