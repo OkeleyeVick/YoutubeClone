@@ -1,14 +1,28 @@
+import { Icon } from "@iconify/react";
 import React from "react";
-import { OffcanvasContainer, OffcanvasHeader } from "../assets/css/OffcanvasStyles";
-import YoutubeLogo from "../assets/images/youtube-image.jpg";
+import { Link } from "react-router-dom";
+import { IconLogo, MenuToggler, YoutubeLogo } from "../assets/css/HeaderNavbarStyles";
+import { OffcanvasContainer, OffCanvasHeader } from "../assets/css/OffcanvasStyles";
+import YoutubeLogoImage from "../assets/images/youtube-image.jpg";
 
 const Offcanvas = () => {
 	return (
 		<OffcanvasContainer>
-			<span>
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo nemo repellendus voluptatum itaque, quod sapiente dolorem, tenetur
-				laborum recusandae ipsum saepe cum assumenda ex molestias ea impedit architecto similique porro!
-			</span>
+			<OffCanvasHeader>
+				<MenuToggler>
+					<Icon icon="bytesize:menu" />
+				</MenuToggler>
+				<IconLogo>
+					<Link to="/">
+						<YoutubeLogo src={YoutubeLogoImage} />
+						<small>
+							<sup>NG</sup>
+						</small>
+					</Link>
+				</IconLogo>
+			</OffCanvasHeader>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, omnis consequuntur. Amet cupiditate minima sint, dolor repudiandae
+			reiciendis esse soluta, ea veniam quia rem dolores accusantium facilis delectus a repellendus!
 		</OffcanvasContainer>
 	);
 };

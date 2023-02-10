@@ -6,7 +6,6 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 //* components
 import Sidebar from "./components/Sidebar";
 import MainBody from "./components/MainBody";
-import { OffcanvasContainer } from "./assets/css/OffcanvasStyles";
 
 const css_properties = {
 	borderColor: "hotpink",
@@ -40,7 +39,6 @@ function App() {
 	return (
 		<ThemeProvider theme={css_properties}>
 			<GlobalStyles />
-			<OffcanvasContainer></OffcanvasContainer>
 			<Sidebar />
 			<MainBody />
 		</ThemeProvider>
