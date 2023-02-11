@@ -7,7 +7,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Sidebar from "./components/Sidebar";
 import MainBody from "./components/MainBody";
 
-const css_properties = {
+const properties = {
 	borderColor: "hotpink",
 	transition: "280ms ease-in-out",
 	smShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
@@ -16,6 +16,16 @@ const css_properties = {
 	gray: "#e5e5e5",
 	"text-clr": "#0f0f0f",
 	smBorder: "1px solid #909090",
+};
+
+const size = {
+	mobileS: "320px",
+	mobileM: "375px",
+	mobileL: "425px",
+	tablet: "768px",
+	laptop: "1024px",
+	laptopL: "1440px",
+	desktop: "2560px",
 };
 
 const GlobalStyles = createGlobalStyle`
@@ -38,7 +48,7 @@ const GlobalStyles = createGlobalStyle`
 
 function App() {
 	return (
-		<ThemeProvider theme={css_properties}>
+		<ThemeProvider theme={{ properties, size }}>
 			<GlobalStyles />
 			<Sidebar />
 			<MainBody />

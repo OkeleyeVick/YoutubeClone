@@ -32,7 +32,10 @@ export const MenuToggler = styled.button.attrs({
 	padding: 8px;
 	position: relative;
 	background-color: transparent;
-	transition: ${({ theme }) => theme.transition};
+	transition: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.transition;
+	}};
 
 	&:hover {
 		background-color: #e5e5e5;
@@ -52,21 +55,33 @@ export const SideBarLink = styled(NavLink)`
 	align-items: center;
 	aspect-ratio: 1 / 1;
 	justify-content: center;
-	transition: ${({ theme }) => theme.transition};
+	transition: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.transition;
+	}};
 
 	&:hover {
-		background-color: ${({ theme }) => theme.gray};
+		background-color: ${({ theme }) => {
+			const { properties } = theme;
+			return properties.gray;
+		}};
 	}
 `;
 
 export const Em = styled.em`
 	font-size: 1.4rem;
-	color: ${({ theme }) => theme["text-clr"]};
+	color: ${({ theme }) => {
+		const { properties } = theme;
+		return properties["text-clr"];
+	}};
 `;
 
 export const LinkText = styled.small`
 	font-size: 0.6rem;
 	padding: 0 5px;
 	text-align: center;
-	color: ${({ theme }) => theme["text-clr"]};
+	color: ${({ theme }) => {
+		const { properties } = theme;
+		return properties["text-clr"];
+	}};
 `;

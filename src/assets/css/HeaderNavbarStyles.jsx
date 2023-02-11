@@ -60,7 +60,11 @@ export const SearchInput = styled.input`
 	min-width: 450px;
 
 	&:focus {
-		border: 1.5px solid ${({ theme }) => theme.borderColor};
+		border: 1.5px solid
+			${({ theme }) => {
+				const { properties } = theme;
+				return properties.borderColor;
+			}};
 	}
 `;
 

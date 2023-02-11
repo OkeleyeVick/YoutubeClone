@@ -2,9 +2,13 @@ import styled from "styled-components";
 
 export const OffcanvasContainer = styled.div`
 	background-color: #fff;
-	transition: ${({ theme }) => theme.transition};
+	transition: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.transition;
+	}};
 	min-height: 100vh;
 	transform-origin: left;
+	display: none;
 	padding: 0.1rem 1rem;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	position: fixed;
@@ -31,7 +35,10 @@ export const OffCanvasBody = styled.div`
 export const OffCanvasItemsContainer = styled.div`
 	padding: 0 0.5rem;
 	:nth-child(even) {
-		border: ${({ theme }) => theme.smBorder};
+		border: ${({ theme }) => {
+			const { properties } = theme;
+			return properties.smBorder;
+		}};
 	}
 `;
 
