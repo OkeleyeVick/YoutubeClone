@@ -57,12 +57,14 @@ const HeaderSideBar = () => {
 						const { path, linkname, Icon, IconActive } = link;
 						return (
 							<SideBarLink to={path} key={index}>
-								{({ isActive }) => (
-									<>
-										<Em checkActive={isActive}>{isActive ? IconActive : Icon}</Em>
-										<LinkText>{linkname}</LinkText>
-									</>
-								)}
+								{({ isActive }) => {
+									return (
+										<>
+											<Em checkActive={isActive}>{isActive ? IconActive : Icon}</Em>
+											<LinkText>{linkname}</LinkText>
+										</>
+									);
+								}}
 							</SideBarLink>
 						);
 					})}
