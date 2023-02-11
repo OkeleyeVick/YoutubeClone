@@ -40,7 +40,7 @@ function Navbar() {
 				<SearchWrapper>
 					<div className="innerSearchWrapper" style={{ position: "relative" }}>
 						<div style={linkstyle}>
-							<SearchInput type="search" placeholder="search" />
+							<SearchInput type="search" placeholder="Search" />
 							<SearchButton>
 								<Icon icon="ion:search-outline" />
 								<Dropdown>

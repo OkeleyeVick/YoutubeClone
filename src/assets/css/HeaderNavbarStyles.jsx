@@ -28,7 +28,10 @@ export const MenuToggler = styled.button.attrs({
 	padding: 8px;
 	position: relative;
 	background-color: transparent;
-	transition: ${({ theme }) => theme.transition};
+	transition: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.transition;
+	}};
 
 	&:hover {
 		background-color: #e5e5e5;
@@ -70,16 +73,25 @@ export const SearchInput = styled.input`
 
 export const Dropdown = styled.div`
 	position: absolute;
-	border-radius: ${({ theme }) => theme.smRadius};
+	border-radius: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.smRadius;
+	}};
 	background-color: rgba(0 0 0 / 75%);
-	box-shadow: ${({ theme }) => theme.smShadow};
+	box-shadow: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.smRadius;
+	}};
 	padding: 0.7rem 0.8rem;
 	top: 110%;
 	left: 50%;
 	translate: -50% 0%;
 	visibility: hidden;
 	opacity: 0;
-	transition: ${({ theme }) => theme.transition};
+	transition: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.transition;
+	}};
 
 	& small {
 		font-size: 0.7rem;
@@ -136,11 +148,17 @@ export const RightIcons = styled.div`
 
 export const IconName = styled.div`
 	position: absolute;
-	box-shadow: ${({ theme }) => theme.smShadow};
+	box-shadow: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.smShadow;
+	}};
 	display: flex;
 	align-items: center;
 	padding: 1rem;
-	border-radius: ${({ theme }) => theme.smRadius};
+	border-radius: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.smRadius;
+	}};
 `;
 
 export const AvaterContainer = styled(MenuToggler)`
