@@ -15,6 +15,7 @@ const css_properties = {
 	mdRadius: "10px",
 	gray: "#e5e5e5",
 	"text-clr": "#0f0f0f",
+	smBorder: "1px solid #909090",
 };
 
 const GlobalStyles = createGlobalStyle`

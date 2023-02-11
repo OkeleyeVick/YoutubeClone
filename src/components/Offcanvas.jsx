@@ -2,8 +2,20 @@ import { Icon } from "@iconify/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { IconLogo, MenuToggler, YoutubeLogo } from "../assets/css/HeaderNavbarStyles";
-import { OffcanvasContainer, OffCanvasHeader } from "../assets/css/OffcanvasStyles";
+import { OffCanvasBody, OffcanvasContainer, OffCanvasHeader } from "../assets/css/OffcanvasStyles";
 import YoutubeLogoImage from "../assets/images/youtube-image.jpg";
+
+const offcanvasContainers = [
+	{
+		id: 0,
+		linkItem: [
+			{
+				icon: "y",
+				linkname: "name",
+			},
+		],
+	},
+];
 
 const Offcanvas = () => {
 	return (
@@ -21,8 +33,11 @@ const Offcanvas = () => {
 					</Link>
 				</IconLogo>
 			</OffCanvasHeader>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, omnis consequuntur. Amet cupiditate minima sint, dolor repudiandae
-			reiciendis esse soluta, ea veniam quia rem dolores accusantium facilis delectus a repellendus!
+			<OffCanvasBody>
+				{offcanvasContainers.map((container, index) => {
+					const { id, linkItem } = container;
+				})}
+			</OffCanvasBody>
 		</OffcanvasContainer>
 	);
 };
