@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import "./index.css";
 import "./assets/css/nav.css";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
@@ -17,9 +17,8 @@ const properties = {
 	"text-clr": "#0f0f0f",
 	smBorder: "1px solid #0000001a",
 	hover: "#F2F2F2",
-	active: "",
+	darkGrey: "#909090",
 };
-
 const size = {
 	mobileS: "320px",
 	mobileM: "375px",
@@ -29,8 +28,27 @@ const size = {
 	laptopL: "1440px",
 	desktop: "2560px",
 };
-
 const GlobalStyles = createGlobalStyle`
+	::-webkit-scrollbar {
+		width: 7px;
+	}
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: ${({ theme }) => {
+			const { properties } = theme;
+			return properties.darkGrey;
+		}};
+		border-radius: 1rem;
+	}
+	
+	::-webkit-scrollbar-thumb:hover {
+		background-color: ${({ theme }) => {
+			const { properties } = theme;
+			return properties.gray;
+		}};
+	}
 	body{
 		margin: 0;
 	}
@@ -50,13 +68,18 @@ const GlobalStyles = createGlobalStyle`
 	}
 `;
 
+export const SideBarContext = createContext(false);
+
 function App() {
+	const [sideBarOpen, setSideBarWidth] = useState(false);
 	return (
-		<ThemeProvider theme={{ properties, size }}>
-			<GlobalStyles />
-			<Sidebar />
-			<MainBody />
-		</ThemeProvider>
+		<SideBarContext.Provider value={{ sideBarOpen, setSideBarWidth }}>
+			<ThemeProvider theme={{ properties, size }}>
+				<GlobalStyles />
+				<Sidebar />
+				<MainBody />
+			</ThemeProvider>
+		</SideBarContext.Provider>
 	);
 }
 

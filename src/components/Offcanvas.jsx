@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { SideBarContext } from "../App";
 import { IconLogo, MenuToggler, YoutubeLogo } from "../assets/css/HeaderNavbarStyles";
 
 import {
@@ -126,8 +127,12 @@ const offcanvasContainers = [
 ];
 
 const Offcanvas = () => {
+	const { sideBarOpen, setSideBarWidth } = useContext(SideBarContext);
 	return (
-		<OffcanvasContainer>
+		<OffcanvasContainer
+			style={() => {
+				return {};
+			}}>
 			<OffCanvasHeader>
 				<MenuToggler>
 					<Icon icon="bytesize:menu" />
@@ -149,7 +154,7 @@ const Offcanvas = () => {
 							{linkItem.map((link) => {
 								const { Icon, linkname, IconActive, pathname } = link;
 								return (
-									<OffcanvasItem key={Math.floor(Math.random() * 1000)}>
+									<OffcanvasItem key={linkname}>
 										<OffcanvasLink to={pathname}>
 											{({ isActive }) => (
 												<>

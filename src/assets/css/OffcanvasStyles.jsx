@@ -16,7 +16,6 @@ export const OffcanvasContainer = styled.div`
 	top: 0;
 	left: 0;
 	bottom: 0;
-	width: 260px;
 	backdrop-filter: blur(0.5px);
 	z-index: 999;
 `;
@@ -57,7 +56,7 @@ export const OffcanvasLink = styled(NavLink)`
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	padding: 0.65rem 0.5rem;
+	padding: 0.75rem 0.5rem;
 	color: ${({ theme }) => {
 		const { properties } = theme;
 		return properties["text-clr"];

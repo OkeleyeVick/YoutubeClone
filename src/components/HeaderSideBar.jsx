@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
-import React from "react";
+import React, { useContext } from "react";
+import { SideBarContext } from "../App";
 import {
 	Em,
 	LinkText,
@@ -45,11 +46,17 @@ const AllPageLinks = [
 ];
 
 const HeaderSideBar = () => {
+	const { sideBarOpen, setSideBarWidth } = useContext(SideBarContext);
+
 	return (
 		<SideBarContainer>
 			<Offcanvas />
 			<SideBarContainerInner>
-				<MenuToggler>
+				<MenuToggler
+					onClick={(e) => {
+						e.stopPropagation();
+						return setSideBarWidth(!e);
+					}}>
 					<Icon icon="bytesize:menu" />
 				</MenuToggler>
 				<PageLinkContainer>
