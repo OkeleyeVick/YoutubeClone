@@ -19,7 +19,7 @@ export const MenuToggler = styled.button.attrs({
 	type: "button",
 })`
 	border: none;
-	font-size: 1.7rem;
+	font-size: 1.5rem;
 	cursor: pointer;
 	display: flex;
 	align-items: center;

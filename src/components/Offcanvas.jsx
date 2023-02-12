@@ -28,14 +28,14 @@ const offcanvasContainers = [
 			{
 				pathname: "shorts",
 				linkname: "Shorts",
-				Icon: <Icon icon="ph:house" />,
-				IconActive: <Icon icon="ph:house-fill" />,
+				Icon: <Icon icon="clarity:video-gallery-line" />,
+				IconActive: <Icon icon="clarity:video-gallery-solid" />,
 			},
 			{
 				pathname: "subscriptions",
 				linkname: "Subscription",
-				Icon: <Icon icon="clarity:video-gallery-line" />,
-				IconActive: <Icon icon="clarity:video-gallery-solid" />,
+				Icon: <Icon icon="teenyicons:money-stack-outline" />,
+				IconActive: <Icon icon="teenyicons:money-stack-solid" />,
 			},
 		],
 	},
@@ -70,10 +70,56 @@ const offcanvasContainers = [
 	{
 		linkItem: [
 			{
-				pathname: "subscriptions",
-				linkname: "Subscription",
-				Icon: <Icon icon="ph:house" />,
-				IconActive: <Icon icon="ph:house-fill" />,
+				pathname: "trending",
+				linkname: "Trending",
+				Icon: <Icon icon="simple-line-icons:fire" />,
+				IconActive: <Icon icon="el:fire" hFlip={true} />,
+			},
+			{
+				pathname: "music",
+				linkname: "Music",
+				Icon: <Icon icon="ph:music-note-light" />,
+				IconActive: <Icon icon="ph:music-note-fill" />,
+			},
+			{
+				pathname: "gaming",
+				linkname: "Gaming",
+				Icon: <Icon icon="ion:game-controller-outline" />,
+				IconActive: <Icon icon="ion:game-controller" />,
+			},
+			{
+				pathname: "news",
+				linkname: "News",
+				Icon: <Icon icon="ph:newspaper-clipping" />,
+				IconActive: <Icon icon="ph:newspaper-clipping-fill" />,
+			},
+			{
+				pathname: "sports",
+				linkname: "Sports",
+				Icon: <Icon icon="fluent:trophy-48-regular" />,
+				IconActive: <Icon icon="fluent:trophy-48-filled" />,
+			},
+		],
+	},
+	{
+		linkItem: [
+			{
+				pathname: "setting",
+				linkname: "Setting",
+				Icon: <Icon icon="ph:gear-six" />,
+				IconActive: <Icon icon="ph:gear-six-bold" />,
+			},
+			{
+				pathname: "report history",
+				linkname: "Report History",
+				Icon: <Icon icon="heroicons:flag" />,
+				IconActive: <Icon icon="heroicons:flag-solid" />,
+			},
+			{
+				pathname: "help",
+				linkname: "Help",
+				Icon: <Icon icon="material-symbols:help-outline-rounded" />,
+				IconActive: <Icon icon="material-symbols:help-rounded" />,
 			},
 		],
 	},
@@ -89,9 +135,9 @@ const Offcanvas = () => {
 				<IconLogo>
 					<Link to="/">
 						<YoutubeLogo src={YoutubeLogoImage} />
-						<small>
-							<sup>NG</sup>
-						</small>
+						<sup>
+							<small>NG</small>
+						</sup>
 					</Link>
 				</IconLogo>
 			</OffCanvasHeader>

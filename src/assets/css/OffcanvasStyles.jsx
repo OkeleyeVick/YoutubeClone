@@ -25,14 +25,15 @@ export const OffCanvasHeader = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 0.6rem;
-	padding: 0.3rem;
+	padding: 0.3rem 0.3rem 0.8rem;
 `;
 
 export const OffCanvasBody = styled.div`
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
-	min-height: 90vh;
+	height: 90vh;
+	padding-bottom: 2rem;
 `;
 
 export const OffCanvasItemsContainer = styled.ul`
@@ -56,7 +57,11 @@ export const OffcanvasLink = styled(NavLink)`
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	padding: 0.8rem 0.5rem;
+	padding: 0.65rem 0.5rem;
+	color: ${({ theme }) => {
+		const { properties } = theme;
+		return properties["text-clr"];
+	}};
 	background-color: transparent;
 	transition: ${({ theme }) => {
 		const { properties } = theme;
@@ -70,18 +75,18 @@ export const OffcanvasLink = styled(NavLink)`
 	&:hover {
 		background-color: ${({ theme }) => {
 			const { properties } = theme;
-			return properties.gray;
+			return properties.hover;
 		}};
 	}
 `;
 
 export const Em = styled.em`
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	line-height: 1;
 	display: flex;
 `;
 export const LinkName = styled.span`
-	font-size: 0.88rem;
+	font-size: 0.8rem;
 `;
 export const LinkNameActive = styled(LinkName)`
 	font-weight: 900;

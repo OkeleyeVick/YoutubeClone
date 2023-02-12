@@ -38,7 +38,10 @@ export const MenuToggler = styled.button.attrs({
 	}};
 
 	&:hover {
-		background-color: #e5e5e5;
+		background-color: ${({ theme }) => {
+			const { properties } = theme;
+			return properties.gray;
+		}};
 	}
 `;
 
@@ -63,7 +66,7 @@ export const SideBarLink = styled(NavLink)`
 	&:hover {
 		background-color: ${({ theme }) => {
 			const { properties } = theme;
-			return properties.gray;
+			return properties.hover;
 		}};
 	}
 `;

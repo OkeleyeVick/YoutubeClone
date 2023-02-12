@@ -13,9 +13,11 @@ const properties = {
 	smShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
 	smRadius: "6px",
 	mdRadius: "10px",
-	gray: "#e5e5e5",
+	gray: "#E6E6E6",
 	"text-clr": "#0f0f0f",
-	smBorder: "1px solid #909090",
+	smBorder: "1px solid #0000001a",
+	hover: "#F2F2F2",
+	active: "",
 };
 
 const size = {
