@@ -129,12 +129,13 @@ const offcanvasContainers = [
 const Offcanvas = () => {
 	const { sideBarOpen, setSideBarWidth } = useContext(SideBarContext);
 	return (
-		<OffcanvasContainer
-			style={() => {
-				return {};
-			}}>
+		<OffcanvasContainer isOpen={sideBarOpen} style={!sideBarOpen ? { width: "320px" } : { width: "30px" }}>
 			<OffCanvasHeader>
-				<MenuToggler>
+				<MenuToggler
+					onClick={(e) => {
+						e.stopPropagation();
+						return setSideBarWidth((p) => !p);
+					}}>
 					<Icon icon="bytesize:menu" />
 				</MenuToggler>
 				<IconLogo>

@@ -50,12 +50,12 @@ const HeaderSideBar = () => {
 
 	return (
 		<SideBarContainer>
-			<Offcanvas />
+			<Offcanvas isOpen={sideBarOpen} style={!sideBarOpen ? { width: "320px" } : { width: "30px" }} />
 			<SideBarContainerInner>
 				<MenuToggler
 					onClick={(e) => {
 						e.stopPropagation();
-						return setSideBarWidth(!e);
+						return setSideBarWidth((p) => !p);
 					}}>
 					<Icon icon="bytesize:menu" />
 				</MenuToggler>
