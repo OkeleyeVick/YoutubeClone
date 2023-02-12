@@ -37,7 +37,9 @@ export const OffCanvasBody = styled.div`
 
 export const OffCanvasItemsContainer = styled.ul`
 	padding: 0 0.5rem;
+	margin: 0.2rem 0;
 	:nth-child(even) {
+		padding: 0.5rem;
 		border-top: ${({ theme }) => {
 			const { properties } = theme;
 			return properties.smBorder;
@@ -79,5 +81,11 @@ export const Em = styled.em`
 	display: flex;
 `;
 export const LinkName = styled.span`
-	font-size: 0.9rem;
+	font-size: 0.88rem;
+`;
+export const LinkNameActive = styled(LinkName)`
+	font-weight: 900;
+`;
+export const LinkNameNotActive = styled(LinkName)`
+	font-weight: normal;
 `;

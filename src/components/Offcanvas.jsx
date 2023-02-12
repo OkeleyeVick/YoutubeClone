@@ -5,7 +5,8 @@ import { IconLogo, MenuToggler, YoutubeLogo } from "../assets/css/HeaderNavbarSt
 
 import {
 	Em,
-	LinkName,
+	LinkNameActive,
+	LinkNameNotActive,
 	OffCanvasBody,
 	OffcanvasContainer,
 	OffCanvasHeader,
@@ -17,20 +18,60 @@ import YoutubeLogoImage from "../assets/images/youtube-image.jpg";
 
 const offcanvasContainers = [
 	{
-		id: 0,
 		linkItem: [
 			{
-				id: 0,
+				pathname: "/",
 				linkname: "Home",
 				Icon: <Icon icon="ph:house" />,
 				IconActive: <Icon icon="ph:house-fill" />,
+			},
+			{
+				pathname: "shorts",
+				linkname: "Shorts",
+				Icon: <Icon icon="ph:house" />,
+				IconActive: <Icon icon="ph:house-fill" />,
+			},
+			{
+				pathname: "subscriptions",
+				linkname: "Subscription",
+				Icon: <Icon icon="clarity:video-gallery-line" />,
+				IconActive: <Icon icon="clarity:video-gallery-solid" />,
 			},
 		],
 	},
 	{
 		linkItem: [
 			{
-				linkname: "Home",
+				pathname: "library",
+				linkname: "Library",
+				Icon: <Icon icon="material-symbols:video-library-outline" />,
+				IconActive: <Icon icon="material-symbols:video-library" />,
+			},
+			{
+				pathname: "history",
+				linkname: "History",
+				Icon: <Icon icon="octicon:history-24" />,
+				IconActive: <Icon icon="octicon:history-16" />,
+			},
+			{
+				pathname: "Watch later",
+				linkname: "Watch later",
+				Icon: <Icon icon="bi:clock" />,
+				IconActive: <Icon icon="bi:clock-fill" />,
+			},
+			{
+				pathname: "liked-videos",
+				linkname: "Liked Videos",
+				Icon: <Icon icon="material-symbols:thumb-up-outline" />,
+				IconActive: <Icon icon="material-symbols:thumb-up" />,
+			},
+		],
+	},
+	{
+		linkItem: [
+			{
+				pathname: "subscriptions",
+				linkname: "Subscription",
 				Icon: <Icon icon="ph:house" />,
 				IconActive: <Icon icon="ph:house-fill" />,
 			},
@@ -60,14 +101,18 @@ const Offcanvas = () => {
 					return (
 						<OffCanvasItemsContainer key={index}>
 							{linkItem.map((link) => {
-								const { Icon, linkname, IconActive, id } = link;
+								const { Icon, linkname, IconActive, pathname } = link;
 								return (
-									<OffcanvasItem key={`v-${id}`}>
-										<OffcanvasLink to="/">
+									<OffcanvasItem key={Math.floor(Math.random() * 1000)}>
+										<OffcanvasLink to={pathname}>
 											{({ isActive }) => (
 												<>
 													<Em>{isActive ? IconActive : Icon}</Em>
-													<LinkName>{linkname}</LinkName>
+													{isActive ? (
+														<LinkNameActive>{linkname}</LinkNameActive>
+													) : (
+														<LinkNameNotActive>{linkname}</LinkNameNotActive>
+													)}
 												</>
 											)}
 										</OffcanvasLink>
