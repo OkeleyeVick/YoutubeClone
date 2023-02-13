@@ -6,6 +6,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 //* components
 import Sidebar from "./components/Sidebar";
 import MainBody from "./components/MainBody";
+import BackdropFilter from "./components/BackdropFilter";
 
 const properties = {
 	borderColor: "hotpink",
@@ -18,6 +19,8 @@ const properties = {
 	smBorder: "1px solid #0000001a",
 	hover: "#F2F2F2",
 	darkGrey: "#909090",
+	darkerGrey: "#090909c2",
+	primaryClr: "#ff0000",
 };
 const size = {
 	mobileS: "320px",
@@ -76,6 +79,7 @@ function App() {
 		<SideBarContext.Provider value={{ sideBarOpen, setSideBarWidth }}>
 			<ThemeProvider theme={{ properties, size }}>
 				<GlobalStyles />
+				<BackdropFilter />
 				<Sidebar />
 				<MainBody />
 			</ThemeProvider>

@@ -48,7 +48,7 @@ export const MenuToggler = styled.button.attrs({
 export const PageLinkContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	row-gap: 1rem;
+	row-gap: 0.75rem;
 `;
 
 export const SideBarLink = styled(NavLink)`
@@ -72,7 +72,7 @@ export const SideBarLink = styled(NavLink)`
 `;
 
 export const Em = styled.em`
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	color: ${({ theme }) => {
 		const { properties } = theme;
 		return properties["text-clr"];

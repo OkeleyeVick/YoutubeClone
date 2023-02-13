@@ -128,8 +128,9 @@ const offcanvasContainers = [
 
 const Offcanvas = () => {
 	const { sideBarOpen, setSideBarWidth } = useContext(SideBarContext);
+
 	return (
-		<OffcanvasContainer isOpen={sideBarOpen} style={!sideBarOpen ? { width: "320px" } : { width: "30px" }}>
+		<OffcanvasContainer isOpen={sideBarOpen} style={sideBarOpen ? { width: "260px", left: "0" } : { width: "0", left: "-5rem" }}>
 			<OffCanvasHeader>
 				<MenuToggler
 					onClick={(e) => {
@@ -156,7 +157,12 @@ const Offcanvas = () => {
 								const { Icon, linkname, IconActive, pathname } = link;
 								return (
 									<OffcanvasItem key={linkname}>
-										<OffcanvasLink to={pathname}>
+										<OffcanvasLink
+											to={pathname}
+											isOpen={sideBarOpen}
+											onClick={() => {
+												setSideBarWidth((p) => !p);
+											}}>
 											{({ isActive }) => (
 												<>
 													<Em>{isActive ? IconActive : Icon}</Em>

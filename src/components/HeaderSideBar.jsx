@@ -46,11 +46,11 @@ const AllPageLinks = [
 ];
 
 const HeaderSideBar = () => {
-	const { sideBarOpen, setSideBarWidth } = useContext(SideBarContext);
+	const { setSideBarWidth } = useContext(SideBarContext);
 
 	return (
 		<SideBarContainer>
-			<Offcanvas isOpen={sideBarOpen} style={!sideBarOpen ? { width: "320px" } : { width: "30px" }} />
+			<Offcanvas />
 			<SideBarContainerInner>
 				<MenuToggler
 					onClick={(e) => {

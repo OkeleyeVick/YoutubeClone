@@ -66,7 +66,7 @@ export const SearchInput = styled.input`
 		border: 1.5px solid
 			${({ theme }) => {
 				const { properties } = theme;
-				return properties.borderColor;
+				return properties.primaryClr;
 			}};
 	}
 `;
@@ -108,7 +108,10 @@ export const SearchButton = styled.button`
 	background-color: #848383;
 	min-height: 2.6rem;
 	font-size: 1.2rem;
-	color: #000;
+	color: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.darkerGrey;
+	}};
 	position: relative;
 	border: none;
 	background-color: transparent;
@@ -180,6 +183,10 @@ export const ClickedDropdown = styled.div`
 
 export const MicroPhone = styled(MenuToggler)`
 	font-size: 1.365rem;
+	color: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.darkerGrey;
+	}};
 	&:hover ${Dropdown} {
 		opacity: 1;
 		visibility: visible;
@@ -187,12 +194,20 @@ export const MicroPhone = styled(MenuToggler)`
 `;
 export const VideoIconWrapper = styled(MenuToggler)`
 	font-size: 1.26rem;
+	color: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.darkerGrey;
+	}};
 	&:hover ${Dropdown} {
 		opacity: 1;
 		visibility: visible;
 	}
 `;
 export const BellIconWrapper = styled(VideoIconWrapper)`
+	color: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.darkerGrey;
+	}};
 	&:hover ${Dropdown} {
 		opacity: 1;
 		visibility: visible;

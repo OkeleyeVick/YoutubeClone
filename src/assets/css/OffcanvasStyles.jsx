@@ -9,7 +9,6 @@ export const OffcanvasContainer = styled.div`
 	}};
 	min-height: 100vh;
 	transform-origin: left;
-	/* display: none; */
 	padding: 0.1rem 0.5rem;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	position: fixed;
@@ -18,6 +17,7 @@ export const OffcanvasContainer = styled.div`
 	bottom: 0;
 	backdrop-filter: blur(0.5px);
 	z-index: 999;
+	overflow: hidden;
 `;
 
 export const OffCanvasHeader = styled.div`
