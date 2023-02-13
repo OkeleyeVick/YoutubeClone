@@ -25,6 +25,14 @@ export const OffCanvasHeader = styled.div`
 	align-items: center;
 	gap: 0.6rem;
 	padding: 0.3rem 0.3rem 0.8rem;
+
+	sup {
+		position: absolute;
+		color: ${({ theme }) => {
+			const { properties } = theme;
+			return properties.darkerGrey;
+		}};
+	}
 `;
 
 export const OffCanvasBody = styled.div`
