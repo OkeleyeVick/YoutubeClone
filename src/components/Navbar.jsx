@@ -55,9 +55,7 @@ function Navbar() {
 					</div>
 					<div>
 						<MicroPhone>
-							{/* <Icon icon="carbon:microphone" /> */}
 							<Icon icon="heroicons:microphone" />
-							{/* <Icon icon="simple-line-icons:microphone" /> */}
 							<Dropdown>
 								<small>Search with your voice</small>
 							</Dropdown>
@@ -72,7 +70,6 @@ function Navbar() {
 						</Dropdown>
 					</VideoIconWrapper>
 					<BellIconWrapper>
-						{/* <Icon icon="clarity:notification-line" /> */}
 						<Icon icon="uiw:bell" />
 						<Dropdown>
 							<small>Notification</small>

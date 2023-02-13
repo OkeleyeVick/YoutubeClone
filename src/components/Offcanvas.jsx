@@ -107,8 +107,10 @@ const offcanvasContainers = [
 			{
 				pathname: "/setting",
 				linkname: "Setting",
-				Icon: <Icon icon="ph:gear-six" />,
-				IconActive: <Icon icon="ph:gear-six-bold" />,
+				// Icon: <Icon icon="ph:gear-six" />,
+				// IconActive: <Icon icon="ph:gear-six-bold" />,
+				Icon: <Icon icon="ph:gear" />,
+				IconActive: <Icon icon="ph:gear-fill" />,
 			},
 			{
 				pathname: "/report-history",
@@ -123,8 +125,8 @@ const offcanvasContainers = [
 				IconActive: <Icon icon="material-symbols:help-rounded" />,
 			},
 			{
-				pathname: "/sports",
-				linkname: "Sports",
+				pathname: "/feedback",
+				linkname: "Send feedback",
 				Icon: <Icon icon="mdi:message-alert-outline" />,
 				IconActive: <Icon icon="fluent:trophy-48-filled" />,
 			},
@@ -136,7 +138,7 @@ const Offcanvas = () => {
 	const { sideBarOpen, setSideBarWidth } = useContext(SideBarContext);
 
 	return (
-		<OffcanvasContainer isOpen={sideBarOpen} style={sideBarOpen ? { width: "260px", left: "0" } : { width: "0", left: "-5rem" }}>
+		<OffcanvasContainer style={sideBarOpen ? { width: "260px", left: "0" } : { width: "0", left: "-5rem" }}>
 			<OffCanvasHeader>
 				<MenuToggler
 					onClick={(e) => {
@@ -165,7 +167,6 @@ const Offcanvas = () => {
 									<OffcanvasItem key={linkname}>
 										<OffcanvasLink
 											to={pathname}
-											isOpen={sideBarOpen}
 											onClick={() => {
 												setSideBarWidth((p) => !p);
 											}}>

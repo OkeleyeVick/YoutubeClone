@@ -38,7 +38,7 @@ const AllPageLinks = [
 		IconActive: <Icon icon="fluent:library-20-filled" />,
 	},
 	{
-		path: "/download",
+		path: "/downloads",
 		linkname: "Download Videos",
 		Icon: <Icon icon="ph:download" />,
 		IconActive: <Icon icon="ph:download-fill" />,
