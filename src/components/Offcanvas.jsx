@@ -122,6 +122,12 @@ const offcanvasContainers = [
 				Icon: <Icon icon="material-symbols:help-outline-rounded" />,
 				IconActive: <Icon icon="material-symbols:help-rounded" />,
 			},
+			{
+				pathname: "/sports",
+				linkname: "Sports",
+				Icon: <Icon icon="mdi:message-alert-outline" />,
+				IconActive: <Icon icon="fluent:trophy-48-filled" />,
+			},
 		],
 	},
 ];
