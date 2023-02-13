@@ -67,7 +67,7 @@ const HeaderSideBar = () => {
 								{({ isActive }) => {
 									return (
 										<>
-											<Em checkActive={isActive}>{isActive ? IconActive : Icon}</Em>
+											<Em>{isActive ? IconActive : Icon}</Em>
 											<LinkText>{linkname}</LinkText>
 										</>
 									);

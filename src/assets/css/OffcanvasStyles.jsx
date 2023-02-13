@@ -9,7 +9,7 @@ export const OffcanvasContainer = styled.div`
 	}};
 	min-height: 100vh;
 	transform-origin: left;
-	padding: 0.1rem 0.5rem;
+	padding: 0.1rem 0.2rem 0.1rem 0.5rem;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	position: fixed;
 	top: 0;

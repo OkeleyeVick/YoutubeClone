@@ -2,12 +2,20 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { SideBarContext } from "../App";
 
+export const Layer = styled.div`
+	background-color: rgba(0 0 0 / 45%);
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 25;
+`;
+
 const BackdropFilter = () => {
 	const { sideBarOpen, setSideBarWidth } = useContext(SideBarContext);
 
 	return (
 		<Layer
-			isOpen={sideBarOpen}
 			style={
 				!sideBarOpen
 					? {
@@ -22,12 +30,3 @@ const BackdropFilter = () => {
 };
 
 export default BackdropFilter;
-
-export const Layer = styled.div`
-	background-color: rgba(0 0 0 / 45%);
-	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 2;
-`;
