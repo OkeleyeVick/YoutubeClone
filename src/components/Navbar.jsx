@@ -22,6 +22,7 @@ import AvatarImage from "../assets/images/vickkk.jpg";
 const linkstyle = {
 	display: "flex",
 	alignItems: "center",
+	position: "relative",
 	textDecoration: "none",
 };
 

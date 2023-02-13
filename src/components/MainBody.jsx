@@ -15,10 +15,10 @@ const MainBody = () => {
 			<ContainerInner>
 				<Routes>
 					<Route path="/" element={<IndexPage />} />
-					<Route path="shorts" element={<ShortsPage />} />
-					<Route path="library" element={<Librarypage />} />
-					<Route path="subscriptions" element={<Subscriptions />} />
-					<Route path="downloads" element={<DownloadVideos />} />
+					<Route path="/shorts" element={<ShortsPage />} />
+					<Route path="/library" element={<Librarypage />} />
+					<Route path="/subscriptions" element={<Subscriptions />} />
+					<Route path="/downloads" element={<DownloadVideos />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</ContainerInner>
