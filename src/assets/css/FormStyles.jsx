@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 export const PageContainer = styled.div`
 	min-height: 90vh;
+	margin-inline: auto;
+	max-width: 991px;
 `;
 
 export const FormOuterContainer = styled.div`
@@ -10,12 +12,9 @@ export const FormOuterContainer = styled.div`
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center center; */
-	max-width: 991px;
-	margin-inline: auto;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	row-gap: 2rem;
 	/* background-color: rgb(255, 105, 180, 0.1); */
 `;
 
@@ -35,7 +34,7 @@ export const FormTitleContainer = styled.div`
 	text-align: center;
 `;
 
-export const FormTitle = styled.h1`
+export const FormTitle = styled.h2`
 	font-weight: 500;
 	color: #777777;
 `;

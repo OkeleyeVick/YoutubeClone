@@ -22,6 +22,7 @@ const properties = {
 	darkerGrey: "#090909c2",
 	primaryClr: "#ff0000",
 	inputMinHeight: "3rem",
+	textClr: "rgb(66, 66, 74)",
 };
 const size = {
 	mobileS: "320px",
