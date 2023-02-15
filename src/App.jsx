@@ -9,7 +9,7 @@ import MainBody from "./components/MainBody";
 import BackdropFilter from "./components/BackdropFilter";
 
 const properties = {
-	borderColor: "hotpink",
+	borderColor: "#ddd",
 	transition: "280ms ease-in-out",
 	smShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
 	smRadius: "6px",
