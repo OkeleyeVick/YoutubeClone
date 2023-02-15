@@ -21,6 +21,7 @@ const properties = {
 	darkGrey: "#909090",
 	darkerGrey: "#090909c2",
 	primaryClr: "#ff0000",
+	inputMinHeight: "3rem",
 };
 const size = {
 	mobileS: "320px",
@@ -32,6 +33,10 @@ const size = {
 	desktop: "2560px",
 };
 const GlobalStyles = createGlobalStyle`
+::selection{
+	background-color: rgba(255 0 0 / 50%);
+	color: rgba(255 255 255)
+}
 	::-webkit-scrollbar {
 		width: 7px;
 	}
@@ -45,7 +50,6 @@ const GlobalStyles = createGlobalStyle`
 		}};
 		border-radius: 1rem;
 	}
-	
 	::-webkit-scrollbar-thumb:hover {
 		background-color: ${({ theme }) => {
 			const { properties } = theme;
