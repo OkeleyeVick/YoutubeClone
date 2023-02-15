@@ -9,20 +9,28 @@ export const Layer = styled.div`
 	width: 100%;
 	height: 100%;
 	z-index: 25;
+	transition: 200ms ease-in-out;
+	opacity: 0;
+	transform-origin: center center;
+	visibility: hidden;
 `;
+
+const show = {
+	opacity: "1",
+	visibility: "visible",
+};
+
+const hide = {
+	opacity: "0",
+	visibility: "hidden",
+};
 
 const BackdropFilter = () => {
 	const { sideBarOpen, setSideBarWidth } = useContext(SideBarContext);
 
 	return (
 		<Layer
-			style={
-				!sideBarOpen
-					? {
-							display: "none",
-					  }
-					: { display: "block" }
-			}
+			style={!sideBarOpen ? hide : show}
 			onClick={() => {
 				setSideBarWidth((p) => !p);
 			}}></Layer>
