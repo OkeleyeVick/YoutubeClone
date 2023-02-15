@@ -127,8 +127,8 @@ const offcanvasContainers = [
 			{
 				pathname: "/feedback",
 				linkname: "Send feedback",
-				Icon: <Icon icon="mdi:message-alert-outline" />,
-				IconActive: <Icon icon="fluent:trophy-48-filled" />,
+				Icon: <Icon icon="iconoir:message-alert" />,
+				IconActive: <Icon icon="mdi:message-alert" />,
 			},
 		],
 	},
