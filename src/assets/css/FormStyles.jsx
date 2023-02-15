@@ -31,7 +31,7 @@ export const FormSubmitButton = styled.button`
 `;
 
 export const FormTitleContainer = styled.div`
-	margin: 1.8rem 0;
+	margin: 2rem 0 0;
 	text-align: center;
 `;
 

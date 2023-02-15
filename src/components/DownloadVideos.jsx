@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	FormInput,
 	FormInputContainer,
@@ -11,6 +11,12 @@ import {
 } from "../assets/css/FormStyles";
 
 const DownloadVideos = () => {
+	const [ytlink, setYtLink] = useState("");
+
+	function handleSubmit(e) {
+		e.preventDefault();
+	}
+
 	return (
 		<PageContainer>
 			<FormOuterContainer>
@@ -18,12 +24,17 @@ const DownloadVideos = () => {
 					<FormTitle>Enter youtube link</FormTitle>
 				</FormTitleContainer>
 				<FormMainContainer>
-					<form action="">
+					<form action="" onSubmit={handleSubmit}>
 						<FormMainContainer>
 							<FormInputContainer>
-								<FormInput />
+								<FormInput
+									onChange={(e) => {
+										setYtLink(e.target.value);
+									}}
+								/>
 								<Sumbit>Download</Sumbit>
 							</FormInputContainer>
+							{ytlink}
 						</FormMainContainer>
 					</form>
 				</FormMainContainer>
