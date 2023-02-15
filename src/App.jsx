@@ -33,10 +33,6 @@ const size = {
 	desktop: "2560px",
 };
 const GlobalStyles = createGlobalStyle`
-::selection{
-	background-color: rgba(255 0 0 / 50%);
-	color: rgba(255 255 255)
-}
 	::-webkit-scrollbar {
 		width: 7px;
 	}

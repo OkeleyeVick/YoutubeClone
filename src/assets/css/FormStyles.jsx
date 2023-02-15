@@ -1,28 +1,22 @@
 import ImageDownloader from "../images/youtube-image-comp.svg";
 import styled from "styled-components";
 
-const variable = ({ theme }) => {
-	const { properties } = theme;
-	console.log(properties);
-};
-
 export const PageContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	min-height: 90vh;
 `;
 
 export const FormOuterContainer = styled.div`
-	background-image: url(${ImageDownloader});
+	/* background-image: url(${ImageDownloader});
 	background-size: contain;
 	background-repeat: no-repeat;
-	background-position: center center;
-	border: 1.2px solid rgba(255, 255, 255, 0.125);
+	background-position: center center; */
 	max-width: 991px;
 	margin-inline: auto;
 	width: 100%;
-	background-color: rgb(255, 105, 180, 0.1);
+	display: flex;
+	flex-direction: column;
+	row-gap: 2rem;
+	/* background-color: rgb(255, 105, 180, 0.1); */
 `;
 
 export const FormMainContainer = styled.div`
@@ -42,7 +36,8 @@ export const FormTitleContainer = styled.div`
 `;
 
 export const FormTitle = styled.h1`
-	font-weight: 900;
+	font-weight: 500;
+	color: #777777;
 `;
 
 export const FormInputContainer = styled.div`
@@ -52,6 +47,7 @@ export const FormInputContainer = styled.div`
 	align-items: center;
 
 	& button {
+		font-size: 0.8rem;
 		min-height: ${({ theme }) => {
 			const { properties } = theme;
 			return properties.inputMinHeight;
@@ -61,7 +57,7 @@ export const FormInputContainer = styled.div`
 			const { properties } = theme;
 			return properties.primaryClr;
 		}};
-		padding: 0 1rem;
+		padding: 0 2rem;
 		cursor: pointer;
 	}
 `;
@@ -69,6 +65,10 @@ export const FormInput = styled.input.attrs({
 	placeholder: "Enter youtube link",
 	type: "text",
 })`
+	transition: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.transition;
+	}};
 	min-height: ${({ theme }) => {
 		const { properties } = theme;
 		return properties.inputMinHeight;
@@ -76,18 +76,25 @@ export const FormInput = styled.input.attrs({
 	width: 100%;
 	border: none;
 	padding: 0.375rem 1rem;
-	border-radius: 6px 0 0 6px;
+	border-radius: 5px 0 0 5px;
+	border: 2px solid #ccc;
+	border-right: none;
 
 	&:focus {
-		border: none;
-		box-shadow: none;
+		box-shadow: 0 0 0 0.25rem rgb(255 0 0 / 25%);
+		border-color: rgba(255 0 0 / 60%);
 		outline: none;
+	}
+	&::placeholder {
+		font-size: 0.8rem;
+		letter-spacing: 0.3px;
+		color: #d0d0d0;
 	}
 `;
 
 export const Sumbit = styled.button.attrs({
 	type: "button",
 })`
-	border-radius: 0 6px 6px 0;
+	border-radius: 0 5px 5px 0;
 	border: none;
 `;

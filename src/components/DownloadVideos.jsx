@@ -15,7 +15,7 @@ const DownloadVideos = () => {
 		<PageContainer>
 			<FormOuterContainer>
 				<FormTitleContainer>
-					<FormTitle>Enter copied youtube link</FormTitle>
+					<FormTitle>Enter youtube link</FormTitle>
 				</FormTitleContainer>
 				<FormMainContainer>
 					<form action="">
