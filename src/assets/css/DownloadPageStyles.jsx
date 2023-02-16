@@ -55,3 +55,7 @@ export const TextContainer = styled.div`
 	font-weight: 100;
 	color: rgb(66, 66, 74);
 `;
+
+export const ImageContainer = styled.div`
+	aspect-ratio: 16 / 9;
+`;
