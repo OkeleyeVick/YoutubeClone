@@ -2,7 +2,6 @@ import ImageDownloader from "../images/youtube-image-comp.svg";
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
-	min-height: 90vh;
 	margin-inline: auto;
 	max-width: 991px;
 `;
