@@ -19,3 +19,15 @@ export const ImageContainer = styled.div`
 		object-fit: contain;
 	}
 `;
+
+export const Details = styled.div`
+	display: flex;
+	align-items: flex-start;
+	gap: 5px;
+`;
+
+export const Image = styled.img`
+	border-radius: 50%;
+	width: 40px;
+	aspect-ratio: 1 / 1;
+`;
