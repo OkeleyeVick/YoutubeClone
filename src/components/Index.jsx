@@ -1,10 +1,35 @@
 import React from "react";
-import { EachGridItem, GridWrapper } from "../assets/css/IndexPageStyles";
+import { Details, EachGridItem, GridWrapper, Image, ImageContainer } from "../assets/css/IndexPageStyles";
+import ImageOne from "../assets/images/image1.webp";
+import ImageTwo from "../assets/images/image1.webp";
+import ImageThree from "../assets/images/image1.webp";
+import ImageFour from "../assets/images/image1.webp";
+import ImageFive from "../assets/images/image1.webp";
 
+const images = [
+	{
+		pathname: "/",
+		image: ImageOne,
+		imageTitle: "Listening to TED Motivation",
+		views: "200k",
+		duration: "2 weeks ago",
+		profile_image: "image1.webp",
+	},
+];
 const IndexPage = () => {
 	return (
 		<GridWrapper>
-			<EachGridItem></EachGridItem>
+			{images.map((eachItem, index) => {
+				const { image, imageTitle, views, duration, profile_image, pathname } = eachItem;
+				return (
+					<EachGridItem key={index} to={pathname}>
+						<ImageContainer>
+							<Image src={image} />
+						</ImageContainer>
+						<Details></Details>
+					</EachGridItem>
+				);
+			})}
 		</GridWrapper>
 	);
 };

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const GridWrapper = styled.div`
@@ -6,7 +7,7 @@ export const GridWrapper = styled.div`
 	gap: 0.5rem;
 `;
 
-export const EachGridItem = styled.div`
+export const EachGridItem = styled(Link)`
 	transition: ${({ theme }) => {
 		const { properties } = theme;
 		return properties.transition;
@@ -27,7 +28,7 @@ export const Details = styled.div`
 `;
 
 export const Image = styled.img`
-	border-radius: 50%;
-	width: 40px;
 	aspect-ratio: 1 / 1;
 `;
+
+// export const
