@@ -15,6 +15,30 @@ const images = [
 		duration: "2 weeks ago",
 		profile_image: "image1.webp",
 	},
+	{
+		pathname: "/",
+		image: ImageOne,
+		imageTitle: "Listening to TED Motivation",
+		views: "200k",
+		duration: "2 weeks ago",
+		profile_image: "image1.webp",
+	},
+	{
+		pathname: "/",
+		image: ImageOne,
+		imageTitle: "Listening to TED Motivation",
+		views: "200k",
+		duration: "2 weeks ago",
+		profile_image: "image1.webp",
+	},
+	{
+		pathname: "/",
+		image: ImageOne,
+		imageTitle: "Listening to TED Motivation",
+		views: "200k",
+		duration: "2 weeks ago",
+		profile_image: "image1.webp",
+	},
 ];
 const IndexPage = () => {
 	return (
@@ -25,6 +49,7 @@ const IndexPage = () => {
 					<EachGridItem key={index} to={pathname}>
 						<ImageContainer>
 							<Image src={image} />
+							<span>Yes</span>
 						</ImageContainer>
 						<Details></Details>
 					</EachGridItem>
