@@ -4,13 +4,13 @@ import styled from "styled-components";
 export const GridWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-	gap: 0.5rem 1rem;
+	gap: 1rem 1.2rem;
 `;
 
 export const EachGridItem = styled(Link)`
 	/* transition:  */
-	transition-timing-function: linear;
-	transition-delay: 2s;
+	transition-timing-function: ease;
+	transition-delay: 200ms;
 	transition-duration: 200ms;
 	z-index: 100000;
 
@@ -22,7 +22,7 @@ export const EachGridItem = styled(Link)`
 
 export const ImageContainer = styled.div`
 	aspect-ratio: 16 / 9;
-	border-radius: 8px;
+	border-radius: 10px;
 	overflow: hidden;
 	position: relative;
 	& img {
@@ -31,16 +31,23 @@ export const ImageContainer = styled.div`
 	& span {
 		position: absolute;
 		bottom: 0;
+		background-color: rgba(0 0 0 / 80%);
+		border-radius: 4px;
+		right: 0;
+		font-size: 0.68rem;
+		padding: 4px 8px;
+		font-weight: 900;
+		letter-spacing: 0.4px;
 		color: #fff;
-		background-color: rgba(0 0 0 / 40%);
-		border-radius: 6px;
+		margin: 0 0.6rem 0.4rem 0;
 	}
 `;
 
 export const Details = styled.div`
 	display: flex;
 	align-items: flex-start;
-	gap: 5px;
+	gap: 10px;
+	padding-top: 0.8rem;
 `;
 
 export const Image = styled.img`
@@ -48,4 +55,38 @@ export const Image = styled.img`
 	max-width: 100%;
 `;
 
-// export const
+export const ProfileIcon = styled(Image)`
+	width: 40px;
+	aspect-ratio: 1 / 1;
+	border-radius: 100vw;
+	object-fit: cover;
+`;
+
+export const DetailsInner = styled.div`
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+`;
+
+export const Title = styled.h5`
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #000;
+`;
+
+export const ChannelName = styled.small`
+	color: #ccc;
+	display: flex;
+`;
+
+export const MenuDropdown = styled.div`
+	position: relative;
+`;
+
+export const DropdownToggler = styled.button`
+	border-radius: 100vw;
+	transition: ${({ theme }) => {
+		const { properties } = theme;
+		return properties.transition;
+	}};
+`;
