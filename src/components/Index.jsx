@@ -1,5 +1,18 @@
+import { Icon } from "@iconify/react";
 import React from "react";
-import { Details, DetailsInner, EachGridItem, GridWrapper, Image, ImageContainer, ProfileIcon, Title } from "../assets/css/IndexPageStyles";
+import {
+	ChannelName,
+	Details,
+	DetailsInner,
+	DropdownToggler,
+	EachGridItem,
+	GridWrapper,
+	Image,
+	ImageContainer,
+	MenuDropdown,
+	ProfileIcon,
+	Title,
+} from "../assets/css/IndexPageStyles";
 import ImageOne from "../assets/images/image1.webp";
 import ImageTwo from "../assets/images/image1.webp";
 import ImageThree from "../assets/images/image1.webp";
@@ -10,7 +23,7 @@ const images = [
 	{
 		pathname: "/",
 		image: ImageOne,
-		imageTitle: "Listening to TED Motivation",
+		imageTitle: "TED Motivation",
 		views: "200k",
 		duration: "2 weeks ago",
 		profileImage: ImageOne,
@@ -19,7 +32,7 @@ const images = [
 	{
 		pathname: "/",
 		image: ImageOne,
-		imageTitle: "Listening to TED Motivation",
+		imageTitle: "TED Motivation",
 		views: "200k",
 		duration: "2 weeks ago",
 		profileImage: ImageTwo,
@@ -28,7 +41,7 @@ const images = [
 	{
 		pathname: "/",
 		image: ImageOne,
-		imageTitle: "Listening to TED Motivation",
+		imageTitle: "TED Motivation",
 		views: "200k",
 		duration: "2 weeks ago",
 		profileImage: ImageThree,
@@ -37,7 +50,7 @@ const images = [
 	{
 		pathname: "/",
 		image: ImageOne,
-		imageTitle: "Listening to TED Motivation",
+		imageTitle: "TED Motivation",
 		views: "200k",
 		duration: "2 weeks ago",
 		profileImage: ImageFour,
@@ -59,7 +72,13 @@ const IndexPage = () => {
 							<ProfileIcon src={profileImage} />
 							<DetailsInner>
 								<Title>{title}</Title>
+								<ChannelName>{imageTitle}</ChannelName>
 							</DetailsInner>
+							<MenuDropdown>
+								<DropdownToggler>
+									<Icon icon="carbon:overflow-menu-vertical" />
+								</DropdownToggler>
+							</MenuDropdown>
 						</Details>
 					</EachGridItem>
 				);

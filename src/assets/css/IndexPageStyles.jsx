@@ -4,19 +4,20 @@ import styled from "styled-components";
 export const GridWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-	gap: 1rem 1.2rem;
+	gap: 4rem 1.2rem;
 `;
 
 export const EachGridItem = styled(Link)`
-	/* transition:  */
 	transition-timing-function: ease;
 	transition-delay: 200ms;
 	transition-duration: 200ms;
 	z-index: 100000;
 
-	&:hover {
-		transform: scale(1.2);
-		z-index: 1000001;
+	@media (min-width: ${({ theme }) => theme.size.tablet}) {
+		&:hover {
+			transform: scale(1.2);
+			z-index: 1000001;
+		}
 	}
 `;
 
@@ -65,7 +66,7 @@ export const ProfileIcon = styled(Image)`
 export const DetailsInner = styled.div`
 	display: flex;
 	flex-direction: column;
-	row-gap: 10px;
+	row-gap: 4px;
 `;
 
 export const Title = styled.h5`
@@ -75,7 +76,8 @@ export const Title = styled.h5`
 `;
 
 export const ChannelName = styled.small`
-	color: #ccc;
+	color: #aaa;
+	margin-top: 5px;
 	display: flex;
 `;
 
@@ -85,8 +87,22 @@ export const MenuDropdown = styled.div`
 
 export const DropdownToggler = styled.button`
 	border-radius: 100vw;
+	padding: 0;
+	display: flex;
 	transition: ${({ theme }) => {
 		const { properties } = theme;
 		return properties.transition;
 	}};
+	background-color: transparent;
+	border: none;
+	& svg {
+		font-size: 2rem;
+	}
+
+	&:hover {
+		background-color: ${({ theme }) => {
+			const { properties } = theme;
+			return properties.borderColor;
+		}};
+	}
 `;
