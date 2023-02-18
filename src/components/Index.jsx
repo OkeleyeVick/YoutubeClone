@@ -1,8 +1,12 @@
 import React from "react";
-import { GridWrapper } from "../assets/css/IndexPageStyles";
+import { EachGridItem, GridWrapper } from "../assets/css/IndexPageStyles";
 
 const IndexPage = () => {
-	return <GridWrapper></GridWrapper>;
+	return (
+		<GridWrapper>
+			<EachGridItem></EachGridItem>
+		</GridWrapper>
+	);
 };
 
 export default IndexPage;
