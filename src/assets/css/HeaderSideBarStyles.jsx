@@ -58,6 +58,7 @@ export const SideBarLink = styled(NavLink)`
 	align-items: center;
 	aspect-ratio: 1 / 1;
 	justify-content: center;
+	display: none;
 	transition: ${({ theme }) => {
 		const { properties } = theme;
 		return properties.transition;
@@ -68,6 +69,9 @@ export const SideBarLink = styled(NavLink)`
 			const { properties } = theme;
 			return properties.hover;
 		}};
+	}
+	@media (min-width: ${({ theme }) => theme.size.tablet}) {
+		display: inherit;
 	}
 `;
 

@@ -8,7 +8,7 @@ export const Layer = styled.div`
 	inset: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 25;
+	z-index: 60;
 	transition: 200ms ease-in-out;
 	opacity: 0;
 	transform-origin: center center;

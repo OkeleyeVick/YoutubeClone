@@ -7,20 +7,6 @@ export const GridWrapper = styled.div`
 	gap: 4rem 1.2rem;
 `;
 
-export const EachGridItem = styled(Link)`
-	transition-timing-function: ease;
-	transition-delay: 200ms;
-	transition-duration: 200ms;
-	z-index: 100000;
-
-	@media (min-width: ${({ theme }) => theme.size.tablet}) {
-		&:hover {
-			transform: scale(1.2);
-			z-index: 1000001;
-		}
-	}
-`;
-
 export const ImageContainer = styled.div`
 	aspect-ratio: 16 / 9;
 	border-radius: 10px;
@@ -41,6 +27,20 @@ export const ImageContainer = styled.div`
 		letter-spacing: 0.4px;
 		color: #fff;
 		margin: 0 0.6rem 0.4rem 0;
+	}
+`;
+
+export const EachGridItem = styled(Link)`
+	transition-timing-function: ease;
+	transition-delay: 200ms;
+	transition-duration: 200ms;
+	z-index: 50;
+
+	@media (min-width: ${({ theme }) => theme.size.tablet}) {
+		&:has(${ImageContainer}:hover) {
+			transform: scale(1.2);
+			z-index: 51;
+		}
 	}
 `;
 
@@ -89,6 +89,8 @@ export const DropdownToggler = styled.button`
 	border-radius: 100vw;
 	padding: 0;
 	display: flex;
+	cursor: pointer;
+	padding: 5px;
 	transition: ${({ theme }) => {
 		const { properties } = theme;
 		return properties.transition;
@@ -96,7 +98,7 @@ export const DropdownToggler = styled.button`
 	background-color: transparent;
 	border: none;
 	& svg {
-		font-size: 2rem;
+		font-size: 1.6rem;
 	}
 
 	&:hover {

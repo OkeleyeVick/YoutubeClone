@@ -7,14 +7,9 @@ export const PageContainer = styled.div`
 `;
 
 export const FormOuterContainer = styled.div`
-	/* background-image: url(${ImageDownloader});
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center center; */
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	/* background-color: rgb(255, 105, 180, 0.1); */
 `;
 
 export const FormMainContainer = styled.div`

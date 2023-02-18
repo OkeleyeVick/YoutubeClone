@@ -72,7 +72,7 @@ const GlobalStyles = createGlobalStyle`
 	}
 `;
 
-export const SideBarContext = createContext(false);
+export const SideBarContext = createContext();
 
 function App() {
 	const [sideBarOpen, setSideBarWidth] = useState(false);
