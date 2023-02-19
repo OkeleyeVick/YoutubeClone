@@ -2,12 +2,22 @@ import { Icon } from "@iconify/react";
 import React, { useEffect, useState } from "react";
 import {
 	Container,
+	ContentContainer,
 	GridContainerInner,
 	GridItem,
 	GridTitle,
 	GridTitleContainer,
+	HeadTitle,
 	IconContainer,
+	Image,
+	MimeType,
+	ResultContainer,
+	ResultHeader,
+	ResultImage,
+	ResultTableBody,
+	ResultTableHeader,
 	TextContainer,
+	Title,
 } from "../assets/css/DownloadPageStyles";
 import {
 	FormInput,
@@ -19,6 +29,7 @@ import {
 	PageContainer,
 	Sumbit,
 } from "../assets/css/FormStyles";
+import FakeImage from "../assets/images/netflix.webp";
 
 const DownloadVideos = () => {
 	const [ytlink, setYtLink] = useState("");
@@ -88,8 +99,33 @@ const DownloadVideos = () => {
 							</FormInputContainer>
 						</FormMainContainer>
 					</form>
+					{
+						<ResultContainer>
+							<ResultHeader>
+								<ResultImage>
+									<Image src={FakeImage} />
+								</ResultImage>
+								<ContentContainer>
+									<Title>
+										Will Smith's Life Advice Will Change You - One of the Greatest Speeches Ever | Will Smith Motivation
+									</Title>
+									<span>Duration: 0:10:45</span>
+									<span>Views: 4,080,048</span>
+								</ContentContainer>
+							</ResultHeader>
 
-					{/*  */}
+							<MimeType>
+								<h3>Video</h3>
+							</MimeType>
+							<ResultTableHeader>
+								<HeadTitle>Quality</HeadTitle>
+								<HeadTitle>Type</HeadTitle>
+								<HeadTitle willChange>File size</HeadTitle>
+								<HeadTitle>Download</HeadTitle>
+							</ResultTableHeader>
+							<ResultTableBody></ResultTableBody>
+						</ResultContainer>
+					}
 				</FormMainContainer>
 			</FormOuterContainer>
 			<Container>

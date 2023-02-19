@@ -170,7 +170,7 @@ export const IconName = styled.div`
 	}};
 `;
 
-export const AvaterContainer = styled(MenuToggler)`
+export const AvaterContainer = styled.div`
 	position: relative;
 	margin: 0 0 0 1.2rem;
 	background-color: transparent;

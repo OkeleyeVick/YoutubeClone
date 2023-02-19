@@ -1,4 +1,3 @@
-import ImageDownloader from "../images/youtube-image-comp.svg";
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
@@ -13,7 +12,7 @@ export const FormOuterContainer = styled.div`
 `;
 
 export const FormMainContainer = styled.div`
-	padding: 1rem;
+	/* padding: 1rem; */
 `;
 
 export const FormSubmitButton = styled.button`
@@ -34,6 +33,7 @@ export const FormTitle = styled.h2`
 `;
 
 export const FormInputContainer = styled.div`
+	margin-top: 2rem;
 	min-height: 3rem;
 	position: relative;
 	display: flex;
@@ -70,7 +70,7 @@ export const FormInput = styled.input.attrs({
 	border: none;
 	padding: 0.375rem 1rem;
 	border-radius: 5px 0 0 5px;
-	border: 2px solid #ccc;
+	border: 1px solid #ccc;
 	border-right: none;
 
 	&:focus {

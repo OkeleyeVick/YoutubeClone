@@ -137,7 +137,7 @@ export const DropdownMenuContainer = styled.div`
 	transition: ${({ theme }) => theme.properties.transition};
 	padding: 5px;
 	border: 1px solid ${({ theme }) => theme.properties.borderColorFaint};
-	/* display: none; */
+	display: none;
 `;
 
 export const LinkItem = styled(Link)`
@@ -160,7 +160,6 @@ export const LinkItem = styled(Link)`
 
 export const Em = styled.em`
 	display: flex;
-
 	& svg {
 		font-size: 1.3rem;
 	}

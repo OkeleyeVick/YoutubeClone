@@ -54,21 +54,22 @@ const IndexPage = () => {
 								<DropdownToggler onClick={() => handleDropdown(index)}>
 									<Icon icon="carbon:overflow-menu-vertical" />
 								</DropdownToggler>
-								{dropdownOpen ? (
-									<DropdownMenuContainer>
-										{MenuItems.map((menu, index) => {
-											const { icon, linkname } = menu;
-											return (
-												<LinkItem to="/" key={index}>
-													<Em>{icon}</Em>
-													<span>{linkname}</span>
-												</LinkItem>
-											);
-										})}
-									</DropdownMenuContainer>
+								<DropdownMenuContainer>
+									{MenuItems.map((menu, index) => {
+										const { icon, linkname } = menu;
+										return (
+											<LinkItem to="/" key={index}>
+												<Em>{icon}</Em>
+												<span>{linkname}</span>
+											</LinkItem>
+										);
+									})}
+								</DropdownMenuContainer>
+								{/* {dropdownOpen ? (
+									
 								) : (
 									""
-								)}
+								)} */}
 							</MenuDropdown>
 						</Details>
 					</EachGridItem>

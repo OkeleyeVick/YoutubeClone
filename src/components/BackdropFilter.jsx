@@ -4,7 +4,7 @@ import { SideBarContext } from "../App";
 
 export const Layer = styled.div`
 	background-color: rgba(0 0 0 / 45%);
-	position: absolute;
+	position: fixed;
 	inset: 0;
 	width: 100%;
 	height: 100%;
