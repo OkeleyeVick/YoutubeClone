@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {
 	Container,
 	ContentContainer,
+	FileSize,
 	GridContainerInner,
 	GridItem,
 	GridTitle,
@@ -11,6 +12,7 @@ import {
 	IconContainer,
 	Image,
 	MimeType,
+	Quality,
 	ResultContainer,
 	ResultHeader,
 	ResultImage,
@@ -18,6 +20,7 @@ import {
 	ResultTableHeader,
 	TextContainer,
 	Title,
+	Type,
 } from "../assets/css/DownloadPageStyles";
 import {
 	FormInput,
@@ -48,12 +51,15 @@ const DownloadVideos = () => {
 	}
 
 	useEffect(() => {
+		const controller = new AbortController();
+
 		const options = {
 			method: "GET",
 			headers: {
 				"X-RapidAPI-Key": "6473c3ce7dmsh28c8afd093343dep1d0f1fjsn02e8bc02b53a",
 				"X-RapidAPI-Host": "ytstream-download-youtube-videos.p.rapidapi.com",
 			},
+			signal: controller.signal,
 		};
 
 		const fetchVideos = async () => {
@@ -63,6 +69,8 @@ const DownloadVideos = () => {
 		};
 
 		fetchVideos();
+
+		return () => controller.abort();
 	}, [youtubeId]);
 
 	const gridItems = [
@@ -123,7 +131,11 @@ const DownloadVideos = () => {
 								<HeadTitle willChange>File size</HeadTitle>
 								<HeadTitle>Download</HeadTitle>
 							</ResultTableHeader>
-							<ResultTableBody></ResultTableBody>
+							<ResultTableBody>
+								<Quality>702p</Quality>
+								<Type>mp4</Type>
+								<FileSize>-</FileSize>
+							</ResultTableBody>
 						</ResultContainer>
 					}
 				</FormMainContainer>

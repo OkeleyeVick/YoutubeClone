@@ -95,7 +95,7 @@ export const ContentContainer = styled.div`
 	row-gap: 0.4rem;
 
 	& span {
-		font-size: 1.1rem;
+		font-size: 1.01rem;
 	}
 `;
 
@@ -116,18 +116,21 @@ export const MimeType = styled.div`
 export const ResultTableHeader = styled.div`
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-
+	padding: 1rem 0;
+	border-bottom: 1.4px solid #ccc;
 	@media (max-width: 768px) {
 		grid-template-columns: repeat(3, 1fr);
 	}
 `;
 
-export const ResultTableBody = styled(ResultTableHeader)``;
+export const ResultTableBody = styled(ResultTableHeader)`
+	border: none;
+`;
 
 export const HeadTitle = styled.span`
 	font-weight: 900;
 	text-align: center;
-
+	font-size: 0.9rem;
 	@media all and (max-width: 768px) {
 		& {
 			display: ${({ willChange }) => (willChange ? "none" : "block")};
@@ -135,6 +138,14 @@ export const HeadTitle = styled.span`
 	}
 `;
 
-export const Quality = styled.span`
+export const BodyText = styled.span`
 	color: #212529;
+	font-size: 0.9rem;
+	text-align: center;
 `;
+
+export const Quality = styled(BodyText)``;
+
+export const Type = styled(BodyText)``;
+
+export const FileSize = styled(BodyText)``;
