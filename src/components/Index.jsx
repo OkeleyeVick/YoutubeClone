@@ -1,83 +1,74 @@
 import { Icon } from "@iconify/react";
-import React from "react";
+import React, { useState } from "react";
 import {
 	ChannelName,
 	Details,
 	DetailsInner,
+	DropdownMenuContainer,
 	DropdownToggler,
 	EachGridItem,
+	Em,
 	GridWrapper,
 	Image,
 	ImageContainer,
+	ImageContainerInner,
+	LinkItem,
 	MenuDropdown,
 	ProfileIcon,
 	Title,
+	ViewAndTime,
 } from "../assets/css/IndexPageStyles";
-import ImageOne from "../assets/images/image1.webp";
-import ImageTwo from "../assets/images/image1.webp";
-import ImageThree from "../assets/images/image1.webp";
-import ImageFour from "../assets/images/image1.webp";
-import ImageFive from "../assets/images/image1.webp";
+import { images, MenuItems } from "./Objects";
 
-const images = [
-	{
-		pathname: "/",
-		image: ImageOne,
-		imageTitle: "TED Motivation",
-		views: "200k",
-		duration: "2 weeks ago",
-		profileImage: ImageOne,
-		title: "Get Inspired From Ted Talks and start working on your skill today	",
-	},
-	{
-		pathname: "/",
-		image: ImageOne,
-		imageTitle: "TED Motivation",
-		views: "200k",
-		duration: "2 weeks ago",
-		profileImage: ImageTwo,
-		title: "Get Inspired From Ted Talks and start working on your skill today	",
-	},
-	{
-		pathname: "/",
-		image: ImageOne,
-		imageTitle: "TED Motivation",
-		views: "200k",
-		duration: "2 weeks ago",
-		profileImage: ImageThree,
-		title: "Get Inspired From Ted Talks and start working on your skill today	",
-	},
-	{
-		pathname: "/",
-		image: ImageOne,
-		imageTitle: "TED Motivation",
-		views: "200k",
-		duration: "2 weeks ago",
-		profileImage: ImageFour,
-		title: "Get Inspired From Ted Talks and start working on your skill today	",
-	},
-];
 const IndexPage = () => {
+	const [dropdownOpen, setDropdown] = useState(false);
+
+	const handleDropdown = (i) => {
+		setDropdown((drop) => !drop);
+	};
+
 	return (
 		<GridWrapper>
 			{images.map((eachItem, index) => {
 				const { image, imageTitle, views, duration, pathname, profileImage, title } = eachItem;
 				return (
-					<EachGridItem key={index} to={pathname}>
-						<ImageContainer>
-							<Image src={image} />
-							<span>6: 05</span>
+					<EachGridItem key={index}>
+						<ImageContainer to={pathname}>
+							<ImageContainerInner>
+								<Image src={image} />
+								<span>6:05</span>
+							</ImageContainerInner>
 						</ImageContainer>
 						<Details>
 							<ProfileIcon src={profileImage} />
 							<DetailsInner>
-								<Title>{title}</Title>
+								<Title to={pathname}>{title}</Title>
 								<ChannelName>{imageTitle}</ChannelName>
+								<ViewAndTime>
+									<small>{views} views</small>
+									<small>&#x2022;</small>
+									<small>{duration}</small>
+								</ViewAndTime>
 							</DetailsInner>
 							<MenuDropdown>
-								<DropdownToggler>
+								<DropdownToggler onClick={() => handleDropdown(index)}>
 									<Icon icon="carbon:overflow-menu-vertical" />
 								</DropdownToggler>
+								{dropdownOpen ? (
+									<DropdownMenuContainer>
+										{MenuItems.map((menu, index) => {
+											const { icon, linkname } = menu;
+											return (
+												<LinkItem to="/" key={index}>
+													<Em>{icon}</Em>
+													<span>{linkname}</span>
+												</LinkItem>
+											);
+										})}
+									</DropdownMenuContainer>
+								) : (
+									""
+								)}
 							</MenuDropdown>
 						</Details>
 					</EachGridItem>

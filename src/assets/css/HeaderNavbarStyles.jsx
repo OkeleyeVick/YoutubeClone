@@ -12,7 +12,13 @@ export const Nav = styled.nav`
 	left: 0;
 	right: 0;
 	margin-left: 55px;
-	z-index: 1;
+	z-index: 60;
+
+	@media (max-width: ${({ theme }) => theme.size.tablet}) {
+		& {
+			z-index: 90;
+		}
+	}
 `;
 
 export const MenuToggler = styled.button.attrs({
