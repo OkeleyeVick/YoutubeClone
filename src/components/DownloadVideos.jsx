@@ -111,7 +111,7 @@ const DownloadVideos = () => {
 							</FormInputContainer>
 						</FormMainContainer>
 					</form>
-					{returnedData && (
+					{returnedData === null ? (
 						<ResultContainer>
 							<ResultHeader>
 								<ResultImage>
@@ -147,6 +147,8 @@ const DownloadVideos = () => {
 								</DownloadLink>
 							</ResultTableBody>
 						</ResultContainer>
+					) : (
+						""
 					)}
 				</FormMainContainer>
 			</FormOuterContainer>

@@ -23,7 +23,7 @@ import { images, MenuItems } from "./Objects";
 const IndexPage = () => {
 	const [dropdownOpen, setDropdown] = useState(false);
 
-	const handleDropdown = (i) => {
+	const handleDropdown = () => {
 		setDropdown((drop) => !drop);
 	};
 
@@ -51,7 +51,7 @@ const IndexPage = () => {
 								</ViewAndTime>
 							</DetailsInner>
 							<MenuDropdown>
-								<DropdownToggler onClick={() => handleDropdown(index)}>
+								<DropdownToggler onClick={handleDropdown}>
 									<Icon icon="carbon:overflow-menu-vertical" />
 								</DropdownToggler>
 								<DropdownMenuContainer>
