@@ -39,19 +39,19 @@ import FakeImage from "../assets/images/netflix.webp";
 const DownloadVideos = () => {
 	const [ytlink, setYtLink] = useState("");
 	const [youtubeId, setYoutubeId] = useState("");
-	const [returnedData, setReturnedData] = useState();
-
-	function handleSubmit(e) {
-		e.preventDefault();
-		const youtubeId = extractAndCopyId(ytlink);
-		setYoutubeId(youtubeId);
-	}
+	const [returnedData, setReturnedData] = useState(null);
 
 	const extractAndCopyId = (youtubeLink) => {
 		const youtubeLinkId = youtubeLink.split(".be/")[1];
 		return youtubeLinkId;
 		// excerpt of what the link looks like --> https://youtu.be/jUzxY3rgbkI
 	};
+
+	function handleSubmit(e) {
+		e.preventDefault();
+		const id = extractAndCopyId(ytlink);
+		setYoutubeId(id);
+	}
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -91,6 +91,8 @@ const DownloadVideos = () => {
 		},
 	];
 
+	const { channelTitle } = returnedData;
+
 	return (
 		<PageContainer>
 			<FormOuterContainer>
@@ -111,41 +113,42 @@ const DownloadVideos = () => {
 						</FormMainContainer>
 					</form>
 					{
-						<ResultContainer>
-							<ResultHeader>
-								<ResultImage>
-									<Image src={FakeImage} />
-								</ResultImage>
-								<ContentContainer>
-									<Title>
-										Will Smith's Life Advice Will Change You - One of the Greatest Speeches Ever | Will Smith Motivation
-									</Title>
-									<span>Duration: 0:10:45</span>
-									<span>Views: 4,080,048</span>
-								</ContentContainer>
-							</ResultHeader>
+						returnedData && <span>{channelTitle}</span>
+						/* <ResultContainer>
+								<ResultHeader>
+									<ResultImage>
+										<Image src={FakeImage} />
+									</ResultImage>
+									<ContentContainer>
+										<Title>
+											Will Smith's Life Advice Will Change You - One of the Greatest Speeches Ever | Will Smith Motivation
+										</Title>
+										<span>Duration: 0:10:45</span>
+										<span>Views: 4,080,048</span>
+									</ContentContainer>
+								</ResultHeader>
 
-							<MimeType>
-								<h3>Video</h3>
-							</MimeType>
-							<ResultTableHeader>
-								<HeadTitle>Quality</HeadTitle>
-								<HeadTitle>Type</HeadTitle>
-								<HeadTitle willChange>File size</HeadTitle>
-								<HeadTitle>Download</HeadTitle>
-							</ResultTableHeader>
-							<ResultTableBody>
-								<Quality>702p</Quality>
-								<Type>mp4</Type>
-								<FileSize willChange>-</FileSize>
-								<DownloadLink to="/">
-									<Em>
-										<Icon icon="ph:download-simple-light" />
-									</Em>
-									<span>Download</span>
-								</DownloadLink>
-							</ResultTableBody>
-						</ResultContainer>
+								<MimeType>
+									<h3>Video</h3>
+								</MimeType>
+								<ResultTableHeader>
+									<HeadTitle>Quality</HeadTitle>
+									<HeadTitle>Type</HeadTitle>
+									<HeadTitle willChange>File size</HeadTitle>
+									<HeadTitle>Download</HeadTitle>
+								</ResultTableHeader>
+								<ResultTableBody>
+									<Quality>702p</Quality>
+									<Type>mp4</Type>
+									<FileSize willChange>-</FileSize>
+									<DownloadLink to="/">
+										<Em>
+											<Icon icon="ph:download-simple-light" />
+										</Em>
+										<span>Download</span>
+									</DownloadLink>
+								</ResultTableBody>
+							</ResultContainer> */
 					}
 				</FormMainContainer>
 			</FormOuterContainer>
