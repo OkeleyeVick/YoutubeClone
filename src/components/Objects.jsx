@@ -239,3 +239,19 @@ export const images = [
 		title: "Get Inspired From Ted Talks and start working on your skill today",
 	},
 ];
+
+//! <== download page dom texts ==>
+export const gridItems = [
+	{
+		icon: <Icon icon="uil:link" />,
+		text: "1. On the youtube copy the address(URL) of the video you want to download. if you are in the youtube app , tap on the share button and the select Copy Link",
+	},
+	{
+		icon: <Icon icon="fluent:notepad-32-filled" />,
+		text: "2. Go back to this page and paste the copied url into the address field on the top of this page and then click on the Download button",
+	},
+	{
+		icon: <Icon icon="ph:download-fill" />,
+		text: "3. Now the list of video or audio files will be displayed in different qualities that you can select the desired quality and download the video or audio",
+	},
+];

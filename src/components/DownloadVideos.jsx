@@ -35,6 +35,7 @@ import {
 } from "../assets/css/FormStyles";
 import { Em } from "../assets/css/IndexPageStyles";
 import FakeImage from "../assets/images/netflix.webp";
+import { gridItems } from "./Objects";
 
 const DownloadVideos = () => {
 	const [ytlink, setYtLink] = useState("");
@@ -65,33 +66,31 @@ const DownloadVideos = () => {
 			signal: controller.signal,
 		};
 
-		const fetchVideos = async () => {
-			const result = await fetch(`https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeId}`, options);
-			const data = await result.json();
-			setReturnedData(data);
+		// const fetchVideos = async () => {
+		// 	const result = await fetch(`https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeId}`, options);
+		// 	const data = await result.json();
+		// 	return data;
+		// };
+		// fetchVideos()
+		// 	.then((result) => setReturnedData(result))
+		// 	.catch((error) => {
+		// 		console.log(error);
+		// 	});
+		const fetchVideos = () => {
+			fetch(`https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeId}`, options)
+				.then((response) => response.json())
+				.then((data) => setReturnedData(data))
+				.catch((error) => {
+					if (error === "AbortError") {
+						console.log("fetch aborted");
+					}
+				});
 		};
 
 		fetchVideos();
 
 		return () => controller.abort();
 	}, [youtubeId]);
-
-	const gridItems = [
-		{
-			icon: <Icon icon="uil:link" />,
-			text: "1. On the youtube copy the address(URL) of the video you want to download. if you are in the youtube app , tap on the share button and the select Copy Link",
-		},
-		{
-			icon: <Icon icon="fluent:notepad-32-filled" />,
-			text: "2. Go back to this page and paste the copied url into the address field on the top of this page and then click on the Download button",
-		},
-		{
-			icon: <Icon icon="ph:download-fill" />,
-			text: "3. Now the list of video or audio files will be displayed in different qualities that you can select the desired quality and download the video or audio",
-		},
-	];
-
-	const { channelTitle } = returnedData;
 
 	return (
 		<PageContainer>
@@ -112,44 +111,43 @@ const DownloadVideos = () => {
 							</FormInputContainer>
 						</FormMainContainer>
 					</form>
-					{
-						returnedData && <span>{channelTitle}</span>
-						/* <ResultContainer>
-								<ResultHeader>
-									<ResultImage>
-										<Image src={FakeImage} />
-									</ResultImage>
-									<ContentContainer>
-										<Title>
-											Will Smith's Life Advice Will Change You - One of the Greatest Speeches Ever | Will Smith Motivation
-										</Title>
-										<span>Duration: 0:10:45</span>
-										<span>Views: 4,080,048</span>
-									</ContentContainer>
-								</ResultHeader>
+					{returnedData && (
+						<ResultContainer>
+							<ResultHeader>
+								<ResultImage>
+									<Image src={FakeImage} />
+								</ResultImage>
+								<ContentContainer>
+									<Title>
+										Will Smith's Life Advice Will Change You - One of the Greatest Speeches Ever | Will Smith Motivation
+									</Title>
+									<span>Duration: 0:10:45</span>
+									<span>Views: 4,080,048</span>
+								</ContentContainer>
+							</ResultHeader>
 
-								<MimeType>
-									<h3>Video</h3>
-								</MimeType>
-								<ResultTableHeader>
-									<HeadTitle>Quality</HeadTitle>
-									<HeadTitle>Type</HeadTitle>
-									<HeadTitle willChange>File size</HeadTitle>
-									<HeadTitle>Download</HeadTitle>
-								</ResultTableHeader>
-								<ResultTableBody>
-									<Quality>702p</Quality>
-									<Type>mp4</Type>
-									<FileSize willChange>-</FileSize>
-									<DownloadLink to="/">
-										<Em>
-											<Icon icon="ph:download-simple-light" />
-										</Em>
-										<span>Download</span>
-									</DownloadLink>
-								</ResultTableBody>
-							</ResultContainer> */
-					}
+							<MimeType>
+								<h3>Video</h3>
+							</MimeType>
+							<ResultTableHeader>
+								<HeadTitle>Quality</HeadTitle>
+								<HeadTitle>Type</HeadTitle>
+								<HeadTitle willChange>File size</HeadTitle>
+								<HeadTitle>Download</HeadTitle>
+							</ResultTableHeader>
+							<ResultTableBody>
+								<Quality>702p</Quality>
+								<Type>mp4</Type>
+								<FileSize willChange>-</FileSize>
+								<DownloadLink to="/">
+									<Em>
+										<Icon icon="ph:download-simple-light" />
+									</Em>
+									<span>Download</span>
+								</DownloadLink>
+							</ResultTableBody>
+						</ResultContainer>
+					)}
 				</FormMainContainer>
 			</FormOuterContainer>
 			<Container>
