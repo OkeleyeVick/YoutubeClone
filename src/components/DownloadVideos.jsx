@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {
 	Container,
 	ContentContainer,
+	DownloadLink,
 	FileSize,
 	GridContainerInner,
 	GridItem,
@@ -32,23 +33,25 @@ import {
 	PageContainer,
 	Sumbit,
 } from "../assets/css/FormStyles";
+import { Em } from "../assets/css/IndexPageStyles";
 import FakeImage from "../assets/images/netflix.webp";
 
 const DownloadVideos = () => {
 	const [ytlink, setYtLink] = useState("");
+	const [youtubeId, setYoutubeId] = useState("");
 	const [returnedData, setReturnedData] = useState();
+
+	function handleSubmit(e) {
+		e.preventDefault();
+		const youtubeId = extractAndCopyId(ytlink);
+		setYoutubeId(youtubeId);
+	}
 
 	const extractAndCopyId = (youtubeLink) => {
 		const youtubeLinkId = youtubeLink.split(".be/")[1];
 		return youtubeLinkId;
 		// excerpt of what the link looks like --> https://youtu.be/jUzxY3rgbkI
 	};
-
-	const youtubeId = extractAndCopyId(ytlink);
-
-	function handleSubmit(e) {
-		e.preventDefault();
-	}
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -95,7 +98,7 @@ const DownloadVideos = () => {
 					<FormTitle>Enter youtube link</FormTitle>
 				</FormTitleContainer>
 				<FormMainContainer>
-					<form action="" onSubmit={handleSubmit}>
+					<form action="">
 						<FormMainContainer>
 							<FormInputContainer>
 								<FormInput
@@ -103,7 +106,7 @@ const DownloadVideos = () => {
 										setYtLink(e.target.value);
 									}}
 								/>
-								<Sumbit>Download</Sumbit>
+								<Sumbit onClick={handleSubmit}>Download</Sumbit>
 							</FormInputContainer>
 						</FormMainContainer>
 					</form>
@@ -134,7 +137,13 @@ const DownloadVideos = () => {
 							<ResultTableBody>
 								<Quality>702p</Quality>
 								<Type>mp4</Type>
-								<FileSize>-</FileSize>
+								<FileSize willChange>-</FileSize>
+								<DownloadLink to="/">
+									<Em>
+										<Icon icon="ph:download-simple-light" />
+									</Em>
+									<span>Download</span>
+								</DownloadLink>
 							</ResultTableBody>
 						</ResultContainer>
 					}

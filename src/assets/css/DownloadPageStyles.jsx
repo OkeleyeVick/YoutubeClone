@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -119,7 +120,9 @@ export const ResultTableHeader = styled.div`
 	padding: 1rem 0;
 	border-bottom: 1.4px solid #ccc;
 	@media (max-width: 768px) {
-		grid-template-columns: repeat(3, 1fr);
+		& {
+			grid-template-columns: repeat(3, 1fr);
+		}
 	}
 `;
 
@@ -127,21 +130,26 @@ export const ResultTableBody = styled(ResultTableHeader)`
 	border: none;
 `;
 
-export const HeadTitle = styled.span`
-	font-weight: 900;
+export const HeaderBodyText = styled.span`
 	text-align: center;
-	font-size: 0.9rem;
-	@media all and (max-width: 768px) {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@media (max-width: 768px) {
 		& {
-			display: ${({ willChange }) => (willChange ? "none" : "block")};
+			display: ${({ willChange }) => (willChange ? "none" : "inline-flex")};
 		}
 	}
 `;
 
-export const BodyText = styled.span`
+export const HeadTitle = styled(HeaderBodyText)`
+	font-weight: 900;
+	font-size: 0.9rem;
+`;
+
+export const BodyText = styled(HeaderBodyText)`
 	color: #212529;
 	font-size: 0.9rem;
-	text-align: center;
 `;
 
 export const Quality = styled(BodyText)``;
@@ -149,3 +157,21 @@ export const Quality = styled(BodyText)``;
 export const Type = styled(BodyText)``;
 
 export const FileSize = styled(BodyText)``;
+
+export const DownloadLink = styled(Link).attrs({
+	target: "_blank",
+})`
+	color: ${({ theme }) => theme.properties["text-clr"]};
+	border: 1px solid ${({ theme }) => theme.properties.borderColor};
+	width: max-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-inline: auto;
+	padding: 0.5rem;
+	border-radius: 5px;
+	gap: 5px;
+	& span {
+		font-size: 0.8rem;
+	}
+`;
