@@ -132,7 +132,7 @@ export const DropdownMenuContainer = styled.div`
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	border-radius: 8px;
 	min-width: 30vh;
-	z-index: 60;
+	z-index: 50;
 	right: 0;
 	transition: ${({ theme }) => theme.properties.transition};
 	padding: 5px;

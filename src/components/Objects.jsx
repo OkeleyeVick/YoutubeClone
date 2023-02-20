@@ -93,9 +93,21 @@ export const offcanvasContainers = [
 			},
 			{
 				pathname: "/subscriptions",
-				linkname: "Subscription",
+				linkname: "Subscriptions",
 				Icon: <Icon icon="teenyicons:money-stack-outline" />,
 				IconActive: <Icon icon="teenyicons:money-stack-solid" />,
+			},
+			{
+				pathname: "/library",
+				linkname: "Library",
+				Icon: <Icon icon="fluent:library-20-regular" />,
+				IconActive: <Icon icon="fluent:library-20-filled" />,
+			},
+			{
+				pathname: "/downloads",
+				linkname: "Download Videos",
+				Icon: <Icon icon="ph:download" />,
+				IconActive: <Icon icon="ph:download-fill" />,
 			},
 		],
 	},
