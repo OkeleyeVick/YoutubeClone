@@ -99,8 +99,28 @@ export const ChannelName = styled.small`
 	display: flex;
 `;
 
+export const DropdownMenuContainer = styled.div`
+	position: absolute;
+	background-color: #fff;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	border-radius: 8px;
+	min-width: 30vh;
+	z-index: 50;
+	right: 0;
+	transition: ${({ theme }) => theme.properties.transition};
+	padding: 5px;
+	border: 1px solid ${({ theme }) => theme.properties.borderColorFaint};
+	opacity: 0;
+	visibility: hidden;
+`;
+
 export const MenuDropdown = styled.div`
 	position: relative;
+
+	&:hover > ${DropdownMenuContainer} {
+		opacity: 1;
+		visibility: visible;
+	}
 `;
 
 export const DropdownToggler = styled.button`
@@ -124,20 +144,6 @@ export const DropdownToggler = styled.button`
 			return properties.borderColor;
 		}};
 	}
-`;
-
-export const DropdownMenuContainer = styled.div`
-	position: absolute;
-	background-color: #fff;
-	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-	border-radius: 8px;
-	min-width: 30vh;
-	z-index: 50;
-	right: 0;
-	transition: ${({ theme }) => theme.properties.transition};
-	padding: 5px;
-	border: 1px solid ${({ theme }) => theme.properties.borderColorFaint};
-	/* display: none; */
 `;
 
 export const LinkItem = styled(Link)`

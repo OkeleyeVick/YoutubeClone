@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import React, { useState } from "react";
+import React from "react";
 import {
 	ChannelName,
 	Details,
@@ -21,12 +21,6 @@ import {
 import { images, MenuItems } from "./Objects";
 
 const IndexPage = () => {
-	const [dropdownOpen, setDropdown] = useState(false);
-
-	const handleDropdown = () => {
-		setDropdown((drop) => !drop);
-	};
-
 	return (
 		<GridWrapper>
 			{images.map((eachItem, index) => {
@@ -51,25 +45,20 @@ const IndexPage = () => {
 								</ViewAndTime>
 							</DetailsInner>
 							<MenuDropdown>
-								<DropdownToggler onClick={handleDropdown}>
+								<DropdownToggler>
 									<Icon icon="carbon:overflow-menu-vertical" />
 								</DropdownToggler>
-
-								{dropdownOpen ? (
-									<DropdownMenuContainer>
-										{MenuItems.map((menu, index) => {
-											const { icon, linkname } = menu;
-											return (
-												<LinkItem to="/" key={index}>
-													<Em>{icon}</Em>
-													<span>{linkname}</span>
-												</LinkItem>
-											);
-										})}
-									</DropdownMenuContainer>
-								) : (
-									""
-								)}
+								<DropdownMenuContainer>
+									{MenuItems.map((menu, index) => {
+										const { icon, linkname } = menu;
+										return (
+											<LinkItem to="/" key={index}>
+												<Em>{icon}</Em>
+												<span>{linkname}</span>
+											</LinkItem>
+										);
+									})}
+								</DropdownMenuContainer>
 							</MenuDropdown>
 						</Details>
 					</EachGridItem>
