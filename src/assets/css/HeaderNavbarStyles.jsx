@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 	padding: 0.6rem 1rem;
 	gap: 1rem;
 	position: fixed;
@@ -14,6 +11,15 @@ export const Nav = styled.nav`
 	margin-left: 55px;
 	z-index: 60;
 
+	& > div:first-child {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	& .splide__track {
+		padding: 0.5rem 0;
+	}
 	@media (max-width: ${({ theme }) => theme.size.tablet}) {
 		& {
 			z-index: 90;
@@ -58,6 +64,12 @@ export const IconLogo = styled.div`
 export const SearchWrapper = styled(IconLogo)`
 	flex-grow: 2;
 	justify-content: center;
+
+	@media (max-width: 600px) {
+		& {
+			display: none;
+		}
+	}
 `;
 
 export const SearchInput = styled.input`
@@ -66,7 +78,7 @@ export const SearchInput = styled.input`
 	border: 1.3px solid #ccc;
 	outline: none;
 	padding: 0.375rem 1rem 0.475rem 2.5rem;
-	min-width: 450px;
+	min-width: 300px;
 
 	&:focus {
 		border: 1.5px solid
@@ -217,5 +229,23 @@ export const BellIconWrapper = styled(VideoIconWrapper)`
 	&:hover ${Dropdown} {
 		opacity: 1;
 		visibility: visible;
+	}
+`;
+
+export const Pill = styled.button`
+	background-color: ${({ theme }) => theme.properties.ash};
+	border-radius: ${({ theme }) => theme.properties.smRadius};
+	font-size: 0.85rem;
+	color: ${({ theme }) => theme.properties.textClr};
+	border: none;
+	transition: ${({ theme }) => theme.properties.transition};
+	padding: 10px 12px;
+	cursor: pointer;
+	width: max-content;
+	white-space: nowrap;
+	margin-right: 10px;
+
+	&:hover {
+		background-color: ${({ theme }) => theme.properties.darkAsh};
 	}
 `;

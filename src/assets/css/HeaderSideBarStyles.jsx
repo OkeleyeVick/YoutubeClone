@@ -7,15 +7,20 @@ export const SideBarContainer = styled.div`
 
 export const SideBarContainerInner = styled.div`
 	position: fixed;
-	width: 70px;
+	width: 60px;
 	padding: 0.5rem 5px;
 	display: flex;
-	bottom: 0;
 	flex-direction: column;
-	row-gap: 2rem;
 	left: 0;
 	top: 0;
 	z-index: 50;
+	background-color: #fff;
+
+	@media (min-width: 768px) {
+		& {
+			row-gap: 2rem;
+		}
+	}
 `;
 
 export const MenuToggler = styled.button.attrs({

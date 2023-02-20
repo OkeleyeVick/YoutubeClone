@@ -24,6 +24,8 @@ const properties = {
 	inputMinHeight: "3rem",
 	textClr: "rgb(66, 66, 74)",
 	borderColorFaint: "#e6e6e670",
+	darkAsh: "#E5E5E5",
+	ash: "#f2f2f2",
 };
 const size = {
 	mobileS: "320px",

@@ -267,3 +267,58 @@ export const gridItems = [
 		text: "3. Now the list of video or audio files will be displayed in different qualities that you can select the desired quality and download the video or audio",
 	},
 ];
+
+//! <== sub navbar ==>
+export const subnavbar = [
+	{
+		name: "All",
+	},
+	{
+		name: "Gaming",
+	},
+	{
+		name: "Music",
+	},
+	{
+		name: "Mixes",
+	},
+	{
+		name: "CSS",
+	},
+	{
+		name: "Computer Programming",
+	},
+	{
+		name: "Editing",
+	},
+	{
+		name: "Tekno",
+	},
+	{
+		name: "African Music",
+	},
+	{
+		name: "Motivating",
+	},
+	{
+		name: "Live",
+	},
+	{
+		name: "Thrillers",
+	},
+	{
+		name: "Comedy",
+	},
+	{
+		name: "Ambient Music",
+	},
+	{
+		name: "Rapping",
+	},
+	{
+		name: "Recently uploaded",
+	},
+	{
+		name: "New to you",
+	},
+];
