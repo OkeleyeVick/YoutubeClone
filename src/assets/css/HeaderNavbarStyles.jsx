@@ -17,9 +17,6 @@ export const Nav = styled.nav`
 		justify-content: space-between;
 	}
 
-	& .splide__track {
-		padding: 0.5rem 0;
-	}
 	@media (max-width: ${({ theme }) => theme.size.tablet}) {
 		& {
 			z-index: 90;
