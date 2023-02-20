@@ -52,7 +52,7 @@ export const MenuToggler = styled.button.attrs({
 
 export const YoutubeLogo = styled.img`
 	max-width: 100%;
-	width: 6rem;
+	width: calc(16px * 6);
 `;
 
 export const IconLogo = styled.div`
@@ -65,7 +65,7 @@ export const SearchWrapper = styled(IconLogo)`
 	flex-grow: 2;
 	justify-content: center;
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		& {
 			display: none;
 		}
@@ -78,7 +78,7 @@ export const SearchInput = styled.input`
 	border: 1.3px solid #ccc;
 	outline: none;
 	padding: 0.375rem 1rem 0.475rem 2.5rem;
-	min-width: 300px;
+	min-width: 380px;
 
 	&:focus {
 		border: 1.5px solid
@@ -191,8 +191,8 @@ export const AvaterContainer = styled.div`
 export const AvatarWrapper = styled.img`
 	border-radius: 100vw;
 	position: relative;
-	max-width: 35px;
-	width: 100%;
+	max-width: 100%;
+	width: 35px;
 `;
 
 export const ClickedDropdown = styled.div`
