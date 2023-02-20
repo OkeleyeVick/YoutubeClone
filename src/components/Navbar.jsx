@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {
 	AvatarWrapper,
 	AvaterContainer,
+	AvaterInner,
 	BellIconWrapper,
 	Dropdown,
 	Em,
@@ -20,8 +21,8 @@ import {
 import youtubeSvg from "../assets/images/youtube-image.jpg";
 import AvatarImage from "../assets/images/vickkk.jpg";
 import "@splidejs/react-splide/css/core";
-import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
-import { subnavbar } from "./Objects";
+import { NavbarContext } from "../App";
+import { useContext } from "react";
 
 const linkstyle = {
 	display: "flex",
@@ -30,7 +31,11 @@ const linkstyle = {
 	textDecoration: "none",
 };
 
-function Navbar() {
+function handleDropdown() {}
+
+const Navbar = () => {
+	const { dropdown, setDropdown } = useContext(NavbarContext);
+
 	return (
 		<div>
 			<Nav>
@@ -81,13 +86,15 @@ function Navbar() {
 							</Dropdown>
 						</BellIconWrapper>
 						<AvaterContainer>
-							<AvatarWrapper src={AvatarImage} />
+							<AvaterInner to="#" onClick={handleDropdown}>
+								<AvatarWrapper src={AvatarImage} />
+							</AvaterInner>
 						</AvaterContainer>
 					</RightIcons>
 				</div>
 			</Nav>
 		</div>
 	);
-}
+};
 
 export default Navbar;

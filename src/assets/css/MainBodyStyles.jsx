@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-export const MainBodyContainer = styled.div`
-	@media (min-width: ${({ theme }) => theme.size.tablet}) {
-		& {
-			margin-left: 60px;
-		}
-	}
-`;
+export const MainBodyContainer = styled.div``;
 export const ContainerInner = styled.div`
 	margin-top: 2rem;
 	padding: 2rem 1rem 0;

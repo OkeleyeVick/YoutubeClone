@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Nav = styled.nav`
@@ -185,6 +186,9 @@ export const AvaterContainer = styled.div`
 	background-color: transparent;
 	padding: 0;
 `;
+
+export const AvaterInner = styled(Link).attrs({})``;
+
 export const AvatarWrapper = styled.img`
 	border-radius: 100vw;
 	position: relative;

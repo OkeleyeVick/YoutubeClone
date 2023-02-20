@@ -77,18 +77,23 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 export const SideBarContext = createContext();
+export const NavbarContext = createContext();
 
 function App() {
 	const [sideBarOpen, setSideBarWidth] = useState(false);
+	const [dropdown, setDropdown] = useState(false);
+
 	return (
-		<SideBarContext.Provider value={{ sideBarOpen, setSideBarWidth }}>
-			<ThemeProvider theme={{ properties, size }}>
-				<GlobalStyles />
-				<BackdropFilter />
-				<Sidebar />
-				<MainBody />
-			</ThemeProvider>
-		</SideBarContext.Provider>
+		<NavbarContext.Provider value={{ dropdown, setDropdown }}>
+			<SideBarContext.Provider value={{ sideBarOpen, setSideBarWidth }}>
+				<ThemeProvider theme={{ properties, size }}>
+					<GlobalStyles />
+					<BackdropFilter />
+					<Sidebar />
+					<MainBody />
+				</ThemeProvider>
+			</SideBarContext.Provider>
+		</NavbarContext.Provider>
 	);
 }
 
