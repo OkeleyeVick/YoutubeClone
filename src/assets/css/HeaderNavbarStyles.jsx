@@ -10,6 +10,7 @@ export const Nav = styled.nav`
 	right: 0;
 	margin-left: 55px;
 	z-index: 60;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 	& > div:first-child {
 		display: flex;
