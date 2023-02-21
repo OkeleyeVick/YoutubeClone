@@ -294,10 +294,10 @@ export const EachContainer = styled(ProfileContainer)`
 
 	& + ul {
 		overflow-y: scroll;
-		height: 160%;
+		height: 145%;
 		@media (min-width: ${({ theme }) => theme.size.Intermediate}) {
 			& {
-				height: 145%;
+				height: 160%;
 			}
 		}
 	}
