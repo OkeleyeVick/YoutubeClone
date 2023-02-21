@@ -255,17 +255,23 @@ export const Pill = styled.button`
 export const AvatarDropdown = styled.div`
 	background-color: #fff;
 	border-radius: ${({ theme }) => theme.properties.mdRadius};
+	right: 120%;
+	top: 0;
 	position: absolute;
 	max-width: 300px;
 	max-height: 576px;
 	width: 300px;
-	right: 120%;
 	z-index: 65;
 	transition: ${({ theme }) => theme.properties.transition};
-	top: 0;
 	aspect-ratio: 1 / 1;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-	backdrop-filter: blur(2px);
+
+	@media (min-width: ${({ theme }) => theme.size.Intermediate}) {
+		& {
+			right: 0;
+			top: 100%;
+		}
+	}
 `;
 
 export const ProfileContainer = styled.div`
@@ -299,7 +305,7 @@ export const Span = styled.span`
 	}
 	& a {
 		font-size: 0.8rem;
-		margin-top: 5px;
+		margin-top: 9px;
 		color: blue;
 	}
 `;
@@ -312,21 +318,17 @@ export const EachContainerLink = styled(Link)`
 	transition: ${({ theme }) => theme.properties.transition};
 	padding: 0.6rem 1rem;
 	color: ${({ theme }) => theme.properties.textClr};
-
 	&:hover {
 		& {
 			background-color: ${({ theme }) => theme.properties.darkAsh};
 		}
 	}
-
 	& span {
 		font-size: 0.81rem;
 	}
-
 	& em {
 		display: flex;
 		font-size: 1.4rem;
-		font-weight: 900;
 		stroke-width: 2px;
 	}
 `;
