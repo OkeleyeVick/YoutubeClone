@@ -259,10 +259,10 @@ export const AvatarDropdown = styled.div`
 	max-width: 300px;
 	max-height: 576px;
 	width: 300px;
-	right: 0;
+	right: 120%;
 	z-index: 65;
 	transition: ${({ theme }) => theme.properties.transition};
-	top: 100%;
+	top: 0;
 	aspect-ratio: 1 / 1;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	backdrop-filter: blur(2px);
@@ -281,6 +281,11 @@ export const EachContainer = styled(ProfileContainer)`
 	gap: ${({ flexCol }) => (!flexCol ? "1rem" : "0")};
 	flex-direction: ${({ flexCol }) => (flexCol ? "column" : "row")};
 	padding: ${({ flexCol }) => (flexCol ? ".3rem 0" : "1rem")};
+
+	& + ul {
+		overflow-y: scroll;
+		height: 160%;
+	}
 `;
 
 export const Span = styled.span`
@@ -315,12 +320,13 @@ export const EachContainerLink = styled(Link)`
 	}
 
 	& span {
-		font-size: 0.86rem;
+		font-size: 0.81rem;
 	}
 
 	& em {
 		display: flex;
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		font-weight: 900;
+		stroke-width: 2px;
 	}
 `;

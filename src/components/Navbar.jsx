@@ -105,22 +105,24 @@ const Navbar = () => {
 										<Link to="/">Manage your Google Account</Link>
 									</Span>
 								</EachContainer>
-								{profileDropdown.map((container, index) => {
-									const { listItem } = container;
-									return (
-										<EachContainer key={index} flexCol>
-											{listItem.map((item, i) => {
-												const { icon, pathname } = item;
-												return (
-													<EachContainerLink to="/" key={i}>
-														<em>{icon}</em>
-														<Span>{pathname}</Span>
-													</EachContainerLink>
-												);
-											})}
-										</EachContainer>
-									);
-								})}
+								<ul>
+									{profileDropdown.map((container, index) => {
+										const { listItem } = container;
+										return (
+											<EachContainer key={index} flexCol>
+												{listItem.map((item, i) => {
+													const { icon, pathname } = item;
+													return (
+														<EachContainerLink to="/" key={i}>
+															<em>{icon}</em>
+															<Span>{pathname}</Span>
+														</EachContainerLink>
+													);
+												})}
+											</EachContainer>
+										);
+									})}
+								</ul>
 							</AvatarDropdown>
 						</AvaterContainer>
 					</RightIcons>

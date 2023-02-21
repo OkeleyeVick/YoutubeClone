@@ -330,7 +330,6 @@ export const profileDropdown = [
 			{
 				icon: <Icon icon="healthicons:ui-user-profile-outline" />,
 				pathname: "Create a channel",
-				// icon: <Icon icon="ph:user-rectangle-light" />,
 			},
 			{
 				icon: <Icon icon="arcticons:youtube-studio" />,
@@ -351,11 +350,54 @@ export const profileDropdown = [
 			{
 				icon: <Icon icon="heroicons:currency-dollar" />,
 				pathname: "Purchase and memberships",
-				// icon: <Icon icon="ph:user-rectangle-light" />,
 			},
 			{
 				icon: <Icon icon="fluent-mdl2:security-group" />,
 				pathname: "Your data in YouTube",
+			},
+		],
+	},
+	{
+		listItem: [
+			{
+				icon: <Icon icon="ion:moon-outline" hFlip={true} />,
+				pathname: "Appearance: Light",
+			},
+			{
+				icon: <Icon icon="heroicons:language-solid" />,
+				pathname: "Language: English",
+			},
+			{
+				icon: <Icon icon="carbon:ibm-cloud-key-protect" />,
+				pathname: "Restricted Mode: Off",
+			},
+			{
+				icon: <Icon icon="ph:globe-light" />,
+				pathname: "Location: Nigeria",
+			},
+			{
+				icon: <Icon icon="ic:outline-keyboard-alt" />,
+				pathname: "Keyboard Shortcuts",
+			},
+		],
+	},
+	{
+		listItem: [
+			{
+				icon: <Icon icon="ep:setting" />,
+				pathname: "Settings",
+			},
+		],
+	},
+	{
+		listItem: [
+			{
+				pathname: "Help",
+				icon: <Icon icon="clarity:help-line" />,
+			},
+			{
+				pathname: "Send feedback",
+				icon: <Icon icon="iconoir:message-alert" />,
 			},
 		],
 	},
