@@ -255,8 +255,8 @@ export const Pill = styled.button`
 export const AvatarDropdown = styled.div`
 	background-color: #fff;
 	border-radius: ${({ theme }) => theme.properties.mdRadius};
-	right: 120%;
-	top: 0;
+	right: 0%;
+	top: 100%;
 	position: absolute;
 	max-width: 300px;
 	max-height: 576px;
@@ -272,8 +272,8 @@ export const AvatarDropdown = styled.div`
 
 	@media (min-width: ${({ theme }) => theme.size.Intermediate}) {
 		& {
-			right: 0;
-			top: 100%;
+			right: 120%;
+			top: 0%;
 		}
 	}
 `;
