@@ -96,7 +96,7 @@ const Navbar = () => {
 							<AvaterInner to="#" onClick={handleDropdown}>
 								<AvatarWrapper src={AvatarImage} />
 							</AvaterInner>
-							<AvatarDropdown>
+							<AvatarDropdown isActive={dropdown}>
 								<EachContainer>
 									<AvatarWrapper src={AvatarImage} />
 									<Span>

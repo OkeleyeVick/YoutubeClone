@@ -376,7 +376,7 @@ export const profileDropdown = [
 				pathname: "Location: Nigeria",
 			},
 			{
-				icon: <Icon icon="ic:outline-keyboard-alt" />,
+				icon: <Icon icon="fluent:keyboard-24-regular" />,
 				pathname: "Keyboard Shortcuts",
 			},
 		],

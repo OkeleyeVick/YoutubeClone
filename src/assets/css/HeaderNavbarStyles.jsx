@@ -265,6 +265,10 @@ export const AvatarDropdown = styled.div`
 	transition: ${({ theme }) => theme.properties.transition};
 	aspect-ratio: 1 / 1;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	/* transform-origin: top right; */
+	/* scale: ${({ isActive }) => (isActive ? "1" : "0")}; */
+	opacity: ${({ isActive }) => (isActive ? "1" : "0")};
+	visibility: ${({ isActive }) => (isActive ? "visibility" : "hidden")};
 
 	@media (min-width: ${({ theme }) => theme.size.Intermediate}) {
 		& {
@@ -291,6 +295,11 @@ export const EachContainer = styled(ProfileContainer)`
 	& + ul {
 		overflow-y: scroll;
 		height: 160%;
+		@media (min-width: ${({ theme }) => theme.size.Intermediate}) {
+			& {
+				height: 145%;
+			}
+		}
 	}
 `;
 
@@ -317,7 +326,7 @@ export const EachContainerLink = styled(Link)`
 	width: 100%;
 	transition: ${({ theme }) => theme.properties.transition};
 	padding: 0.6rem 1rem;
-	color: ${({ theme }) => theme.properties.textClr};
+	color: ${({ theme }) => theme.properties["text-clr"]};
 	&:hover {
 		& {
 			background-color: ${({ theme }) => theme.properties.darkAsh};
