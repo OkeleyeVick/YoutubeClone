@@ -15,6 +15,7 @@ const properties = {
 	smRadius: "6px",
 	mdRadius: "10px",
 	gray: "#E6E6E6",
+	mdRadius: "12px",
 	"text-clr": "#0f0f0f",
 	smBorder: "1px solid #0000001a",
 	hover: "#F2F2F2",

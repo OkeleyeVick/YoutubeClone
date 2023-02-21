@@ -8,6 +8,7 @@ import {
 	BellIconWrapper,
 	Dropdown,
 	EachContainer,
+	EachContainerLink,
 	Em,
 	IconLogo,
 	MicroPhone,
@@ -105,7 +106,20 @@ const Navbar = () => {
 									</Span>
 								</EachContainer>
 								{profileDropdown.map((container, index) => {
-									return <EachContainer key={index}>{}</EachContainer>;
+									const { listItem } = container;
+									return (
+										<EachContainer key={index} flexCol>
+											{listItem.map((item, i) => {
+												const { icon, pathname } = item;
+												return (
+													<EachContainerLink to="/" key={i}>
+														<em>{icon}</em>
+														<Span>{pathname}</Span>
+													</EachContainerLink>
+												);
+											})}
+										</EachContainer>
+									);
 								})}
 							</AvatarDropdown>
 						</AvaterContainer>

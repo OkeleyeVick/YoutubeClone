@@ -187,12 +187,13 @@ export const AvaterContainer = styled.div`
 	padding: 0;
 `;
 
-export const AvaterInner = styled(Link).attrs({})``;
+export const AvaterInner = styled(Link).attrs({
+	role: "button",
+})``;
 
 export const AvatarWrapper = styled.img`
 	border-radius: 100vw;
 	position: relative;
-	max-width: 100%;
 	width: 35px;
 `;
 
@@ -253,7 +254,7 @@ export const Pill = styled.button`
 
 export const AvatarDropdown = styled.div`
 	background-color: #fff;
-	border-radius: ${({ theme }) => theme.properties.smRadius};
+	border-radius: ${({ theme }) => theme.properties.mdRadius};
 	position: absolute;
 	max-width: 300px;
 	max-height: 576px;
@@ -264,6 +265,7 @@ export const AvatarDropdown = styled.div`
 	top: 100%;
 	aspect-ratio: 1 / 1;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	backdrop-filter: blur(2px);
 `;
 
 export const ProfileContainer = styled.div`
@@ -276,7 +278,9 @@ export const ProfileContainer = styled.div`
 export const EachContainer = styled(ProfileContainer)`
 	display: flex;
 	align-items: flex-start;
-	gap: 1rem;
+	gap: ${({ flexCol }) => (!flexCol ? "1rem" : "0")};
+	flex-direction: ${({ flexCol }) => (flexCol ? "column" : "row")};
+	padding: ${({ flexCol }) => (flexCol ? ".3rem 0" : "1rem")};
 `;
 
 export const Span = styled.span`
@@ -292,5 +296,31 @@ export const Span = styled.span`
 		font-size: 0.8rem;
 		margin-top: 5px;
 		color: blue;
+	}
+`;
+
+export const EachContainerLink = styled(Link)`
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+	transition: ${({ theme }) => theme.properties.transition};
+	padding: 0.6rem 1rem;
+	color: ${({ theme }) => theme.properties.textClr};
+
+	&:hover {
+		& {
+			background-color: ${({ theme }) => theme.properties.darkAsh};
+		}
+	}
+
+	& span {
+		font-size: 0.86rem;
+	}
+
+	& em {
+		display: flex;
+		font-size: 1.5rem;
+		font-weight: 900;
 	}
 `;
