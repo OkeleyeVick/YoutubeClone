@@ -322,3 +322,47 @@ export const subnavbar = [
 		name: "New to you",
 	},
 ];
+
+//!<== profile dropdown ==>
+export const profileDropdown = [
+	{
+		listItem: [
+			{
+				icon: <Icon icon="healthicons:ui-user-profile-outline" />,
+				pathname: "Create a channel",
+				// icon: <Icon icon="ph:user-rectangle-light" />,
+			},
+			{
+				icon: <Icon icon="arcticons:youtube-studio" />,
+				pathname: "Youtube Studio",
+			},
+			{
+				icon: <Icon icon="ph:user-switch-light" />,
+				pathname: "Switch account",
+			},
+			{
+				icon: <Icon icon="ph:sign-in-light" />,
+				pathname: "Sign out",
+			},
+		],
+		somethingElse: [
+			{
+				icon: <Icon icon="healthicons:ui-user-profile-outline" />,
+				pathname: "Create a channel",
+				// icon: <Icon icon="ph:user-rectangle-light" />,
+			},
+			{
+				icon: <Icon icon="arcticons:youtube-studio" />,
+				pathname: "Youtube Studio",
+			},
+			{
+				icon: <Icon icon="ph:user-switch-light" />,
+				pathname: "Switch account",
+			},
+			{
+				icon: <Icon icon="ph:sign-in-light" />,
+				pathname: "Sign out",
+			},
+		],
+	},
+];

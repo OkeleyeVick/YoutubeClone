@@ -1,20 +1,24 @@
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import {
+	AvatarDropdown,
 	AvatarWrapper,
 	AvaterContainer,
 	AvaterInner,
 	BellIconWrapper,
 	Dropdown,
+	EachContainer,
 	Em,
 	IconLogo,
 	MicroPhone,
 	Nav,
 	Pill,
+	ProfileContainer,
 	RightIcons,
 	SearchButton,
 	SearchInput,
 	SearchWrapper,
+	Span,
 	VideoIconWrapper,
 	YoutubeLogo,
 } from "../assets/css/HeaderNavbarStyles";
@@ -23,6 +27,7 @@ import AvatarImage from "../assets/images/vickkk.jpg";
 import "@splidejs/react-splide/css/core";
 import { NavbarContext } from "../App";
 import { useContext } from "react";
+import { profileDropdown } from "./Objects";
 
 const linkstyle = {
 	display: "flex",
@@ -31,10 +36,11 @@ const linkstyle = {
 	textDecoration: "none",
 };
 
-function handleDropdown() {}
-
 const Navbar = () => {
 	const { dropdown, setDropdown } = useContext(NavbarContext);
+	function handleDropdown() {
+		setDropdown(!dropdown);
+	}
 
 	return (
 		<div>
@@ -89,6 +95,19 @@ const Navbar = () => {
 							<AvaterInner to="#" onClick={handleDropdown}>
 								<AvatarWrapper src={AvatarImage} />
 							</AvaterInner>
+							<AvatarDropdown>
+								<EachContainer>
+									<AvatarWrapper src={AvatarImage} />
+									<Span>
+										<span>Okeleye Victor</span>
+										<small>justusofnigeria@gmail.com</small>
+										<Link to="/">Manage your Google Account</Link>
+									</Span>
+								</EachContainer>
+								{profileDropdown.map((container, index) => {
+									return <EachContainer key={index}>{}</EachContainer>;
+								})}
+							</AvatarDropdown>
 						</AvaterContainer>
 					</RightIcons>
 				</div>

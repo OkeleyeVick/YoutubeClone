@@ -250,3 +250,47 @@ export const Pill = styled.button`
 		background-color: ${({ theme }) => theme.properties.darkAsh};
 	}
 `;
+
+export const AvatarDropdown = styled.div`
+	background-color: #fff;
+	border-radius: ${({ theme }) => theme.properties.smRadius};
+	position: absolute;
+	max-width: 300px;
+	max-height: 576px;
+	width: 300px;
+	right: 0;
+	z-index: 65;
+	transition: ${({ theme }) => theme.properties.transition};
+	top: 100%;
+	aspect-ratio: 1 / 1;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+`;
+
+export const ProfileContainer = styled.div`
+	padding: 1rem;
+	&:not(:last-child) {
+		border-bottom: ${({ theme }) => theme.properties.smBorder};
+	}
+`;
+
+export const EachContainer = styled(ProfileContainer)`
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
+`;
+
+export const Span = styled.span`
+	display: flex;
+	flex-direction: column;
+	& span {
+		font-size: 0.9rem;
+	}
+	& small {
+		font-size: 0.75rem;
+	}
+	& a {
+		font-size: 0.8rem;
+		margin-top: 5px;
+		color: blue;
+	}
+`;

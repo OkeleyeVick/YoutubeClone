@@ -7,7 +7,7 @@ export const SideBarContainer = styled.div`
 
 export const SideBarContainerInner = styled.div`
 	position: fixed;
-	width: 60px;
+	width: 65px;
 	padding: 0.6rem 5px;
 	display: flex;
 	flex-direction: column;
