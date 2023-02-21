@@ -39,8 +39,9 @@ const linkstyle = {
 
 const Navbar = () => {
 	const { dropdown, setDropdown } = useContext(NavbarContext);
+
 	function handleDropdown() {
-		setDropdown(!dropdown);
+		return setDropdown(!dropdown);
 	}
 
 	return (
