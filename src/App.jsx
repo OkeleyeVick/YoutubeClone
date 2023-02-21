@@ -40,7 +40,7 @@ const size = {
 };
 const GlobalStyles = createGlobalStyle`
 	::-webkit-scrollbar {
-		width: 7px;
+		width: 4.5px;
 	}
 	::-webkit-scrollbar-track {
 		background: transparent;
