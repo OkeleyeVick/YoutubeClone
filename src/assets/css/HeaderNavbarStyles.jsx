@@ -265,8 +265,6 @@ export const AvatarDropdown = styled.div`
 	transition: ${({ theme }) => theme.properties.transition};
 	aspect-ratio: 1 / 1;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-	/* transform-origin: top right; */
-	/* scale: ${({ isActive }) => (isActive ? "1" : "0")}; */
 	opacity: ${({ isActive }) => (isActive ? "1" : "0")};
 	visibility: ${({ isActive }) => (isActive ? "visibility" : "hidden")};
 
