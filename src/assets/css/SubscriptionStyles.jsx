@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+export const YWrapperTitle = styled.div`
+	text-align: start;
+	margin: 2rem 0 0.5rem;
+`;
+
+export const YTitle = styled.h6`
+	font-size: 0.95rem;
+	color: ${({ theme }) => theme.properties[["text-clr"]]};
+	font-weight: 600;
+`;
+
 export const YoutubersWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -39,6 +50,6 @@ export const YName = styled.span`
 `;
 
 export const Subers = styled.span`
-	font-size: 0.8rem;
+	font-size: 0.75rem;
 	color: ${({ theme }) => theme.properties.darkGrey};
 `;
