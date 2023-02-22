@@ -1,6 +1,20 @@
 import { Icon } from "@iconify/react";
 import React from "react";
-import { Em, Header, L, LargeContainer, Left, ParentContainer, Right, SmallContainer } from "../assets/css/LibraryStyles";
+import {
+	Em,
+	Header,
+	Image,
+	ImageCont,
+	L,
+	LargeContainer,
+	Left,
+	Liner,
+	LinerContainer,
+	ParentContainer,
+	Right,
+	SmallContainer,
+} from "../assets/css/LibraryStyles";
+import jpeg from "../assets/images/image1.webp";
 
 const Librarypage = () => {
 	return (
@@ -19,7 +33,14 @@ const Librarypage = () => {
 						</Right>
 					</Header>
 				</LargeContainer>
-				<SmallContainer></SmallContainer>
+				<SmallContainer>
+					<ImageCont>
+						<Image src={jpeg} />
+					</ImageCont>
+					<LinerContainer>
+						<Liner></Liner>
+					</LinerContainer>
+				</SmallContainer>
 			</ParentContainer>
 			<h1>
 				<Icon icon="ph:scissors-light" />
