@@ -27,7 +27,7 @@ import youtubeSvg from "../assets/images/youtube-image.jpg";
 import AvatarImage from "../assets/images/vickkk.jpg";
 import "@splidejs/react-splide/css/core";
 import { NavbarContext } from "../App";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { profileDropdown } from "./Objects";
 
 const linkstyle = {
@@ -38,11 +38,22 @@ const linkstyle = {
 };
 
 const Navbar = () => {
+	const DropdownRef = useRef(null);
 	const { dropdown, setDropdown } = useContext(NavbarContext);
 
 	function handleDropdown() {
-		return setDropdown(!dropdown);
+		return setDropdown((dropdown) => !dropdown);
 	}
+
+	useEffect(() => {
+		const handleDropdownFromDoc = (e) => {
+			return DropdownRef.current && !DropdownRef.current.contains(e.target) ? setDropdown(false) : null;
+		};
+		document.addEventListener("mousedown", handleDropdownFromDoc);
+		return () => {
+			document.removeEventListener("mousedown", handleDropdownFromDoc);
+		};
+	}, [DropdownRef]);
 
 	return (
 		<div>
@@ -97,7 +108,7 @@ const Navbar = () => {
 							<AvaterInner to="#" onClick={handleDropdown}>
 								<AvatarWrapper src={AvatarImage} />
 							</AvaterInner>
-							<AvatarDropdown isActive={dropdown}>
+							<AvatarDropdown isActive={dropdown} ref={DropdownRef}>
 								<EachContainer>
 									<AvatarWrapper src={AvatarImage} />
 									<Span>
@@ -114,7 +125,7 @@ const Navbar = () => {
 												{listItem.map((item, i) => {
 													const { icon, pathname } = item;
 													return (
-														<EachContainerLink to="/" key={i}>
+														<EachContainerLink to="download" key={i}>
 															<em>{icon}</em>
 															<Span>{pathname}</Span>
 														</EachContainerLink>

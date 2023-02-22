@@ -5,6 +5,7 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	row-gap: 2rem;
+	margin-top: 4rem;
 `;
 
 export const GridContainerInner = styled.div`
