@@ -7,8 +7,8 @@ export const SideBarContainer = styled.div`
 
 export const SideBarContainerInner = styled.div`
 	position: fixed;
-	width: 65px;
-	padding: 0.6rem 5px;
+	width: 70px;
+	padding: 0.58rem 5px;
 	display: flex;
 	flex-direction: column;
 	left: 0;
@@ -89,7 +89,7 @@ export const Em = styled.em`
 `;
 
 export const LinkText = styled.small`
-	font-size: 0.6rem;
+	font-size: 0.55rem;
 	padding: 0 5px;
 	text-align: center;
 	color: ${({ theme }) => {

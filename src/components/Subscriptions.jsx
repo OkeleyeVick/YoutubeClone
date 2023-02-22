@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { YoutubersWrapper } from "../assets/css/DownloadPageStyles";
+import { YImage, YImageCont, YLink, YoutuberCont, YoutubersWrapper } from "../assets/css/DownloadPageStyles";
 
 const Subscriptions = () => {
 	const [youtubers, setYoutubers] = useState([]);
 
 	useEffect(() => {
-		const api_url = `https://randomuser.me/api/?results=2`;
+		const api_url = `https://randomuser.me/api/?results=10`;
 
 		const fetchUrl = async () => {
 			const response = await fetch(api_url);
@@ -30,11 +30,19 @@ const Subscriptions = () => {
 					{youtubersDatas.map((youtuber, index) => {
 						const {
 							name: { first, last },
-							picture: { medium },
+							picture: { large },
 						} = youtuber;
 						const f_name = fullname(first, last);
 
-						return;
+						return (
+							<YoutuberCont key={index}>
+								<YLink to="/">
+									<YImageCont>
+										<YImage src={large} />
+									</YImageCont>
+								</YLink>
+							</YoutuberCont>
+						);
 					})}
 				</YoutubersWrapper>
 			)}

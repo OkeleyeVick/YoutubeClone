@@ -3,13 +3,12 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
 	padding: 0.6rem 1rem;
-	gap: 1rem;
 	position: fixed;
 	top: 0;
 	background-color: #fff;
 	left: 0;
 	right: 0;
-	margin-left: 55px;
+	margin-left: 70px;
 	z-index: 60;
 
 	& > div:first-child {

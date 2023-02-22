@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MainBodyContainer = styled.div`
 	@media (min-width: ${({ theme }) => theme.size.tablet}) {
 		& {
-			margin-left: 55px;
+			margin-left: 70px;
 		}
 	}
 `;

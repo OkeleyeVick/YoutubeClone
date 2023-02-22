@@ -46,7 +46,7 @@ const Navbar = () => {
 
 	useEffect(() => {
 		const handleDropdownFromDoc = (e) => {
-			return DropdownRef.current && !DropdownRef.current.contains(e.target) ? setDropdown(false) : null;
+			return DropdownRef.current && DropdownRef.current.contains(e.target) ? setDropdown(false) : null;
 		};
 		document.addEventListener("mousedown", handleDropdownFromDoc);
 		return () => {

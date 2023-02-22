@@ -179,8 +179,9 @@ export const DownloadLink = styled(Link).attrs({
 
 export const YoutubersWrapper = styled.div`
 	display: grid;
-	grid-template-columns: repeat(200px, 1fr);
+	grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
 	gap: 1.5rem;
+	padding-top: 2rem;
 `;
 
 export const YoutuberCont = styled.div`
@@ -189,7 +190,7 @@ export const YoutuberCont = styled.div`
 	row-gap: 1.2rem;
 `;
 
-export const A = styled(Link)`
+export const YLink = styled(Link)`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -197,7 +198,7 @@ export const A = styled(Link)`
 
 export const YImageCont = styled.div`
 	aspect-ratio: 1 / 1;
-	border-radius: 100vw;
+	border-radius: 50%;
 	overflow: hidden;
 `;
 
