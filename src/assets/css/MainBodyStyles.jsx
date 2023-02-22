@@ -16,8 +16,8 @@ export const ContainerInner = styled.div`
 		}
 	}
 	@media (min-width: ${({ theme }) => theme.size.laptop}) {
-		& {
+		/* & {
 			margin-left: 60px;
-		}
+		} */
 	}
 `;
