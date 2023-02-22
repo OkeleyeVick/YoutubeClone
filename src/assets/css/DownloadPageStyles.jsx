@@ -176,3 +176,43 @@ export const DownloadLink = styled(Link).attrs({
 		font-size: 0.8rem;
 	}
 `;
+
+export const YoutubersWrapper = styled.div`
+	display: grid;
+	grid-template-columns: repeat(200px, 1fr);
+	gap: 1.5rem;
+`;
+
+export const YoutuberCont = styled.div`
+	display: flex;
+	flex-direction: column;
+	row-gap: 1.2rem;
+`;
+
+export const A = styled(Link)`
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+`;
+
+export const YImageCont = styled.div`
+	aspect-ratio: 1 / 1;
+	border-radius: 100vw;
+	overflow: hidden;
+`;
+
+export const YImage = styled.img`
+	max-width: 100%;
+`;
+
+export const YName = styled.span`
+	color: ${({ theme }) => theme.properties.textClr};
+	font-weight: 900;
+	margin-top: 6px;
+	font-size: 0.95rem;
+`;
+
+export const Subers = styled.span`
+	font-size: 0.8rem;
+	color: ${({ theme }) => theme.properties.gray};
+`;

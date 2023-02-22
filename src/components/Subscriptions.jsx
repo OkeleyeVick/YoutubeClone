@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { YoutubersWrapper } from "../assets/css/DownloadPageStyles";
 
 const Subscriptions = () => {
 	const [youtubers, setYoutubers] = useState([]);
@@ -24,15 +25,19 @@ const Subscriptions = () => {
 	};
 	return (
 		<h1>
-			{/* {youtubersDatas &&
-				youtubersDatas.map((youtuber, index) => {
-					const {
-						name: { first, last },
-						picture: { medium },
-					} = youtuber;
-					const f_name = fullname(first, last);
+			{youtubersDatas && (
+				<YoutubersWrapper>
+					{youtubersDatas.map((youtuber, index) => {
+						const {
+							name: { first, last },
+							picture: { medium },
+						} = youtuber;
+						const f_name = fullname(first, last);
 
-				})} */}
+						return;
+					})}
+				</YoutubersWrapper>
+			)}
 		</h1>
 	);
 };
