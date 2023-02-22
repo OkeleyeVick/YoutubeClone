@@ -14,7 +14,6 @@ import {
 	MicroPhone,
 	Nav,
 	Pill,
-	ProfileContainer,
 	RightIcons,
 	SearchButton,
 	SearchInput,
@@ -53,7 +52,7 @@ const Navbar = () => {
 		return () => {
 			document.removeEventListener("mousedown", handleDropdownFromDoc);
 		};
-	}, [DropdownRef]);
+	}, [DropdownRef, setDropdown]);
 
 	return (
 		<div>

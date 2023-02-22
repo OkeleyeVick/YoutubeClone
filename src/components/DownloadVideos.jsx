@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
 	Container,
 	ContentContainer,
@@ -38,7 +38,8 @@ import FakeImage from "../assets/images/netflix.webp";
 import { gridItems } from "./Objects";
 
 const DownloadVideos = () => {
-	const [ytlink, setYtLink] = useState("");
+	const inputRef = useRef(null);
+
 	const [youtubeId, setYoutubeId] = useState("");
 	const [returnedData, setReturnedData] = useState(null);
 
@@ -50,7 +51,7 @@ const DownloadVideos = () => {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		const id = extractAndCopyId(ytlink);
+		const id = extractAndCopyId(inputRef.current.value);
 		setYoutubeId(id);
 	}
 
@@ -66,16 +67,6 @@ const DownloadVideos = () => {
 			signal: controller.signal,
 		};
 
-		// const fetchVideos = async () => {
-		// 	const result = await fetch(`https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeId}`, options);
-		// 	const data = await result.json();
-		// 	return data;
-		// };
-		// fetchVideos()
-		// 	.then((result) => setReturnedData(result))
-		// 	.catch((error) => {
-		// 		console.log(error);
-		// 	});
 		const fetchVideos = () => {
 			fetch(`https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeId}`, options)
 				.then((response) => response.json())
@@ -102,54 +93,43 @@ const DownloadVideos = () => {
 					<form action="">
 						<FormMainContainer>
 							<FormInputContainer>
-								<FormInput
-									onChange={(e) => {
-										setYtLink(e.target.value);
-									}}
-								/>
+								<FormInput ref={inputRef} />
 								<Sumbit onClick={handleSubmit}>Download</Sumbit>
 							</FormInputContainer>
 						</FormMainContainer>
 					</form>
-					{returnedData === null ? (
-						<ResultContainer>
-							<ResultHeader>
-								<ResultImage>
-									<Image src={FakeImage} />
-								</ResultImage>
-								<ContentContainer>
-									<Title>
-										Will Smith's Life Advice Will Change You - One of the Greatest Speeches Ever | Will Smith Motivation
-									</Title>
-									<span>Duration: 0:10:45</span>
-									<span>Views: 4,080,048</span>
-								</ContentContainer>
-							</ResultHeader>
-
-							<MimeType>
-								<h3>Video</h3>
-							</MimeType>
-							<ResultTableHeader>
-								<HeadTitle>Quality</HeadTitle>
-								<HeadTitle>Type</HeadTitle>
-								<HeadTitle willChange>File size</HeadTitle>
-								<HeadTitle>Download</HeadTitle>
-							</ResultTableHeader>
-							<ResultTableBody>
-								<Quality>702p</Quality>
-								<Type>mp4</Type>
-								<FileSize willChange>-</FileSize>
-								<DownloadLink to="/">
-									<Em>
-										<Icon icon="ph:download-simple-light" />
-									</Em>
-									<span>Download</span>
-								</DownloadLink>
-							</ResultTableBody>
-						</ResultContainer>
-					) : (
-						""
-					)}
+					<ResultContainer>
+						<ResultHeader>
+							<ResultImage>
+								<Image src={FakeImage} />
+							</ResultImage>
+							<ContentContainer>
+								<Title>Will Smith's Life Advice Will Change You - One of the Greatest Speeches Ever | Will Smith Motivation</Title>
+								<span>Duration: 0:10:45</span>
+								<span>Views: 4,080,048</span>
+							</ContentContainer>
+						</ResultHeader>
+						<MimeType>
+							<h3>Video</h3>
+						</MimeType>
+						<ResultTableHeader>
+							<HeadTitle>Quality</HeadTitle>
+							<HeadTitle>Type</HeadTitle>
+							<HeadTitle willChange>File size</HeadTitle>
+							<HeadTitle>Download</HeadTitle>
+						</ResultTableHeader>
+						<ResultTableBody>
+							<Quality>702p</Quality>
+							<Type>mp4</Type>
+							<FileSize willChange>-</FileSize>
+							<DownloadLink to="/">
+								<Em>
+									<Icon icon="ph:download-simple-light" />
+								</Em>
+								<span>Download</span>
+							</DownloadLink>
+						</ResultTableBody>
+					</ResultContainer>
 				</FormMainContainer>
 			</FormOuterContainer>
 			<Container>
