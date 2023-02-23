@@ -6,6 +6,7 @@ export const ParentContainer = styled.div`
 	grid-template-columns: 1fr 0.3fr;
 	gap: 1.4rem;
 	align-items: center;
+	padding: 0 1rem;
 `;
 export const LargeContainer = styled.div`
 	padding: 1rem;
@@ -31,6 +32,13 @@ export const Header = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+`;
+
+export const ContentCont = styled.div`
+	&:nth-child(n + 1):not(:last-child) {
+		border-bottom: 1.3px solid ${({ theme }) => theme.properties.borderColor};
+	}
+	padding: 1rem 0;
 `;
 
 export const Left = styled.div`
@@ -72,13 +80,22 @@ export const Image = styled.img`
 export const LinerContainer = styled.div`
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 `;
 
 export const Liner = styled.span`
-	border: 1px solid ${({ theme }) => theme.properties.borderColorfaint};
-	padding: 1rem 0;
+	border-top: 1px solid ${({ theme }) => theme.properties.borderColor};
+	padding: 0.5em 0;
 	color: ${({ theme }) => theme.properties["text-clr"]};
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	& small {
+		color: ${({ theme }) => theme.properties.darkGrey};
+		font-size: 0.78rem;
+	}
+	&:last-child {
+		border-bottom: 1px solid ${({ theme }) => theme.properties.borderColor};
+	}
 `;
