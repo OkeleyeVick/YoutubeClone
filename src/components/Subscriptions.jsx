@@ -1,17 +1,22 @@
 import { useEffect, useMemo, useState } from "react";
 import { Subers, YImage, YImageCont, YLink, YName, YoutuberCont, YoutubersWrapper, YTitle, YWrapperTitle } from "../assets/css/SubscriptionStyles";
+import YouImage from "../assets/images/youtube-image-comp.svg";
 
 const Subscriptions = () => {
 	const [youtubers, setYoutubers] = useState([]);
+	const [error, setError] = useState("");
 
 	useEffect(() => {
 		const api_url = `https://randomuser.me/api/?results=12`;
 
 		const fetchUrl = async () => {
-			const response = await fetch(api_url);
-			const data = await response.json();
-			console.log(data);
-			setYoutubers(data.results);
+			try {
+				const response = await fetch(api_url);
+				const data = await response.json();
+				setYoutubers(data.results);
+			} catch (error) {
+				setError("Error occured");
+			}
 		};
 
 		fetchUrl();
@@ -25,9 +30,9 @@ const Subscriptions = () => {
 		return `${firstname} ${lastname}`;
 	};
 	return (
-		<h1>
+		<>
 			{youtubersDatas && (
-				<>
+				<div>
 					<YWrapperTitle>
 						<YTitle>Comedy & Entertainment</YTitle>
 					</YWrapperTitle>
@@ -55,9 +60,15 @@ const Subscriptions = () => {
 							);
 						})}
 					</YoutubersWrapper>
+				</div>
+			)}
+			{!youtubersDatas && (
+				<>
+					<small>Error has happpended</small>
 				</>
 			)}
-		</h1>
+			{error && <img src={YouImage} style={{ maxWidth: 100 }} alt="" />}
+		</>
 	);
 };
 
