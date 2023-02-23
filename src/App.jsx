@@ -75,6 +75,12 @@ const GlobalStyles = createGlobalStyle`
 	a{
 		text-decoration: none
 	}
+
+	@media (max-width: ${({ theme }) => theme.size.Intermediate}){
+		html {
+			font-size: 15px
+		}
+	}
 `;
 
 export const SideBarContext = createContext();

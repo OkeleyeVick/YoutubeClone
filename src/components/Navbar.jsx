@@ -114,7 +114,9 @@ const Navbar = () => {
 									<Span>
 										<span>Okeleye Victor</span>
 										<small>justusofnigeria@gmail.com</small>
-										<Link to="/">Manage your Google Account</Link>
+										<Link to="/" onClick={handleDropdown}>
+											Manage your Google Account
+										</Link>
 									</Span>
 								</EachContainer>
 								<ul>
@@ -125,7 +127,7 @@ const Navbar = () => {
 												{listItem.map((item, i) => {
 													const { icon, pathname } = item;
 													return (
-														<EachContainerLink to="download" key={i}>
+														<EachContainerLink to="download" key={i} onClick={handleDropdown}>
 															<em>{icon}</em>
 															<Span>{pathname}</Span>
 														</EachContainerLink>

@@ -1,10 +1,23 @@
 import { useEffect, useMemo, useState } from "react";
-import { Subers, YImage, YImageCont, YLink, YName, YoutuberCont, YoutubersWrapper, YTitle, YWrapperTitle } from "../assets/css/SubscriptionStyles";
+import {
+	Button,
+	Subers,
+	YImage,
+	YImageCont,
+	YLink,
+	YName,
+	YoutuberCont,
+	YoutubersWrapper,
+	YTitle,
+	YWrapperTitle,
+} from "../assets/css/SubscriptionStyles";
 import YouImage from "../assets/images/youtube-image-comp.svg";
 
 const Subscriptions = () => {
 	const [youtubers, setYoutubers] = useState([]);
 	const [error, setError] = useState("");
+
+	function handleSubscription(index) {}
 
 	useEffect(() => {
 		const api_url = `https://randomuser.me/api/?results=12`;
@@ -56,6 +69,7 @@ const Subscriptions = () => {
 										<YName>{f_name}</YName>
 										<Subers>{number} subscribers</Subers>
 									</YLink>
+									<Button onClick={() => handleSubscription(index)}>Subscribe</Button>
 								</YoutuberCont>
 							);
 						})}
@@ -67,7 +81,7 @@ const Subscriptions = () => {
 					<small>Error has happpended</small>
 				</>
 			)}
-			{error && <img src={YouImage} style={{ maxWidth: 100 }} alt="" />}
+			{error && <img src={YouImage} style={{ maxWidth: "100%" }} alt="" />}
 		</>
 	);
 };

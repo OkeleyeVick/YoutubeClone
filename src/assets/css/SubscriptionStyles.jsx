@@ -15,7 +15,7 @@ export const YTitle = styled.h6`
 export const YoutubersWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-	gap: 2rem;
+	gap: 2.5rem 2rem;
 	padding: 2rem 0;
 `;
 
@@ -45,11 +45,27 @@ export const YImage = styled.img`
 export const YName = styled.span`
 	color: ${({ theme }) => theme.properties["text-clr"]};
 	font-weight: 900;
-	margin: 5px 0 6px;
+	margin: 5px 0 2px;
 	font-size: 0.8rem;
 `;
 
 export const Subers = styled.span`
 	font-size: 0.75rem;
 	color: ${({ theme }) => theme.properties.darkGrey};
+`;
+
+export const Button = styled.button`
+	background-color: ${({ theme }) => theme.properties.ash};
+	width: max-content;
+	border-radius: 100vw;
+	border: none;
+	margin-inline: auto;
+	padding: 0.6rem 1rem;
+	cursor: pointer;
+	font-size: 0.7rem;
+	transition: ${({ theme }) => theme.properties.transition};
+
+	&:hover {
+		background-color: ${({ theme }) => theme.properties.darkAsh};
+	}
 `;
