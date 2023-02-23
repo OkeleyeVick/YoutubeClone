@@ -3,10 +3,14 @@ import styled from "styled-components";
 
 export const ParentContainer = styled.div`
 	display: grid;
-	grid-template-columns: 1fr 0.3fr;
 	gap: 1.4rem;
 	align-items: center;
 	padding: 0 1rem;
+	@media (min-width: ${({ theme }) => theme.size.tablet}) {
+		& {
+			grid-template-columns: 1fr 0.3fr;
+		}
+	}
 `;
 export const LargeContainer = styled.div`
 	padding: 1rem;
@@ -15,7 +19,7 @@ export const LargeContainer = styled.div`
 export const SmallContainer = styled.div`
 	display: none;
 
-	@media (min-width: ${({ theme }) => theme.size.Intermediate}) {
+	@media (min-width: ${({ theme }) => theme.size.tablet}) {
 		& {
 			display: flex;
 			flex-direction: column;
@@ -23,9 +27,6 @@ export const SmallContainer = styled.div`
 			row-gap: 2rem;
 		}
 	}
-	display: flex;
-	flex-direction: column;
-	row-gap: 2em;
 `;
 
 export const Header = styled.div`
