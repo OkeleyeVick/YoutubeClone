@@ -40,14 +40,14 @@ const Navbar = () => {
 	const DropdownRef = useRef(null);
 	const { dropdown, setDropdown } = useContext(NavbarContext);
 
-	function handleDropdown() {
-		return setDropdown((dropdown) => !dropdown);
+	function handleDropdown(e) {
+		e.stopPropagation();
+		return setDropdown((drop) => !drop);
 	}
 
 	useEffect(() => {
 		const handleDropdownFromDoc = (e) => {
-			const x = DropdownRef.current.contains(e.target);
-			return DropdownRef.current && !x ? setDropdown(false) : null;
+			return DropdownRef.current && !DropdownRef.current.contains(e.target) ? setDropdown(!dropdown) : null;
 		};
 		document.addEventListener("mousedown", handleDropdownFromDoc);
 		return () => {
