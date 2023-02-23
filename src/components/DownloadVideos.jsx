@@ -39,8 +39,8 @@ import { gridItems } from "./Objects";
 
 const DownloadVideos = () => {
 	const inputRef = useRef(null);
+	const youtubeIdRef = useRef("");
 
-	const [youtubeId, setYoutubeId] = useState("");
 	const [returnedData, setReturnedData] = useState(null);
 
 	const extractAndCopyId = (youtubeLink) => {
@@ -52,7 +52,7 @@ const DownloadVideos = () => {
 	function handleSubmit(e) {
 		e.preventDefault();
 		const id = extractAndCopyId(inputRef.current.value);
-		setYoutubeId(id);
+		youtubeIdRef.current = id;
 	}
 
 	useEffect(() => {
@@ -68,7 +68,7 @@ const DownloadVideos = () => {
 		};
 
 		const fetchVideos = () => {
-			fetch(`https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeId}`, options)
+			fetch(`https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeIdRef.current}`, options)
 				.then((response) => response.json())
 				.then((data) => setReturnedData(data))
 				.catch((error) => {
@@ -81,7 +81,7 @@ const DownloadVideos = () => {
 		fetchVideos();
 
 		return () => controller.abort();
-	}, [youtubeId]);
+	}, [youtubeIdRef.current]);
 
 	return (
 		<PageContainer>
