@@ -42,13 +42,23 @@ export const ContentCont = styled.div`
 	padding: 1rem 0;
 `;
 
+export const Body = styled.div`
+	padding: 1rem 0;
+`;
+
+export const ContentText = styled.span`
+	color: ${({ theme }) => theme.properties.textClr};
+	font-size: 0.86rem;
+`;
+
 export const Left = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 1rem;
 	& span {
-		font-weight: 900;
-		font-size: 0.9rem;
+		font-weight: 600;
+		font-size: 0.88rem;
+		letter-spacing: 0.3px;
 	}
 `;
 

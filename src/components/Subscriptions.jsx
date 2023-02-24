@@ -43,10 +43,12 @@ const Subscriptions = () => {
 
 			case SUBSCRIBE:
 				const subscribedYoutubers = state.users.map((user, index) => {
-					if (action.id === index) {
+					const { isSubscribed } = user;
+
+					if (action?.id === index) {
 						return {
 							...user,
-							isSubscribed: !user.isSubscribed,
+							isSubscribed: !isSubscribed,
 						};
 					} else {
 						return user;

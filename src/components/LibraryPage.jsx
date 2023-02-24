@@ -1,7 +1,9 @@
 import { Icon } from "@iconify/react";
 import React from "react";
 import {
+	Body,
 	ContentCont,
+	ContentText,
 	Em,
 	Header,
 	Image,
@@ -40,27 +42,51 @@ const Librarypage = () => {
 						<Header>
 							<Left>
 								<Em>
-									<Icon icon="ph:scissors-light" />
+									<Icon icon="ion:time-outline" />
 								</Em>
-								<span>Your Clips</span>
+								<span>Watch later 1</span>
 							</Left>
 							<Right>
 								<L to="/">See all</L>
 							</Right>
 						</Header>
+						<Body>
+							<ContentText>Playlists you create or save will show up here.</ContentText>
+						</Body>
 					</ContentCont>
+
+					<ContentCont>
+						<Header>
+							<Left>
+								<Em>
+									<Icon icon="cil:thumb-up" />
+								</Em>
+								<span>Liked videos 2</span>
+							</Left>
+							<Right>
+								<L to="/">See all</L>
+							</Right>
+						</Header>
+						<Body>
+							<ContentText>Playlists you create or save will show up here.</ContentText>
+						</Body>
+					</ContentCont>
+
 					<ContentCont>
 						<Header>
 							<Left>
 								<Em>
 									<Icon icon="ph:scissors-light" />
 								</Em>
-								<span>Your Clips</span>
+								<span>Your clips</span>
 							</Left>
 							<Right>
 								<L to="/">See all</L>
 							</Right>
 						</Header>
+						<Body>
+							<ContentText>Clip and share your favorite moments. Your list shows up right here.</ContentText>
+						</Body>
 					</ContentCont>
 				</LargeContainer>
 				<SmallContainer>
@@ -83,9 +109,6 @@ const Librarypage = () => {
 					</LinerContainer>
 				</SmallContainer>
 			</ParentContainer>
-			{/* <h1>
-				<Icon icon="ion:time-outline" />
-			</h1> */}
 		</>
 	);
 };
