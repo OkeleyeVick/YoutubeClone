@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const PageContainer = styled.div`
 	margin-inline: auto;
 	max-width: 991px;
+	padding: 0 0 3rem;
 `;
 
 export const FormOuterContainer = styled.div`

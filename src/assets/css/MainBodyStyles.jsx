@@ -15,9 +15,4 @@ export const ContainerInner = styled.div`
 			padding: 2rem 2rem 0;
 		}
 	}
-	@media (min-width: ${({ theme }) => theme.size.laptop}) {
-		/* & {
-			margin-left: 60px;
-		} */
-	}
 `;
