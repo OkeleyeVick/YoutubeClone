@@ -5,15 +5,19 @@ export const ParentContainer = styled.div`
 	display: grid;
 	gap: 1.4rem;
 	align-items: center;
-	padding: 0 1rem;
 	@media (min-width: ${({ theme }) => theme.size.tablet}) {
 		& {
 			grid-template-columns: 1fr 0.3fr;
+			padding: 0 1rem;
 		}
 	}
 `;
 export const LargeContainer = styled.div`
-	padding: 1rem;
+	@media (min-width: ${({ theme }) => theme.size.tablet}) {
+		& {
+			padding: 0 1rem;
+		}
+	}
 `;
 
 export const SmallContainer = styled.div`

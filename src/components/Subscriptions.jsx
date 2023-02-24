@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer } from "react";
 import {
 	Button,
 	Subers,
@@ -16,16 +16,16 @@ import YouImage from "../assets/images/youtube-image-comp.svg";
 const actions = {
 	SUBSCRIBE: "subscribe",
 	SET_YOUTUBERS: "setYoutubers",
+	ERROR: "setError",
 };
 
 const youtubeUsers = {
 	users: [],
+	error: null,
 };
 
 const Subscriptions = () => {
-	const { SUBSCRIBE, SET_YOUTUBERS } = actions;
-
-	const [error, setError] = useState("");
+	const { SUBSCRIBE, SET_YOUTUBERS, ERROR } = actions;
 
 	function reducer(state, action) {
 		switch (action.type) {
@@ -60,6 +60,8 @@ const Subscriptions = () => {
 					users: subscribedYoutubers,
 				};
 
+			// case ERROR:
+
 			default:
 				throw new Error("New error");
 		}
@@ -80,12 +82,12 @@ const Subscriptions = () => {
 				const data = await response.json();
 				dispatch({ type: SET_YOUTUBERS, dataResult: data.results });
 			} catch (error) {
-				setError("Error occured");
+				dispatch({ type: ERROR });
 			}
 		};
 
 		fetchUrl();
-	}, []);
+	}, [SET_YOUTUBERS]);
 
 	const fullname = (firstname, lastname) => {
 		return `${firstname} ${lastname}`;
@@ -130,10 +132,10 @@ const Subscriptions = () => {
 			)}
 			{!state.users && (
 				<>
-					<small>Error has happpended</small>
+					{/* { && <img src={YouImage} style={{ maxWidth: "100%" }} alt="" />}
+					<small>Error has happpended</small> */}
 				</>
 			)}
-			{error && <img src={YouImage} style={{ maxWidth: "100%" }} alt="" />}
 		</>
 	);
 };
