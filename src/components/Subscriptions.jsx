@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import {
 	Button,
 	Subers,
@@ -85,23 +85,19 @@ const Subscriptions = () => {
 		fetchUrl();
 	}, []);
 
-	const youtubersDatas = useMemo(() => {
-		return state.users;
-	}, [state.users]);
-
 	const fullname = (firstname, lastname) => {
 		return `${firstname} ${lastname}`;
 	};
 
 	return (
 		<>
-			{youtubersDatas && (
+			{state.users && (
 				<div>
 					<YWrapperTitle>
 						<YTitle>Comedy & Entertainment</YTitle>
 					</YWrapperTitle>
 					<YoutubersWrapper>
-						{youtubersDatas.map((youtuber, index) => {
+						{state.users.map((youtuber, index) => {
 							const {
 								name: { first, last },
 								picture: { large },
@@ -130,7 +126,7 @@ const Subscriptions = () => {
 					</YoutubersWrapper>
 				</div>
 			)}
-			{!youtubersDatas && (
+			{!state.users && (
 				<>
 					<small>Error has happpended</small>
 				</>
