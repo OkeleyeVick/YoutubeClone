@@ -104,7 +104,7 @@ const Subscriptions = () => {
 
 	return (
 		<>
-			{state.users !== "" && (
+			{state.users != "" && (
 				<>
 					<YWrapperTitle>
 						<YTitle>Comedy & Entertainment</YTitle>
