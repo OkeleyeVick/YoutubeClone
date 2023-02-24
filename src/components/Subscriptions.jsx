@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import {
 	Button,
 	Subers,
@@ -13,11 +13,28 @@ import {
 } from "../assets/css/SubscriptionStyles";
 import YouImage from "../assets/images/youtube-image-comp.svg";
 
+const actions = {
+	SUBSCRIBE: "subscribe",
+	SET_YOUTUBERS: "setYoutubers",
+};
+
+const youtubeUsers = {
+	users: [],
+};
+
 const Subscriptions = () => {
+	const { SUBSCRIBE, SET_YOUTUBERS } = actions;
+
 	const [youtubers, setYoutubers] = useState([]);
 	const [error, setError] = useState("");
 
-	function handleSubscription(index) {}
+	function reducer(state, action) {}
+
+	function handleSubscription(index) {
+		dispatch({ type: SUBSCRIBE, youtuberId: index });
+	}
+
+	const [state, dispatch] = useReducer(reducer, youtubeUsers);
 
 	useEffect(() => {
 		const api_url = `https://randomuser.me/api/?results=12`;
@@ -26,7 +43,8 @@ const Subscriptions = () => {
 			try {
 				const response = await fetch(api_url);
 				const data = await response.json();
-				setYoutubers(data.results);
+				dispatch({ type: SET_YOUTUBERS, dataResult: data.results });
+				// setYoutubers(data.results);
 			} catch (error) {
 				setError("Error occured");
 			}
@@ -36,8 +54,8 @@ const Subscriptions = () => {
 	}, []);
 
 	const youtubersDatas = useMemo(() => {
-		return youtubers;
-	}, [youtubers]);
+		return state.users;
+	}, [state.users]);
 
 	const fullname = (firstname, lastname) => {
 		return `${firstname} ${lastname}`;
@@ -57,6 +75,7 @@ const Subscriptions = () => {
 								location: {
 									street: { number },
 								},
+								isChecked,
 							} = youtuber;
 							const f_name = fullname(first, last);
 
@@ -69,7 +88,7 @@ const Subscriptions = () => {
 										<YName>{f_name}</YName>
 										<Subers>{number} subscribers</Subers>
 									</YLink>
-									<Button onClick={() => handleSubscription(index)}>Subscribe</Button>
+									<Button onClick={() => handleSubscription(index)}>{isChecked ? "Subscribed" : "subcribe"}</Button>
 								</YoutuberCont>
 							);
 						})}
