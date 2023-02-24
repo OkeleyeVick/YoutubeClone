@@ -19,7 +19,7 @@ export const YoutubersWrapper = styled.div`
 	padding: 2rem 0;
 
 	@media (max-width: ${({ theme }) => theme.size.Intermediate}) {
-		gap: 2.5rem 1.3rem;
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	}
 `;
 
