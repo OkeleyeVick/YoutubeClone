@@ -134,8 +134,8 @@ export const offcanvasContainers = [
 			{
 				pathname: "/liked-videos",
 				linkname: "Liked Videos",
-				Icon: <Icon icon="material-symbols:thumb-up-outline" />,
-				IconActive: <Icon icon="material-symbols:thumb-up" />,
+				Icon: <Icon icon="clarity:thumbs-down-line" vFlip={true} />,
+				IconActive: <Icon icon="clarity:thumbs-down-solid" vFlip={true} />,
 			},
 		],
 	},

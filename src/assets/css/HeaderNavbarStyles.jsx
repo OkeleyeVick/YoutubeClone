@@ -8,7 +8,7 @@ export const Nav = styled.nav`
 	background-color: #fff;
 	left: 0;
 	right: 0;
-	margin-left: 70px;
+	margin-left: 55px;
 	z-index: 60;
 
 	& > div:first-child {
