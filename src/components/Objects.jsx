@@ -403,13 +403,17 @@ export const profileDropdown = [
 	},
 ];
 
+function GenerateRandomNumber() {
+	return Math.floor(Math.random() * 1000);
+}
+
 //!<== Details for Library page ==>
 export const LibraryItems = [
 	{
 		image: require("../assets/images/netflix.webp"),
 		title: "Enjoy the new Netlifx & chill subscription",
 		channelName: "Netflix",
-		views: 246,
+		views: GenerateRandomNumber(),
 		period: "days",
 		period_length: 2,
 		isVerified: true,
@@ -420,7 +424,7 @@ export const LibraryItems = [
 		image: require("../assets/images/image5.webp"),
 		title: "Enjoy the new Netlifx & chill subscription",
 		channelName: "Netflix",
-		views: 246,
+		views: GenerateRandomNumber(),
 		period: "year",
 		period_length: 1,
 		isVerified: false,
@@ -431,7 +435,7 @@ export const LibraryItems = [
 		image: require("../assets/images/youtube-image.webp"),
 		title: "Enjoy the new Netlifx & chill subscription",
 		channelName: "Netflix",
-		views: 246,
+		views: GenerateRandomNumber(),
 		period: "months",
 		period_length: 2,
 		isVerified: true,
@@ -442,7 +446,7 @@ export const LibraryItems = [
 		image: require("../assets/images/tekno-beh-beh.webp"),
 		title: "Enjoy the new Netlifx & chill subscription",
 		channelName: "Netflix",
-		views: 246,
+		views: GenerateRandomNumber(),
 		period: "weeks",
 		period_length: 3,
 		isVerified: false,
@@ -453,7 +457,7 @@ export const LibraryItems = [
 		image: require("../assets/images/image5.webp"),
 		title: "Enjoy the new Netlifx & chill subscription",
 		channelName: "Netflix",
-		views: 246,
+		views: GenerateRandomNumber(),
 		period: "year",
 		period_length: 1,
 		isVerified: false,
@@ -464,7 +468,7 @@ export const LibraryItems = [
 		image: require("../assets/images/youtube-image.webp"),
 		title: "Enjoy the new Netlifx & chill subscription",
 		channelName: "Netflix",
-		views: 246,
+		views: GenerateRandomNumber(),
 		period: "months",
 		period_length: 2,
 		isVerified: true,
@@ -475,7 +479,7 @@ export const LibraryItems = [
 		image: require("../assets/images/tekno-beh-beh.webp"),
 		title: "Enjoy the new Netlifx & chill subscription",
 		channelName: "Netflix",
-		views: 246,
+		views: GenerateRandomNumber(),
 		period: "weeks",
 		period_length: 3,
 		isVerified: false,

@@ -4,7 +4,6 @@ import styled from "styled-components";
 export const ParentContainer = styled.div`
 	display: grid;
 	gap: 1.4rem;
-	align-items: center;
 	@media (min-width: ${({ theme }) => theme.size.tablet}) {
 		& {
 			grid-template-columns: 1fr 0.3fr;
@@ -22,7 +21,7 @@ export const LargeContainer = styled.div`
 
 export const SmallContainer = styled.div`
 	display: none;
-
+	margin-top: 8rem;
 	@media (min-width: ${({ theme }) => theme.size.tablet}) {
 		& {
 			display: flex;
@@ -43,29 +42,29 @@ export const ContentCont = styled.div`
 	&:nth-child(n + 1):not(:last-child) {
 		border-bottom: 1.3px solid ${({ theme }) => theme.properties.borderColor};
 	}
-	padding: 1rem 0;
+	padding: 1.4rem 0;
 `;
 
 export const Body = styled.div`
 	padding: 1rem 0;
 	display: ${({ hasGridItem }) => (hasGridItem ? "grid" : "block")};
 	grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-	gap: 2rem 0.5rem;
+	gap: 2rem 0.6rem;
 `;
 
 export const ContentText = styled.span`
 	color: ${({ theme }) => theme.properties.textClr};
-	font-size: 0.86rem;
+	font-size: 0.8rem;
 `;
 
 export const Left = styled.div`
 	display: flex;
 	align-items: center;
-	gap: 1rem;
-	& span {
+	gap: 0.6rem;
+	& :is(h1, h2, h3, h4, h5, h6) {
 		font-weight: 600;
-		font-size: 0.88rem;
-		letter-spacing: 0.3px;
+		font-size: 0.86rem;
+		letter-spacing: 0px;
 	}
 `;
 

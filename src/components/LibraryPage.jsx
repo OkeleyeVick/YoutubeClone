@@ -45,7 +45,7 @@ const Librarypage = () => {
 								<Em>
 									<Icon icon="cil:history" />
 								</Em>
-								<span>History</span>
+								<h5>History</h5>
 							</Left>
 							<Right>
 								<L to="/">See all</L>
@@ -117,7 +117,7 @@ const Librarypage = () => {
 								<Em>
 									<Icon icon="ion:time-outline" />
 								</Em>
-								<span>Watch later 1</span>
+								<h5>Watch later 1</h5>
 							</Left>
 							<Right>
 								<L to="/">See all</L>
@@ -134,7 +134,81 @@ const Librarypage = () => {
 								<Em>
 									<Icon icon="cil:thumb-up" />
 								</Em>
-								<span>Liked videos 2</span>
+								<h5>Liked videos 2</h5>
+							</Left>
+							<Right>
+								<L to="/">See all</L>
+							</Right>
+						</Header>
+						<Body>
+							<Body hasGridItem>
+								{LibraryItems.slice(0, 3).map((item, index) => {
+									const { image, title, channelName, views, period_length, video_length, isVerified, path, period } = item;
+									return (
+										<Container key={index}>
+											<A to={path}>
+												<ImageContainer>
+													<Image src={image} />
+													<IconContainer>
+														<span>
+															<IconEm>
+																<Icon icon="fluent:navigation-play-20-regular" />
+															</IconEm>
+															<small>Add to queue</small>
+														</span>
+														<span>
+															<IconEm>
+																<Icon icon="ion:time-outline" />
+															</IconEm>
+															<small>Watch later</small>
+														</span>
+													</IconContainer>
+													<Duration>{video_length}</Duration>
+												</ImageContainer>
+											</A>
+											<ContainerContent>
+												<A to={path}>
+													<Content>
+														<Title>{title}</Title>
+														<div>
+															<Channel>
+																<ChannelName>{channelName}</ChannelName>
+																{isVerified ? (
+																	<Verify>
+																		<Icon icon="material-symbols:check-circle" />
+																	</Verify>
+																) : (
+																	""
+																)}
+															</Channel>
+															<Channel>
+																<ChannelName>{views}K views</ChannelName>
+																<small>&#x2022;</small>
+																<ChannelName>
+																	{period_length} {period} ago
+																</ChannelName>
+															</Channel>
+														</div>
+													</Content>
+												</A>
+												<TriggerButton>
+													<Icon icon="radix-icons:dots-vertical" />
+												</TriggerButton>
+											</ContainerContent>
+										</Container>
+									);
+								})}
+							</Body>
+						</Body>
+					</ContentCont>
+
+					<ContentCont>
+						<Header>
+							<Left>
+								<Em>
+									<Icon icon="fluent:navigation-play-20-regular" />
+								</Em>
+								<h5>Playlists</h5>
 							</Left>
 							<Right>
 								<L to="/">See all</L>
@@ -151,7 +225,7 @@ const Librarypage = () => {
 								<Em>
 									<Icon icon="ph:scissors-light" />
 								</Em>
-								<span>Your clips</span>
+								<h5>Your clips</h5>
 							</Left>
 							<Right>
 								<L to="/">See all</L>
