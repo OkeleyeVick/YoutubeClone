@@ -74,3 +74,28 @@ export const Button = styled.button`
 		background-color: ${({ theme }) => theme.properties.darkAsh};
 	}
 `;
+
+export const ErrorContainer = styled.div`
+	max-width: 768px;
+	text-align: center;
+	margin-inline: auto;
+	padding-bottom: 2rem;
+	display: block;
+	& span {
+		font-size: 1.05rem;
+		display: block;
+	}
+`;
+
+export const GoBack = styled(Link)`
+	background-color: ${({ theme }) => theme.properties.primaryClr};
+	color: #fff;
+	border-radius: ${({ theme }) => theme.properties.smRadius};
+	padding: 1rem 2rem;
+	transition: ${({ theme }) => theme.properties.transition};
+	display: block;
+	margin-inline: auto;
+	width: max-content;
+	font-size: 0.8rem;
+	margin-top: 2rem;
+`;

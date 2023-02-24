@@ -1,6 +1,8 @@
 import { useEffect, useReducer } from "react";
 import {
 	Button,
+	ErrorContainer,
+	GoBack,
 	Subers,
 	YImage,
 	YImageCont,
@@ -11,7 +13,7 @@ import {
 	YTitle,
 	YWrapperTitle,
 } from "../assets/css/SubscriptionStyles";
-import YouImage from "../assets/images/youtube-image-comp.svg";
+import YouImage from "../assets/images/page_not_found.jpg";
 
 const actions = {
 	SUBSCRIBE: "subscribe",
@@ -60,7 +62,11 @@ const Subscriptions = () => {
 					users: subscribedYoutubers,
 				};
 
-			// case ERROR:
+			case ERROR:
+				return {
+					...state,
+					error: "Unknown error has occurred, please try again or refresh",
+				};
 
 			default:
 				throw new Error("New error");
@@ -79,15 +85,18 @@ const Subscriptions = () => {
 		const fetchUrl = async () => {
 			try {
 				const response = await fetch(api_url);
+				if (!response.ok) {
+					dispatch({ type: ERROR });
+				}
 				const data = await response.json();
 				dispatch({ type: SET_YOUTUBERS, dataResult: data.results });
 			} catch (error) {
-				dispatch({ type: ERROR });
+				dispatch({ type: ERROR, errorType: error });
 			}
 		};
 
 		fetchUrl();
-	}, [SET_YOUTUBERS]);
+	}, [SET_YOUTUBERS, ERROR]);
 
 	const fullname = (firstname, lastname) => {
 		return `${firstname} ${lastname}`;
@@ -95,8 +104,8 @@ const Subscriptions = () => {
 
 	return (
 		<>
-			{state.users && (
-				<div>
+			{state.users !== "" && (
+				<>
 					<YWrapperTitle>
 						<YTitle>Comedy & Entertainment</YTitle>
 					</YWrapperTitle>
@@ -128,12 +137,16 @@ const Subscriptions = () => {
 							);
 						})}
 					</YoutubersWrapper>
-				</div>
+				</>
 			)}
-			{!state.users && (
+			{state.error && state.users == "" && (
 				<>
-					{/* { && <img src={YouImage} style={{ maxWidth: "100%" }} alt="" />}
-					<small>Error has happpended</small> */}
+					{console.log(state)}
+					<ErrorContainer>
+						<img src={YouImage} style={{ maxWidth: "85%" }} alt="" />
+						<span>{state.error}</span>
+						<GoBack to="/">Back to Home</GoBack>
+					</ErrorContainer>
 				</>
 			)}
 		</>
