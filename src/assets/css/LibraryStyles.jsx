@@ -42,7 +42,7 @@ export const ContentCont = styled.div`
 	&:nth-child(n + 1):not(:last-child) {
 		border-bottom: 1.3px solid ${({ theme }) => theme.properties.borderColor};
 	}
-	padding: 1.4rem 0;
+	padding: 1.4rem 0 1.2rem;
 `;
 
 export const Body = styled.div`

@@ -97,7 +97,7 @@ export const ContentContainer = styled.div`
 	row-gap: 0.4rem;
 
 	& span {
-		font-size: 1.01rem;
+		font-size: 0.9rem;
 	}
 `;
 
