@@ -55,10 +55,11 @@ export const Subers = styled.span`
 `;
 
 export const Button = styled.button`
-	background-color: ${({ theme }) => theme.properties.ash};
+	background-color: ${({ subscription, theme }) => (subscription ? theme.properties.darkAsh : theme.properties.ash)};
 	width: max-content;
 	border-radius: 100vw;
 	border: none;
+	font-weight: ${({ subscription }) => (subscription ? "900" : "normal")};
 	margin-inline: auto;
 	padding: 0.6rem 1rem;
 	cursor: pointer;

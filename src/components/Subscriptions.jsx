@@ -25,13 +25,46 @@ const youtubeUsers = {
 const Subscriptions = () => {
 	const { SUBSCRIBE, SET_YOUTUBERS } = actions;
 
-	const [youtubers, setYoutubers] = useState([]);
 	const [error, setError] = useState("");
 
-	function reducer(state, action) {}
+	function reducer(state, action) {
+		switch (action.type) {
+			case SET_YOUTUBERS:
+				const yUsers = action.dataResult.map((user) => {
+					return {
+						...user,
+						isSubscribed: false,
+					};
+				});
+				return {
+					...state,
+					users: yUsers,
+				};
+
+			case SUBSCRIBE:
+				const subscribedYoutubers = state.users.map((user, index) => {
+					if (action.id === index) {
+						return {
+							...user,
+							isSubscribed: !user.isSubscribed,
+						};
+					} else {
+						return user;
+					}
+				});
+
+				return {
+					...state,
+					users: subscribedYoutubers,
+				};
+
+			default:
+				throw new Error("New error");
+		}
+	}
 
 	function handleSubscription(index) {
-		dispatch({ type: SUBSCRIBE, youtuberId: index });
+		dispatch({ type: SUBSCRIBE, id: index });
 	}
 
 	const [state, dispatch] = useReducer(reducer, youtubeUsers);
@@ -44,7 +77,6 @@ const Subscriptions = () => {
 				const response = await fetch(api_url);
 				const data = await response.json();
 				dispatch({ type: SET_YOUTUBERS, dataResult: data.results });
-				// setYoutubers(data.results);
 			} catch (error) {
 				setError("Error occured");
 			}
@@ -60,6 +92,7 @@ const Subscriptions = () => {
 	const fullname = (firstname, lastname) => {
 		return `${firstname} ${lastname}`;
 	};
+
 	return (
 		<>
 			{youtubersDatas && (
@@ -75,7 +108,7 @@ const Subscriptions = () => {
 								location: {
 									street: { number },
 								},
-								isChecked,
+								isSubscribed,
 							} = youtuber;
 							const f_name = fullname(first, last);
 
@@ -88,7 +121,9 @@ const Subscriptions = () => {
 										<YName>{f_name}</YName>
 										<Subers>{number} subscribers</Subers>
 									</YLink>
-									<Button onClick={() => handleSubscription(index)}>{isChecked ? "Subscribed" : "subcribe"}</Button>
+									<Button subscription={isSubscribed} onClick={() => handleSubscription(index)}>
+										{isSubscribed ? "Subscribed" : "Subscribe"}
+									</Button>
 								</YoutuberCont>
 							);
 						})}
