@@ -6,7 +6,7 @@ import {
 	ContentText,
 	Em,
 	Header,
-	Image,
+	RightImage,
 	ImageCont,
 	L,
 	LargeContainer,
@@ -16,8 +16,23 @@ import {
 	ParentContainer,
 	Right,
 	SmallContainer,
+	Container,
+	A,
+	ImageContainer,
+	IconContainer,
+	IconEm,
+	Image,
+	Duration,
+	ContainerContent,
+	Content,
+	TriggerButton,
+	Title,
+	Channel,
+	ChannelName,
+	Verify,
 } from "../assets/css/LibraryStyles";
 import jpeg from "../assets/images/image1.webp";
+import { LibraryItems } from "./Objects";
 
 const Librarypage = () => {
 	return (
@@ -36,6 +51,64 @@ const Librarypage = () => {
 								<L to="/">See all</L>
 							</Right>
 						</Header>
+						<Body hasGridItem>
+							{LibraryItems.map((item, index) => {
+								const { image, title, channelName, views, period_length, video_length, isVerified, path, period } = item;
+								return (
+									<Container key={index}>
+										<A to={path}>
+											<ImageContainer>
+												<Image src={image} />
+												<IconContainer>
+													<span>
+														<IconEm>
+															<Icon icon="fluent:navigation-play-20-regular" />
+														</IconEm>
+														<small>Add to queue</small>
+													</span>
+													<span>
+														<IconEm>
+															<Icon icon="ion:time-outline" />
+														</IconEm>
+														<small>Watch later</small>
+													</span>
+												</IconContainer>
+												<Duration>{video_length}</Duration>
+											</ImageContainer>
+										</A>
+										<ContainerContent>
+											<A to={path}>
+												<Content>
+													<Title>{title}</Title>
+													<div>
+														<Channel>
+															<ChannelName>{channelName}</ChannelName>
+															{isVerified ? (
+																<Verify>
+																	<Icon icon="material-symbols:check-circle" />
+																</Verify>
+															) : (
+																""
+															)}
+														</Channel>
+														<Channel>
+															<ChannelName>{views}K views</ChannelName>
+															<small>&#x2022;</small>
+															<ChannelName>
+																{period_length} {period} ago
+															</ChannelName>
+														</Channel>
+													</div>
+												</Content>
+											</A>
+											<TriggerButton>
+												<Icon icon="radix-icons:dots-vertical" />
+											</TriggerButton>
+										</ContainerContent>
+									</Container>
+								);
+							})}
+						</Body>
 					</ContentCont>
 
 					<ContentCont>
@@ -91,7 +164,7 @@ const Librarypage = () => {
 				</LargeContainer>
 				<SmallContainer>
 					<ImageCont>
-						<Image src={jpeg} />
+						<RightImage src={jpeg} />
 					</ImageCont>
 					<LinerContainer>
 						<Liner>
@@ -104,7 +177,7 @@ const Librarypage = () => {
 						</Liner>
 						<Liner>
 							<small>Likes</small>
-							<small>0</small>
+							<small>2</small>
 						</Liner>
 					</LinerContainer>
 				</SmallContainer>

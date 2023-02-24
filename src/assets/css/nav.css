@@ -2,8 +2,15 @@
 	font-family: Manrope;
 	src: url("../font/Manrope-Medium.ttf");
 }
+@font-face {
+	font-family: Manrope-Bold;
+	src: url("../font/Manrope-Bold.ttf");
+}
 
 * {
 	box-sizing: border-box;
 	font-family: Manrope;
+}
+:is(h1, h2, h3, h4, h5, h6) {
+	font-family: Manrope-Bold;
 }

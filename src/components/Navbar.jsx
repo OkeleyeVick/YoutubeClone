@@ -13,7 +13,6 @@ import {
 	IconLogo,
 	MicroPhone,
 	Nav,
-	Pill,
 	RightIcons,
 	SearchButton,
 	SearchInput,

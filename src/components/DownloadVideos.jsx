@@ -41,7 +41,7 @@ const DownloadVideos = () => {
 	const inputRef = useRef(null);
 	const youtubeIdRef = useRef("");
 
-	const [returnedData, setReturnedData] = useState(null);
+	// const [returnedData, setReturnedData] = useState(null);
 
 	const extractAndCopyId = (youtubeLink) => {
 		const youtubeLinkId = youtubeLink.split(".be/")[1];
@@ -70,7 +70,10 @@ const DownloadVideos = () => {
 		const fetchVideos = () => {
 			fetch(`https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeIdRef.current}`, options)
 				.then((response) => response.json())
-				.then((data) => setReturnedData(data))
+				.then((data) => {
+					console.log(data);
+					// setReturnedData(data)
+				})
 				.catch((error) => {
 					if (error === "AbortError") {
 						console.log("fetch aborted");
@@ -81,7 +84,7 @@ const DownloadVideos = () => {
 		fetchVideos();
 
 		return () => controller.abort();
-	}, [youtubeIdRef.current]);
+	}, []);
 
 	return (
 		<PageContainer>

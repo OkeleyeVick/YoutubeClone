@@ -104,7 +104,7 @@ const Subscriptions = () => {
 
 	return (
 		<>
-			{state.users != "" && (
+			{state.users !== "" && (
 				<>
 					<YWrapperTitle>
 						<YTitle>Comedy & Entertainment</YTitle>
@@ -139,9 +139,8 @@ const Subscriptions = () => {
 					</YoutubersWrapper>
 				</>
 			)}
-			{state.error && state.users == "" && (
+			{state.error && state.users === "" && (
 				<>
-					{console.log(state)}
 					<ErrorContainer>
 						<img src={YouImage} style={{ maxWidth: "85%" }} alt="" />
 						<span>{state.error}</span>
