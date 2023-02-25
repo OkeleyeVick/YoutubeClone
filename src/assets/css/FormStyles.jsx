@@ -12,9 +12,7 @@ export const FormOuterContainer = styled.div`
 	flex-direction: column;
 `;
 
-export const FormMainContainer = styled.div`
-	/* padding: 1rem; */
-`;
+export const FormMainContainer = styled.div``;
 
 export const FormSubmitButton = styled.button`
 	background-color: ${({ theme }) => {
@@ -87,7 +85,7 @@ export const FormInput = styled.input.attrs({
 `;
 
 export const Sumbit = styled.button.attrs({
-	type: "button",
+	type: "submit",
 })`
 	border-radius: 0 5px 5px 0;
 	border: none;

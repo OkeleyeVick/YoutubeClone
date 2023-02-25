@@ -39,9 +39,9 @@ import { gridItems } from "./Objects";
 
 const DownloadVideos = () => {
 	const inputRef = useRef(null);
-	const youtubeIdRef = useRef("");
+	const youtubeIdRef = useRef();
 
-	// const [returnedData, setReturnedData] = useState(null);
+	const [returnedData, setReturnedData] = useState("");
 
 	const extractAndCopyId = (youtubeLink) => {
 		const youtubeLinkId = youtubeLink.split(".be/")[1];
@@ -50,9 +50,11 @@ const DownloadVideos = () => {
 	};
 
 	function handleSubmit(e) {
+		console.log(e.target);
 		e.preventDefault();
 		const id = extractAndCopyId(inputRef.current.value);
 		youtubeIdRef.current = id;
+		console.log("I was clicked", youtubeIdRef);
 	}
 
 	useEffect(() => {
@@ -71,13 +73,11 @@ const DownloadVideos = () => {
 			fetch(`https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeIdRef.current}`, options)
 				.then((response) => response.json())
 				.then((data) => {
+					setReturnedData(data);
 					console.log(data);
-					// setReturnedData(data)
 				})
 				.catch((error) => {
-					if (error === "AbortError") {
-						console.log("fetch aborted");
-					}
+					console.log(error);
 				});
 		};
 
@@ -97,7 +97,9 @@ const DownloadVideos = () => {
 						<FormMainContainer>
 							<FormInputContainer>
 								<FormInput ref={inputRef} />
-								<Sumbit onClick={handleSubmit}>Download</Sumbit>
+								<Sumbit type="submit" onClick={handleSubmit}>
+									Download
+								</Sumbit>
 							</FormInputContainer>
 						</FormMainContainer>
 					</form>
