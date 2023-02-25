@@ -110,10 +110,14 @@ export const DropdownMenuContainer = styled.div`
 	transition: ${({ theme }) => theme.properties.transition};
 	padding: 5px;
 	border: 1px solid ${({ theme }) => theme.properties.borderColorFaint};
-	/* opacity: 0;
-	visibility: hidden; */
+	opacity: 0;
+	visibility: hidden;
 `;
 
+export const LibraryItemDropdown = styled(DropdownMenuContainer)`
+	opacity: ${({ isActive }) => (isActive ? "1" : "0")};
+	visibility: ${({ isActive }) => (isActive ? "visible" : "hidden")};
+`;
 export const MenuDropdown = styled.div`
 	position: relative;
 

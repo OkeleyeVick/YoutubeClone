@@ -33,17 +33,18 @@ import {
 } from "../assets/css/LibraryStyles";
 import jpeg from "../assets/images/image1.webp";
 import { LibraryItems, SubscriptionMenuItems } from "./Objects";
-import { DropdownMenuContainer, LinkItem } from "../assets/css/IndexPageStyles";
+import { LibraryItemDropdown, LinkItem } from "../assets/css/IndexPageStyles";
 
 const Librarypage = () => {
 	const [isActive, setIsActive] = useState(false);
+	const [id, setId] = useState(null);
 
 	const DropdownRef = useRef(null);
 
 	function handleDropdown(index) {
 		setIsActive((previousState) => !previousState);
 	}
-	useEffect(() => {}, [isActive]);
+	useEffect(() => {}, [isActive, id]);
 	return (
 		<>
 			<ParentContainer>
@@ -118,7 +119,7 @@ const Librarypage = () => {
 													}}>
 													<Icon icon="radix-icons:dots-vertical" />
 												</TriggerButton>
-												<DropdownMenuContainer ref={DropdownRef}>
+												<LibraryItemDropdown isActive={isActive} ref={DropdownRef}>
 													{SubscriptionMenuItems.map((menu, index) => {
 														const { icon, linkname } = menu;
 														return (
@@ -128,7 +129,7 @@ const Librarypage = () => {
 															</LinkItem>
 														);
 													})}
-												</DropdownMenuContainer>
+												</LibraryItemDropdown>
 											</div>
 										</ContainerContent>
 									</Container>
