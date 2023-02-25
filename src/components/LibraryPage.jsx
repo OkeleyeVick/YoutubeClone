@@ -37,14 +37,14 @@ import { LibraryItemDropdown, LinkItem } from "../assets/css/IndexPageStyles";
 
 const Librarypage = () => {
 	const [isActive, setIsActive] = useState(false);
-	const [id, setId] = useState(null);
+	const [x, setX] = useState(null);
 
 	const DropdownRef = useRef(null);
 
 	function handleDropdown(index) {
-		setIsActive((previousState) => !previousState);
+		setIsActive((x) => !x);
 	}
-	useEffect(() => {}, [isActive, id]);
+	useEffect(() => {}, [isActive]);
 	return (
 		<>
 			<ParentContainer>
@@ -116,20 +116,25 @@ const Librarypage = () => {
 													onClick={(e) => {
 														e.preventDefault();
 														handleDropdown(index);
+														setX(index);
 													}}>
 													<Icon icon="radix-icons:dots-vertical" />
 												</TriggerButton>
-												<LibraryItemDropdown isActive={isActive} ref={DropdownRef}>
-													{SubscriptionMenuItems.map((menu, index) => {
-														const { icon, linkname } = menu;
-														return (
-															<LinkItem to="/" key={index}>
-																<Em>{icon}</Em>
-																<span>{linkname}</span>
-															</LinkItem>
-														);
-													})}
-												</LibraryItemDropdown>
+												{x === index ? (
+													<LibraryItemDropdown isActive={isActive} ref={DropdownRef}>
+														{SubscriptionMenuItems.map((menu, index) => {
+															const { icon, linkname } = menu;
+															return (
+																<LinkItem to="/" key={index}>
+																	<Em>{icon}</Em>
+																	<span>{linkname}</span>
+																</LinkItem>
+															);
+														})}
+													</LibraryItemDropdown>
+												) : (
+													""
+												)}
 											</div>
 										</ContainerContent>
 									</Container>
