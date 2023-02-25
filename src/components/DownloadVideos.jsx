@@ -98,7 +98,7 @@ const DownloadVideos = () => {
 	useEffect(() => {
 		// https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeIdRef.current} //!50 per day
 		// "X-RapidAPI-Host": "ytstream-download-youtube-videos.p.rapidapi.com", //! 50 per day
-		// const controller = new AbortController();
+		const controller = new AbortController();
 
 		const options = {
 			method: "GET",
@@ -107,7 +107,7 @@ const DownloadVideos = () => {
 				// "X-RapidAPI-Host": "youtube-media-downloader.p.rapidapi.com",
 				"X-RapidAPI-Host": "youtube-media-downloader.p.rapidapi.com",
 			},
-			// signal: controller.signal,
+			signal: controller.signal,
 		};
 
 		const api_url = `https://youtube-media-downloadWer.p.rapidapi.com/v2/video/details?videoId=${currentState.youtubeId}`;
@@ -123,7 +123,7 @@ const DownloadVideos = () => {
 
 		fetchVideos();
 
-		// return () => controller.abort();
+		return () => controller.abort();
 	}, [currentState.youtubeId, setData, setId, setError]);
 
 	return (
@@ -133,11 +133,6 @@ const DownloadVideos = () => {
 					<FormTitle>Enter youtube link</FormTitle>
 				</FormTitleContainer>
 				<FormMainContainer>
-					{/* {currentState.data ? (
-						<>
-							<h1>{currentState.data.category}</h1>
-						</>
-					) : null} */}
 					<form action="">
 						<FormMainContainer>
 							<FormInputContainer>

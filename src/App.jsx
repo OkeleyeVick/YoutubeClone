@@ -81,6 +81,12 @@ const GlobalStyles = createGlobalStyle`
 			font-size: 15px
 		}
 	}
+
+	@media (max-width: ${({ theme }) => theme.size.mobileM}){
+		html {
+			font-size: 14px
+		}
+	}
 `;
 
 export const SideBarContext = createContext();
