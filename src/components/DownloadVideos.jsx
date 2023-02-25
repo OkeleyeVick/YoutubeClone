@@ -70,7 +70,6 @@ const DownloadVideos = () => {
 			case setError:
 				return {
 					...state,
-					data: {},
 					error: action.error,
 				};
 
