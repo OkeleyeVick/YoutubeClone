@@ -39,52 +39,45 @@ import { gridItems } from "./Objects";
 
 const DownloadVideos = () => {
 	const inputRef = useRef(null);
-	const youtubeIdRef = useRef();
 
-	const [returnedData, setReturnedData] = useState("");
+	const [youtubeId, setYoutubeId] = useState("");
 
 	const extractAndCopyId = (youtubeLink) => {
 		const youtubeLinkId = youtubeLink.split(".be/")[1];
 		return youtubeLinkId;
-		// excerpt of what the link looks like --> https://youtu.be/jUzxY3rgbkI
 	};
 
 	function handleSubmit(e) {
-		console.log(e.target);
 		e.preventDefault();
 		const id = extractAndCopyId(inputRef.current.value);
-		youtubeIdRef.current = id;
-		console.log("I was clicked", youtubeIdRef);
+		setYoutubeId(id);
 	}
 
 	useEffect(() => {
-		const controller = new AbortController();
+		// https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeIdRef.current} //!50 per day
+		// "X-RapidAPI-Host": "ytstream-download-youtube-videos.p.rapidapi.com", //! 50 per day
+		// const controller = new AbortController();
 
 		const options = {
 			method: "GET",
 			headers: {
 				"X-RapidAPI-Key": "6473c3ce7dmsh28c8afd093343dep1d0f1fjsn02e8bc02b53a",
-				"X-RapidAPI-Host": "ytstream-download-youtube-videos.p.rapidapi.com",
+				"X-RapidAPI-Host": "youtube-media-downloader.p.rapidapi.com",
 			},
-			signal: controller.signal,
+			// signal: controller.signal,
 		};
 
-		const fetchVideos = () => {
-			fetch(`https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeIdRef.current}`, options)
-				.then((response) => response.json())
-				.then((data) => {
-					setReturnedData(data);
-					console.log(data);
-				})
-				.catch((error) => {
-					console.log(error);
-				});
+		const api_url = `https://youtube-media-downloader.p.rapidapi.com/v2/video/details?videoId=${youtubeId}`;
+		const fetchVideos = async () => {
+			const response = await fetch(api_url, options);
+			const data = await response.json();
+			console.log(data);
 		};
 
 		fetchVideos();
 
-		return () => controller.abort();
-	}, []);
+		// return () => controller.abort();
+	}, [youtubeId]);
 
 	return (
 		<PageContainer>
@@ -103,38 +96,42 @@ const DownloadVideos = () => {
 							</FormInputContainer>
 						</FormMainContainer>
 					</form>
-					<ResultContainer>
-						<ResultHeader>
-							<ResultImage>
-								<Image src={FakeImage} />
-							</ResultImage>
-							<ContentContainer>
-								<Title>Will Smith's Life Advice Will Change You - One of the Greatest Speeches Ever | Will Smith Motivation</Title>
-								<span>Duration: 0:10:45</span>
-								<span>Views: 4,080,048</span>
-							</ContentContainer>
-						</ResultHeader>
-						<MimeType>
-							<h3>Video</h3>
-						</MimeType>
-						<ResultTableHeader>
-							<HeadTitle>Quality</HeadTitle>
-							<HeadTitle>Type</HeadTitle>
-							<HeadTitle willChange>File size</HeadTitle>
-							<HeadTitle>Download</HeadTitle>
-						</ResultTableHeader>
-						<ResultTableBody>
-							<Quality>702p</Quality>
-							<Type>mp4</Type>
-							<FileSize willChange>-</FileSize>
-							<DownloadLink to="/">
-								<Em>
-									<Icon icon="ph:download-simple-light" />
-								</Em>
-								<span>Download</span>
-							</DownloadLink>
-						</ResultTableBody>
-					</ResultContainer>
+					{
+						<ResultContainer>
+							<ResultHeader>
+								<ResultImage>
+									<Image src={FakeImage} />
+								</ResultImage>
+								<ContentContainer>
+									<Title>
+										Will Smith's Life Advice Will Change You - One of the Greatest Speeches Ever | Will Smith Motivation
+									</Title>
+									<span>Duration: 0:10:45</span>
+									<span>Views: 4,080,048</span>
+								</ContentContainer>
+							</ResultHeader>
+							<MimeType>
+								<h3>Video</h3>
+							</MimeType>
+							<ResultTableHeader>
+								<HeadTitle>Quality</HeadTitle>
+								<HeadTitle>Type</HeadTitle>
+								<HeadTitle willChange>File size</HeadTitle>
+								<HeadTitle>Download</HeadTitle>
+							</ResultTableHeader>
+							<ResultTableBody>
+								<Quality>702p</Quality>
+								<Type>mp4</Type>
+								<FileSize willChange>-</FileSize>
+								<DownloadLink to="/">
+									<Em>
+										<Icon icon="ph:download-simple-light" />
+									</Em>
+									<span>Download</span>
+								</DownloadLink>
+							</ResultTableBody>
+						</ResultContainer>
+					}
 				</FormMainContainer>
 			</FormOuterContainer>
 			<Container>
