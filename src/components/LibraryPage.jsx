@@ -37,14 +37,15 @@ import { LibraryItemDropdown, LinkItem } from "../assets/css/IndexPageStyles";
 
 const Librarypage = () => {
 	const [isActive, setIsActive] = useState(false);
-	const [x, setX] = useState(null);
-
-	const DropdownRef = useRef(null);
+	const [dropdownId, setDropdownId] = useState(null);
 
 	function handleDropdown(index) {
-		setIsActive((x) => !x);
+		if (dropdownId === index) {
+			setDropdownId(null);
+			setIsActive((previousDropdownState) => !previousDropdownState);
+		}
+		setDropdownId(index);
 	}
-	useEffect(() => {}, [isActive]);
 	return (
 		<>
 			<ParentContainer>
@@ -116,12 +117,11 @@ const Librarypage = () => {
 													onClick={(e) => {
 														e.preventDefault();
 														handleDropdown(index);
-														setX(index);
 													}}>
 													<Icon icon="radix-icons:dots-vertical" />
 												</TriggerButton>
-												{x === index ? (
-													<LibraryItemDropdown isActive={isActive} ref={DropdownRef}>
+												{dropdownId === index ? (
+													<LibraryItemDropdown isActive={isActive}>
 														{SubscriptionMenuItems.map((menu, index) => {
 															const { icon, linkname } = menu;
 															return (
@@ -132,9 +132,7 @@ const Librarypage = () => {
 															);
 														})}
 													</LibraryItemDropdown>
-												) : (
-													""
-												)}
+												) : null}
 											</div>
 										</ContainerContent>
 									</Container>
