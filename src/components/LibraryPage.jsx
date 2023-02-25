@@ -41,7 +41,6 @@ const Librarypage = () => {
 
 	function handleDropdown(index) {
 		if (dropdownId === index) {
-			setDropdownId(null);
 			setIsActive((previousDropdownState) => !previousDropdownState);
 		}
 		setDropdownId(index);
@@ -116,6 +115,7 @@ const Librarypage = () => {
 												<TriggerButton
 													onClick={(e) => {
 														e.preventDefault();
+														setDropdownId(index);
 														handleDropdown(index);
 													}}>
 													<Icon icon="radix-icons:dots-vertical" />
