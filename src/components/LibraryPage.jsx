@@ -41,6 +41,7 @@ const Librarypage = () => {
 
 	function handleDropdown(index) {
 		if (dropdownId === index) {
+			setDropdownId(null);
 			setIsActive((previousDropdownState) => !previousDropdownState);
 		}
 		setDropdownId(index);
