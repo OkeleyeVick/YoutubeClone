@@ -131,6 +131,11 @@ export const TriggerButton = styled.button`
 	background-color: transparent;
 	transition: ${({ theme }) => theme.properties.transition};
 
+	@media (max-width: 600px) {
+		opacity: unset;
+		visibility: unset;
+	}
+
 	& svg {
 		color: ${({ theme }) => theme.properties.darkerGrey};
 		font-size: 1.1rem;
@@ -277,7 +282,7 @@ export const Channel = styled.span`
 `;
 
 export const ChannelName = styled.span`
-	font-size: 0.75rem;
+	font-size: 0.7rem;
 	color: ${({ theme }) => theme.properties.textClr};
 `;
 

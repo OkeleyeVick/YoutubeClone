@@ -454,7 +454,7 @@ export const LibraryItems = [
 		path: "/",
 	},
 	{
-		image: require("../assets/images/image5.webp"),
+		image: require("../assets/images/image1.webp"),
 		title: "Enjoy the new Netlifx & chill subscription",
 		channelName: "Netflix",
 		views: GenerateRandomNumber(),
@@ -465,7 +465,7 @@ export const LibraryItems = [
 		path: "/",
 	},
 	{
-		image: require("../assets/images/youtube-image.webp"),
+		image: require("../assets/images/image4.webp"),
 		title: "Enjoy the new Netlifx & chill subscription",
 		channelName: "Netflix",
 		views: GenerateRandomNumber(),
@@ -476,7 +476,18 @@ export const LibraryItems = [
 		path: "/",
 	},
 	{
-		image: require("../assets/images/tekno-beh-beh.webp"),
+		image: require("../assets/images/image3.webp"),
+		title: "Enjoy the new Netlifx & chill subscription",
+		channelName: "Netflix",
+		views: GenerateRandomNumber(),
+		period: "weeks",
+		period_length: 3,
+		isVerified: false,
+		video_length: "3:17",
+		path: "/",
+	},
+	{
+		image: require("../assets/images/image2.webp"),
 		title: "Enjoy the new Netlifx & chill subscription",
 		channelName: "Netflix",
 		views: GenerateRandomNumber(),

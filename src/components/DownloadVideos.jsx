@@ -104,6 +104,7 @@ const DownloadVideos = () => {
 			method: "GET",
 			headers: {
 				"X-RapidAPI-Key": "6473c3ce7dmsh28c8afd093343dep1d0f1fjsn02e8bc02b53a",
+				// "X-RapidAPI-Host": "youtube-media-downloader.p.rapidapi.com",
 				"X-RapidAPI-Host": "youtube-media-downloader.p.rapidapi.com",
 			},
 			// signal: controller.signal,
@@ -122,7 +123,6 @@ const DownloadVideos = () => {
 
 		fetchVideos();
 
-		console.log(currentState);
 		// return () => controller.abort();
 	}, [currentState.youtubeId, setData, setId, setError]);
 
@@ -133,6 +133,11 @@ const DownloadVideos = () => {
 					<FormTitle>Enter youtube link</FormTitle>
 				</FormTitleContainer>
 				<FormMainContainer>
+					{/* {currentState.data ? (
+						<>
+							<h1>{currentState.data.category}</h1>
+						</>
+					) : null} */}
 					<form action="">
 						<FormMainContainer>
 							<FormInputContainer>

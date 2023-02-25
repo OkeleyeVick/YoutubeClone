@@ -26,9 +26,9 @@ const youtubeUsers = {
 	error: null,
 };
 
-const Subscriptions = () => {
-	const { SUBSCRIBE, SET_YOUTUBERS, ERROR } = actions;
+const { SUBSCRIBE, SET_YOUTUBERS, ERROR } = actions;
 
+const Subscriptions = () => {
 	function reducer(state, action) {
 		switch (action.type) {
 			case SET_YOUTUBERS:
@@ -46,7 +46,6 @@ const Subscriptions = () => {
 			case SUBSCRIBE:
 				const subscribedYoutubers = state.users.map((user, index) => {
 					const { isSubscribed } = user;
-
 					if (action?.id === index) {
 						return {
 							...user,
@@ -56,7 +55,6 @@ const Subscriptions = () => {
 						return user;
 					}
 				});
-
 				return {
 					...state,
 					users: subscribedYoutubers,
@@ -96,7 +94,7 @@ const Subscriptions = () => {
 		};
 
 		fetchUrl();
-	}, [SET_YOUTUBERS, ERROR]);
+	}, []);
 
 	const fullname = (firstname, lastname) => {
 		return `${firstname} ${lastname}`;
@@ -139,7 +137,7 @@ const Subscriptions = () => {
 					</YoutubersWrapper>
 				</>
 			)}
-			{state.error && state.users === "" && (
+			{state.error && (
 				<>
 					<ErrorContainer>
 						<img src={YouImage} style={{ maxWidth: "85%" }} alt="" />
