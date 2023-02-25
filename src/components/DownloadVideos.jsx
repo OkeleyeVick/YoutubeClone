@@ -111,10 +111,13 @@ const DownloadVideos = () => {
 
 		const api_url = `https://youtube-media-downloadWer.p.rapidapi.com/v2/video/details?videoId=${currentState.youtubeId}`;
 		const fetchVideos = async () => {
-			const response = await fetch(api_url, options);
-			if (!response.ok) doAction({ type: setError, error: response.status });
-			const data = await response.json();
-			doAction({ type: setData, data });
+			if (currentState.youtubeId !== null) {
+				const response = await fetch(api_url, options);
+				if (!response.ok) doAction({ type: setError, error: response.status });
+				const data = await response.json();
+				doAction({ type: setData, data });
+			}
+			return;
 		};
 
 		fetchVideos();
