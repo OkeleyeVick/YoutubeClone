@@ -498,3 +498,19 @@ export const LibraryItems = [
 		path: "/",
 	},
 ];
+
+//! <== each youtube dropdown in index page ==>
+export const SubscriptionMenuItems = [
+	{
+		icon: <Icon icon="fluent:navigation-play-20-regular" />,
+		linkname: "Add to queue",
+	},
+	{
+		icon: <Icon icon="ph:clock-light" />,
+		linkname: "Save to Watch later",
+	},
+	{
+		icon: <Icon icon="ph:list-plus" />,
+		linkname: "Save to playlist",
+	},
+];

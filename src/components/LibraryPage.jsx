@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
 	Body,
 	ContentCont,
@@ -32,9 +32,18 @@ import {
 	Verify,
 } from "../assets/css/LibraryStyles";
 import jpeg from "../assets/images/image1.webp";
-import { LibraryItems } from "./Objects";
+import { LibraryItems, SubscriptionMenuItems } from "./Objects";
+import { DropdownMenuContainer, LinkItem } from "../assets/css/IndexPageStyles";
 
 const Librarypage = () => {
+	const [isActive, setIsActive] = useState(false);
+
+	const DropdownRef = useRef(null);
+
+	function handleDropdown(index) {
+		setIsActive((previousState) => !previousState);
+	}
+	useEffect(() => {}, [isActive]);
 	return (
 		<>
 			<ParentContainer>
@@ -101,9 +110,26 @@ const Librarypage = () => {
 													</div>
 												</Content>
 											</A>
-											<TriggerButton>
-												<Icon icon="radix-icons:dots-vertical" />
-											</TriggerButton>
+											<div>
+												<TriggerButton
+													onClick={(e) => {
+														e.preventDefault();
+														handleDropdown(index);
+													}}>
+													<Icon icon="radix-icons:dots-vertical" />
+												</TriggerButton>
+												<DropdownMenuContainer ref={DropdownRef}>
+													{SubscriptionMenuItems.map((menu, index) => {
+														const { icon, linkname } = menu;
+														return (
+															<LinkItem to="/" key={index}>
+																<Em>{icon}</Em>
+																<span>{linkname}</span>
+															</LinkItem>
+														);
+													})}
+												</DropdownMenuContainer>
+											</div>
 										</ContainerContent>
 									</Container>
 								);

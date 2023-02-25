@@ -259,6 +259,10 @@ export const ContainerContent = styled.div`
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
+
+	& > div {
+		position: relative;
+	}
 `;
 
 export const Content = styled.div`

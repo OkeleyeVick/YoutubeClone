@@ -39,11 +39,6 @@ const Navbar = () => {
 	const DropdownRef = useRef(null);
 	const { dropdown, setDropdown } = useContext(NavbarContext);
 
-	function handleDropdown(e) {
-		e.stopPropagation();
-		return setDropdown((drop) => !drop);
-	}
-
 	useEffect(() => {
 		const handleDropdownFromDoc = (e) => {
 			return DropdownRef.current && !DropdownRef.current.contains(e.target) ? setDropdown(false) : null;
@@ -52,7 +47,12 @@ const Navbar = () => {
 		return () => {
 			document.removeEventListener("mousedown", handleDropdownFromDoc);
 		};
-	}, [DropdownRef, setDropdown]);
+	}, [setDropdown]);
+
+	function handleDropdown(e) {
+		e.stopPropagation();
+		return setDropdown((drop) => !drop);
+	}
 
 	return (
 		<div>
