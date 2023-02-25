@@ -65,11 +65,13 @@ const DownloadVideos = () => {
 				return {
 					...state,
 					data: action.data,
+					error: null,
 				};
 
 			case setError:
 				return {
 					...state,
+					data: {},
 					error: action.error,
 				};
 
@@ -77,6 +79,7 @@ const DownloadVideos = () => {
 				return {
 					...state,
 					youtubeId: action.id,
+					error: null,
 				};
 
 			default:
@@ -116,6 +119,7 @@ const DownloadVideos = () => {
 
 		fetchVideos();
 
+		console.log(currentState);
 		// return () => controller.abort();
 	}, [currentState.youtubeId, setData, setId, setError]);
 
