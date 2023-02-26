@@ -39,6 +39,9 @@ const size = {
 	desktop: "2560px",
 };
 const GlobalStyles = createGlobalStyle`
+*{
+	transition: ${({ theme }) => theme.properties.transition};
+}
 	::-webkit-scrollbar {
 		width: 4.5px;
 	}
