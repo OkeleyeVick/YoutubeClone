@@ -29,7 +29,7 @@ export const AllPageLinks = [
 	{
 		path: "/downloads",
 		linkname: "Download Videos",
-		Icon: <Icon icon="ph:download" />,
+		Icon: <Icon icon="ph:download-light" />,
 		IconActive: <Icon icon="ph:download-fill" />,
 	},
 ];

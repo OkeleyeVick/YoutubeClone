@@ -54,9 +54,37 @@ const initialState = {
 	error: null,
 };
 
-const DownloadVideos = () => {
-	const { setError, setData, setId } = global;
+const { setError, setData, setId } = global;
 
+function FormatTime(timeInSeconds) {}
+
+function videosWithSingleFormat(adaptiveFormats) {
+	let formats = [];
+	let arrayFormat = [];
+
+	const allVideosWithQualityLabel = adaptiveFormats?.filter((video) => {
+		const { qualityLabel } = video;
+		return qualityLabel;
+	});
+
+	allVideosWithQualityLabel?.forEach((video) => {
+		const { qualityLabel } = video;
+		formats.push(qualityLabel);
+	});
+
+	const perFormats = formats?.filter((quality, index) => formats.indexOf(quality) === index);
+
+	const x = perFormats?.forEach((format) => {
+		const y = allVideosWithQualityLabel.filter((eachVideo) => {
+			const { qualityLabel } = eachVideo;
+			return qualityLabel === format;
+		});
+		arrayFormat.push(y);
+		console.log(arrayFormat);
+	});
+}
+
+const DownloadVideos = () => {
 	const inputRef = useRef(null);
 
 	const reducerFunc = (state, action) => {
@@ -96,21 +124,20 @@ const DownloadVideos = () => {
 	const [currentState, doAction] = useReducer(reducerFunc, initialState);
 
 	useEffect(() => {
-		// https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${youtubeIdRef.current} //!50 per day
-		// "X-RapidAPI-Host": "ytstream-download-youtube-videos.p.rapidapi.com", //! 50 per day
+		// "X-RapidAPI-Host": "youtube-media-downloader.p.rapidapi.com",
+		// const api_url = `https://youtube-media-downloadWer.p.rapidapi.com/v2/video/details?videoId=${currentState.youtubeId}`;
 		const controller = new AbortController();
 
 		const options = {
 			method: "GET",
 			headers: {
 				"X-RapidAPI-Key": "6473c3ce7dmsh28c8afd093343dep1d0f1fjsn02e8bc02b53a",
-				// "X-RapidAPI-Host": "youtube-media-downloader.p.rapidapi.com",
-				"X-RapidAPI-Host": "youtube-media-downloader.p.rapidapi.com",
+				"X-RapidAPI-Host": "ytstream-download-youtube-videos.p.rapidapi.com", //! 50 per day
 			},
 			signal: controller.signal,
 		};
 
-		const api_url = `https://youtube-media-downloadWer.p.rapidapi.com/v2/video/details?videoId=${currentState.youtubeId}`;
+		const api_url = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${currentState.youtubeId}`; //!50 per day
 		const fetchVideos = async () => {
 			if (currentState.youtubeId !== null) {
 				const response = await fetch(api_url, options);
@@ -124,7 +151,10 @@ const DownloadVideos = () => {
 		fetchVideos();
 
 		return () => controller.abort();
-	}, [currentState.youtubeId, setData, setId, setError]);
+	}, [currentState.youtubeId]);
+
+	const { adaptiveFormats } = currentState.data;
+	videosWithSingleFormat(adaptiveFormats);
 
 	return (
 		<PageContainer>
@@ -143,6 +173,8 @@ const DownloadVideos = () => {
 							</FormInputContainer>
 						</FormMainContainer>
 					</form>
+					{}
+
 					<ResultContainer>
 						<ResultHeader>
 							<ResultImage>

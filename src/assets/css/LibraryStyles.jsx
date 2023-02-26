@@ -130,17 +130,14 @@ export const TriggerButton = styled.button`
 	visibility: hidden;
 	background-color: transparent;
 	transition: ${({ theme }) => theme.properties.transition};
-
 	@media (max-width: 600px) {
 		opacity: unset;
 		visibility: unset;
 	}
-
 	& svg {
 		color: ${({ theme }) => theme.properties.darkerGrey};
 		font-size: 1.1rem;
 	}
-
 	&:hover {
 		background-color: ${({ theme }) => theme.properties.gray};
 	}

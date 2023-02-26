@@ -1,0 +1,12 @@
+	const formats = [];
+
+
+const formatsList = allVideosWithQualityLabel.forEach((video) => {
+		const { qualityLabel } = video;
+		return formats.push[qualityLabel];
+	});
+
+	// this produce one format per types of format
+	const perFormats = formatsList.filter((quality, index) => formatsList.indexOf(quality) === index);
+
+	const fetchVideoFormats = allVideosWithQualityLabel.forEach((video, index) => {});
