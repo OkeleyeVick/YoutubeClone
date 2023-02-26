@@ -1,9 +1,4 @@
 import { Icon } from "@iconify/react";
-import ImageOne from "../assets/images/image1.webp";
-import ImageTwo from "../assets/images/image2.webp";
-import ImageThree from "../assets/images/image3.webp";
-import ImageFour from "../assets/images/image4.webp";
-import ImageFive from "../assets/images/image5.webp";
 
 //! <== SideBar Link ==>
 export const AllPageLinks = [
@@ -207,47 +202,101 @@ export const offcanvasContainers = [
 export const images = [
 	{
 		pathname: "/",
-		image: ImageOne,
+		image: require("../assets/images/youtube-image.webp"),
 		imageTitle: "TED Motivation",
 		views: "200k",
 		duration: "2 weeks ago",
-		profileImage: ImageOne,
+		profileImage: require("../assets/images/image2.webp"),
 		title: "Get Inspired From Ted Talks and start working on your skill today",
 	},
 	{
 		pathname: "/",
-		image: ImageTwo,
+		image: require("../assets/images/image5.webp"),
 		imageTitle: "TED Motivation",
 		views: "200k",
 		duration: "2 weeks ago",
-		profileImage: ImageTwo,
+		profileImage: require("../assets/images/image3.webp"),
 		title: "Get Inspired From Ted Talks and start working on your skill today",
 	},
 	{
 		pathname: "/",
-		image: ImageThree,
+		image: require("../assets/images/tekno-beh-beh.webp"),
 		imageTitle: "TED Motivation",
 		views: "200k",
 		duration: "2 weeks ago",
-		profileImage: ImageThree,
+		profileImage: require("../assets/images/image1.webp"),
 		title: "Get Inspired From Ted Talks and start working on your skill today",
 	},
 	{
 		pathname: "/",
-		image: ImageFour,
+		image: require("../assets/images/netflix.webp"),
 		imageTitle: "TED Motivation",
 		views: "200k",
 		duration: "2 weeks ago",
-		profileImage: ImageFour,
+		profileImage: require("../assets/images/netflix-icon.jpg"),
 		title: "Get Inspired From Ted Talks and start working on your skill today",
 	},
 	{
 		pathname: "/",
-		image: ImageFive,
+		image: require("../assets/images/image6.webp"),
 		imageTitle: "TED Motivation",
 		views: "200k",
 		duration: "2 weeks ago",
-		profileImage: ImageFour,
+		profileImage: require("../assets/images/image1.webp"),
+		title: "Get Inspired From Ted Talks and start working on your skill today",
+	},
+	{
+		pathname: "/",
+		image: require("../assets/images/image4.webp"),
+		imageTitle: "TED Motivation",
+		views: "200k",
+		duration: "2 weeks ago",
+		profileImage: require("../assets/images/image1.webp"),
+		title: "Get Inspired From Ted Talks and start working on your skill today",
+	},
+	{
+		pathname: "/",
+		image: require("../assets/images/netflix.webp"),
+		imageTitle: "TED Motivation",
+		views: "200k",
+		duration: "2 weeks ago",
+		profileImage: require("../assets/images/netflix-icon.jpg"),
+		title: "Get Inspired From Ted Talks and start working on your skill today",
+	},
+	{
+		pathname: "/",
+		image: require("../assets/images/image6.webp"),
+		imageTitle: "TED Motivation",
+		views: "200k",
+		duration: "2 weeks ago",
+		profileImage: require("../assets/images/image1.webp"),
+		title: "Get Inspired From Ted Talks and start working on your skill today",
+	},
+	{
+		pathname: "/",
+		image: require("../assets/images/youtube-image.webp"),
+		imageTitle: "TED Motivation",
+		views: "200k",
+		duration: "2 weeks ago",
+		profileImage: require("../assets/images/image2.webp"),
+		title: "Get Inspired From Ted Talks and start working on your skill today",
+	},
+	{
+		pathname: "/",
+		image: require("../assets/images/image5.webp"),
+		imageTitle: "TED Motivation",
+		views: "200k",
+		duration: "2 weeks ago",
+		profileImage: require("../assets/images/image3.webp"),
+		title: "Get Inspired From Ted Talks and start working on your skill today",
+	},
+	{
+		pathname: "/",
+		image: require("../assets/images/image4.webp"),
+		imageTitle: "TED Motivation",
+		views: "200k",
+		duration: "2 weeks ago",
+		profileImage: require("../assets/images/image1.webp"),
 		title: "Get Inspired From Ted Talks and start working on your skill today",
 	},
 ];
