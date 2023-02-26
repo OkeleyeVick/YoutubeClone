@@ -38,14 +38,27 @@ import { LibraryItemDropdown, LinkItem } from "../assets/css/IndexPageStyles";
 const Librarypage = () => {
 	const [isActive, setIsActive] = useState(false);
 	const [dropdownId, setDropdownId] = useState(null);
+	const DropdownRef = useRef(null);
 
 	function handleDropdown(index) {
 		if (dropdownId === index) {
 			setDropdownId(null);
-			setIsActive((previousDropdownState) => !previousDropdownState);
+			setIsActive(false);
 		}
 		setDropdownId(index);
+		setIsActive(true);
 	}
+
+	useEffect(() => {
+		const handleDropdownItem = (event) => {
+			console.log(DropdownRef.current);
+		};
+		document.addEventListener("mousedown", handleDropdownItem);
+
+		return () => {
+			document.removeEventListener("mousedown", handleDropdownItem);
+		};
+	}, [setIsActive]);
 	return (
 		<>
 			<ParentContainer>
@@ -122,7 +135,7 @@ const Librarypage = () => {
 													<Icon icon="radix-icons:dots-vertical" />
 												</TriggerButton>
 												{dropdownId === index ? (
-													<LibraryItemDropdown isActive={isActive}>
+													<LibraryItemDropdown isActive={isActive} ref={DropdownRef}>
 														{SubscriptionMenuItems.map((menu, index) => {
 															const { icon, linkname } = menu;
 															return (
@@ -231,7 +244,7 @@ const Librarypage = () => {
 													<Icon icon="radix-icons:dots-vertical" />
 												</TriggerButton>
 												{dropdownId === index ? (
-													<LibraryItemDropdown isActive={isActive}>
+													<LibraryItemDropdown isActive={isActive} ref={DropdownRef}>
 														{SubscriptionMenuItems.map((menu, index) => {
 															const { icon, linkname } = menu;
 															return (
