@@ -60,30 +60,33 @@ function FormatTime(timeInSeconds) {}
 
 function videosWithSingleFormat(adaptiveFormats) {
 	let formats = [];
-	let arrayFormat = [];
+	let newArray = [];
 
+	// filter qualitylabels that have redundant things
 	const allVideosWithQualityLabel = adaptiveFormats?.filter((video) => {
 		const { qualityLabel } = video;
 		return qualityLabel;
 	});
 
+	// push to all formats to the array
 	allVideosWithQualityLabel?.forEach((video) => {
 		const { qualityLabel } = video;
 		formats.push(qualityLabel);
 	});
 
+	// get all available unique format as an array for formats
 	const perFormats = formats?.filter((quality, index) => formats.indexOf(quality) === index);
 
-	const x = perFormats?.forEach((format) => {
-		const y = allVideosWithQualityLabel.filter((eachVideo) => {
-			const { qualityLabel } = eachVideo;
-			return qualityLabel === format;
+	function fetchBasedOnFormat(format) {
+		const formattedVideos = allVideosWithQualityLabel?.filter((video) => {
+			return video.qualityLabel.indexOf(format) !== -1;
 		});
-		arrayFormat.push(y);
-		console.log(arrayFormat);
-	});
-}
+		newArray.push(formattedVideos);
+	}
 
+	perFormats?.forEach((format) => fetchBasedOnFormat(format));
+	console.log(newArray);
+}
 const DownloadVideos = () => {
 	const inputRef = useRef(null);
 
