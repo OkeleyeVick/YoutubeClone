@@ -18,6 +18,7 @@ import {
 	ResultHeader,
 	ResultImage,
 	ResultTableBody,
+	ResultTableBodyInner,
 	ResultTableHeader,
 	TextContainer,
 	Title,
@@ -222,15 +223,17 @@ const DownloadVideos = () => {
 							<HeadTitle>Download</HeadTitle>
 						</ResultTableHeader>
 						<ResultTableBody>
-							<Quality>702p</Quality>
-							<Type>mp4</Type>
-							<FileSize willChange>-</FileSize>
-							<DownloadLink to="/">
-								<Em>
-									<Icon icon="ph:download-simple-light" />
-								</Em>
-								<span>Download</span>
-							</DownloadLink>
+							<ResultTableBodyInner>
+								<Quality>702p</Quality>
+								<Type>mp4</Type>
+								<FileSize willChange>-</FileSize>
+								<DownloadLink to="/">
+									<Em>
+										<Icon icon="ph:download-simple-light" />
+									</Em>
+									<span>Download</span>
+								</DownloadLink>
+							</ResultTableBodyInner>
 						</ResultTableBody>
 					</ResultContainer>
 					{/* {currentState.data && (
@@ -260,7 +263,7 @@ const DownloadVideos = () => {
 										const { bitrate, qualityLabel, url } = format;
 										const fileSize = convertToMb(bitrate);
 										return (
-											<div key={index}>
+											<ResultTableBodyInner key={index}>
 												<Quality>{qualityLabel}</Quality>
 												<Type>mp4</Type>
 												<FileSize willChange>{fileSize}MB</FileSize>
@@ -270,7 +273,7 @@ const DownloadVideos = () => {
 													</Em>
 													<span>Download</span>
 												</DownloadLink>
-											</div>
+											</ResultTableBodyInner>
 										);
 									})}
 								</ResultTableBody>

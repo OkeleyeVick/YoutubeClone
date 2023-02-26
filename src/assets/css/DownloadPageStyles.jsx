@@ -127,7 +127,9 @@ export const ResultTableHeader = styled.div`
 	}
 `;
 
-export const ResultTableBody = styled(ResultTableHeader)`
+export const ResultTableBody = styled.div``;
+
+export const ResultTableBodyInner = styled(ResultTableHeader)`
 	border: none;
 `;
 
