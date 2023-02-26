@@ -160,7 +160,7 @@ export const Type = styled(BodyText)``;
 export const FileSize = styled(BodyText)``;
 
 export const DownloadLink = styled(Link).attrs({
-	target: "_blank",
+	download: "",
 })`
 	color: ${({ theme }) => theme.properties["text-clr"]};
 	border: 1px solid ${({ theme }) => theme.properties.borderColor};

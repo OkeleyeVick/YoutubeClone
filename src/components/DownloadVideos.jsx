@@ -54,13 +54,10 @@ const initialState = {
 	error: null,
 };
 
-const { setError, setData, setId } = global;
-
-function FormatTime(timeInSeconds) {}
-
 function videosWithSingleFormat(adaptiveFormats) {
 	let formats = [];
 	let newArray = [];
+	const finalFormats = [];
 
 	// filter qualitylabels that have redundant things
 	const allVideosWithQualityLabel = adaptiveFormats?.filter((video) => {
@@ -77,16 +74,42 @@ function videosWithSingleFormat(adaptiveFormats) {
 	// get all available unique format as an array for formats
 	const perFormats = formats?.filter((quality, index) => formats.indexOf(quality) === index);
 
+	// run a fetch for unique format
 	function fetchBasedOnFormat(format) {
 		const formattedVideos = allVideosWithQualityLabel?.filter((video) => {
 			return video.qualityLabel.indexOf(format) !== -1;
 		});
-		newArray.push(formattedVideos);
+		newArray.push(formattedVideos); //push to the newArray
 	}
-
+	// for eachformat, run a fetch of each format
 	perFormats?.forEach((format) => fetchBasedOnFormat(format));
-	console.log(newArray);
+
+	newArray.forEach((array) => {
+		const getFirstItem = array[0];
+		finalFormats.push(getFirstItem);
+	});
+
+	return finalFormats;
 }
+
+const { setError, setData, setId } = global;
+
+function formatTime(timeInSeconds) {
+	const totalSeconds = Math.round(timeInSeconds);
+	const hours = Math.floor(totalSeconds / 3600);
+	const minutes = Math.floor((totalSeconds % 3600) / 60);
+	const seconds = totalSeconds % 60;
+	return `${hours}:${minutes}:${seconds}`.toString();
+}
+
+function fetchThumbnailImage(thumbnail) {
+	return thumbnail[thumbnail?.length - 1];
+}
+
+function convertToMb(data) {
+	return Math.floor(data / 1024);
+}
+
 const DownloadVideos = () => {
 	const inputRef = useRef(null);
 
@@ -156,8 +179,10 @@ const DownloadVideos = () => {
 		return () => controller.abort();
 	}, [currentState.youtubeId]);
 
-	const { adaptiveFormats } = currentState.data;
-	videosWithSingleFormat(adaptiveFormats);
+	const { adaptiveFormats, lengthSeconds, thumbnail, title, viewCount, channelTitle } = currentState.data;
+	// const formats = videosWithSingleFormat(adaptiveFormats);
+	// const videoLength = formatTime(lengthSeconds);
+	// const imagePreview = fetchThumbnailImage(thumbnail);
 
 	return (
 		<PageContainer>
@@ -176,8 +201,6 @@ const DownloadVideos = () => {
 							</FormInputContainer>
 						</FormMainContainer>
 					</form>
-					{}
-
 					<ResultContainer>
 						<ResultHeader>
 							<ResultImage>
@@ -210,6 +233,50 @@ const DownloadVideos = () => {
 							</DownloadLink>
 						</ResultTableBody>
 					</ResultContainer>
+					{/* {currentState.data && (
+						<>
+							<ResultContainer>
+								<ResultHeader>
+									<ResultImage>
+										<Image src={imagePreview} />
+									</ResultImage>
+									<ContentContainer>
+										<Title>{title}</Title>
+										<span>Duration: {videoLength}</span>
+										<span>Views: {viewCount}</span>
+									</ContentContainer>
+								</ResultHeader>
+								<MimeType>
+									<h3>Video</h3>
+								</MimeType>
+								<ResultTableHeader>
+									<HeadTitle>Quality</HeadTitle>
+									<HeadTitle>Type</HeadTitle>
+									<HeadTitle willChange>File size</HeadTitle>
+									<HeadTitle>Download</HeadTitle>
+								</ResultTableHeader>
+								<ResultTableBody>
+									{formats.map((format, index) => {
+										const { bitrate, qualityLabel, url } = format;
+										const fileSize = convertToMb(bitrate);
+										return (
+											<div key={index}>
+												<Quality>{qualityLabel}</Quality>
+												<Type>mp4</Type>
+												<FileSize willChange>{fileSize}MB</FileSize>
+												<DownloadLink to={url} download>
+													<Em>
+														<Icon icon="ph:download-simple-light" />
+													</Em>
+													<span>Download</span>
+												</DownloadLink>
+											</div>
+										);
+									})}
+								</ResultTableBody>
+							</ResultContainer>
+						</>
+					)} */}
 				</FormMainContainer>
 			</FormOuterContainer>
 			<Container>
