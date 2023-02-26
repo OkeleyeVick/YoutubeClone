@@ -51,7 +51,7 @@ const Librarypage = () => {
 
 	useEffect(() => {
 		const handleDropdownItem = (event) => {
-			console.log(DropdownRef.current);
+			// console.log(DropdownRef.current);
 		};
 		document.addEventListener("mousedown", handleDropdownItem);
 
@@ -134,7 +134,7 @@ const Librarypage = () => {
 													}}>
 													<Icon icon="radix-icons:dots-vertical" />
 												</TriggerButton>
-												{dropdownId === index ? (
+												{dropdownId === index && (
 													<LibraryItemDropdown isActive={isActive} ref={DropdownRef}>
 														{SubscriptionMenuItems.map((menu, index) => {
 															const { icon, linkname } = menu;
@@ -146,7 +146,7 @@ const Librarypage = () => {
 															);
 														})}
 													</LibraryItemDropdown>
-												) : null}
+												)}
 											</div>
 										</ContainerContent>
 									</Container>

@@ -178,7 +178,7 @@ export const IconContainer = styled.div`
 		right: 0;
 		white-space: nowrap;
 		top: 50%;
-		transform: translate(-40%, -50%);
+		transform: translate(-36%, -50%);
 		scale: 0 1;
 		color: #fff;
 		background-color: rgba(0 0 0 / 70%);

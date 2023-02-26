@@ -23,7 +23,6 @@ import {
 } from "../assets/css/HeaderNavbarStyles";
 import youtubeSvg from "../assets/images/youtube-image.jpg";
 import AvatarImage from "../assets/images/vickkk.jpg";
-import "@splidejs/react-splide/css/core";
 import { NavbarContext } from "../App";
 import { useContext, useEffect, useRef } from "react";
 import { profileDropdown } from "./Objects";
@@ -44,15 +43,11 @@ const Navbar = () => {
 			return DropdownRef.current && !DropdownRef.current.contains(e.target) ? setDropdown(false) : null;
 		};
 		document.addEventListener("mousedown", handleDropdownFromDoc);
+
 		return () => {
 			document.removeEventListener("mousedown", handleDropdownFromDoc);
 		};
 	}, [setDropdown]);
-
-	function handleDropdown(e) {
-		e.stopPropagation();
-		return setDropdown((drop) => !drop);
-	}
 
 	return (
 		<div>
@@ -104,7 +99,7 @@ const Navbar = () => {
 							</Dropdown>
 						</BellIconWrapper>
 						<AvaterContainer>
-							<AvaterInner to="#" onClick={handleDropdown}>
+							<AvaterInner to="#" onClick={() => setDropdown((drop) => !drop)}>
 								<AvatarWrapper src={AvatarImage} />
 							</AvaterInner>
 							<AvatarDropdown isActive={dropdown} ref={DropdownRef}>
@@ -113,7 +108,7 @@ const Navbar = () => {
 									<Span>
 										<span>Okeleye Victor</span>
 										<small>justusofnigeria@gmail.com</small>
-										<Link to="/" onClick={handleDropdown}>
+										<Link to="/" onClick={() => setDropdown((toggle) => !toggle)}>
 											Manage your Google Account
 										</Link>
 									</Span>
@@ -126,7 +121,7 @@ const Navbar = () => {
 												{listItem.map((item, i) => {
 													const { icon, pathname } = item;
 													return (
-														<EachContainerLink to="download" key={i} onClick={handleDropdown}>
+														<EachContainerLink to="download" key={i} onClick={setDropdown((d) => !d)}>
 															<em>{icon}</em>
 															<Span>{pathname}</Span>
 														</EachContainerLink>

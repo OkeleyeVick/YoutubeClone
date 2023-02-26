@@ -109,12 +109,6 @@ export const offcanvasContainers = [
 	{
 		linkItem: [
 			{
-				pathname: "/library",
-				linkname: "Library",
-				Icon: <Icon icon="material-symbols:video-library-outline" />,
-				IconActive: <Icon icon="material-symbols:video-library" />,
-			},
-			{
 				pathname: "/history",
 				linkname: "History",
 				Icon: <Icon icon="octicon:history-24" />,
@@ -185,8 +179,8 @@ export const offcanvasContainers = [
 			{
 				pathname: "/help",
 				linkname: "Help",
-				Icon: <Icon icon="material-symbols:help-outline-rounded" />,
-				IconActive: <Icon icon="material-symbols:help-rounded" />,
+				Icon: <Icon icon="clarity:help-line" />,
+				IconActive: <Icon icon="carbon:help-filled" />,
 			},
 			{
 				pathname: "/feedback",
