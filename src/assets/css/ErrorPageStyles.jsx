@@ -10,6 +10,7 @@ export const Body = styled.div`
 		display: flex;
 		flex-direction: column;
 		row-gap: 1rem;
+		margin-top: -4rem;
 
 		& img {
 			scale: 0.7;
