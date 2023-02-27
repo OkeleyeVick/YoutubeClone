@@ -55,64 +55,11 @@ const initialState = {
 	error: null,
 };
 
-function videosWithSingleFormat(adaptiveFormats) {
-	let formats = [];
-	let newArray = [];
-	const finalFormats = [];
-
-	// filter qualitylabels that have redundant things
-	const allVideosWithQualityLabel = adaptiveFormats?.filter((video) => {
-		const { qualityLabel } = video;
-		return qualityLabel;
-	});
-
-	// push to all formats to the array
-	allVideosWithQualityLabel?.forEach((video) => {
-		const { qualityLabel } = video;
-		formats.push(qualityLabel);
-	});
-
-	// get all available unique format as an array for formats
-	const perFormats = formats?.filter((quality, index) => formats.indexOf(quality) === index);
-
-	// run a fetch for unique format
-	function fetchBasedOnFormat(format) {
-		const formattedVideos = allVideosWithQualityLabel?.filter((video) => {
-			return video.qualityLabel.indexOf(format) !== -1;
-		});
-		newArray.push(formattedVideos); //push to the newArray
-	}
-	// for eachformat, run a fetch of each format
-	perFormats?.forEach((format) => fetchBasedOnFormat(format));
-
-	newArray.forEach((array) => {
-		const getFirstItem = array[0];
-		finalFormats.push(getFirstItem);
-	});
-
-	return finalFormats;
-}
-
 const { setError, setData, setId } = global;
-
-function formatTime(timeInSeconds) {
-	const totalSeconds = Math.round(timeInSeconds);
-	const hours = Math.floor(totalSeconds / 3600);
-	const minutes = Math.floor((totalSeconds % 3600) / 60);
-	const seconds = totalSeconds % 60;
-	return `${hours}:${minutes}:${seconds}`.toString();
-}
-
-function fetchThumbnailImage(thumbnail) {
-	return thumbnail[thumbnail?.length - 1];
-}
-
-function convertToMb(data) {
-	return Math.floor(data / 1024);
-}
 
 const DownloadVideos = () => {
 	const inputRef = useRef(null);
+	const flag = false;
 
 	const reducerFunc = (state, action) => {
 		switch (action.type) {
@@ -121,6 +68,7 @@ const DownloadVideos = () => {
 					...state,
 					data: action.data,
 					error: null,
+					flag: !flag,
 				};
 
 			case setError:
@@ -180,10 +128,64 @@ const DownloadVideos = () => {
 		return () => controller.abort();
 	}, [currentState.youtubeId]);
 
+	function videosWithSingleFormat(adaptiveFormats) {
+		let formats = [];
+		let newArray = [];
+		const finalFormats = [];
+
+		// filter qualitylabels that have redundant things
+		const allVideosWithQualityLabel = adaptiveFormats?.filter((video) => {
+			const { qualityLabel } = video;
+			return qualityLabel;
+		});
+
+		// push to all formats to the array
+		allVideosWithQualityLabel?.forEach((video) => {
+			const { qualityLabel } = video;
+			formats.push(qualityLabel);
+		});
+
+		// get all available unique format as an array for formats
+		const perFormats = formats?.filter((quality, index) => formats.indexOf(quality) === index);
+
+		// run a fetch for unique format
+		function fetchBasedOnFormat(format) {
+			const formattedVideos = allVideosWithQualityLabel?.filter((video) => {
+				return video.qualityLabel.indexOf(format) !== -1;
+			});
+			newArray.push(formattedVideos); //push to the newArray
+		}
+		// for eachformat, run a fetch of each format
+		perFormats?.forEach((format) => fetchBasedOnFormat(format));
+
+		newArray.forEach((array) => {
+			const getFirstItem = array[0];
+			finalFormats.push(getFirstItem);
+		});
+
+		return finalFormats;
+	}
+
+	function formatTime(timeInSeconds) {
+		const totalSeconds = Math.round(timeInSeconds);
+		const hours = Math?.floor(totalSeconds / 3600);
+		const minutes = Math?.floor((totalSeconds % 3600) / 60);
+		const seconds = totalSeconds % 60;
+		return `${hours}:${minutes}:${seconds}`.toString();
+	}
+
+	function fetchThumbnailImage(thumbnail) {
+		return thumbnail?.[thumbnail.length - 1];
+	}
+
+	function convertToMb(data) {
+		return Math?.floor(data / 1024);
+	}
+
 	const { adaptiveFormats, lengthSeconds, thumbnail, title, viewCount, channelTitle } = currentState.data;
-	// const formats = videosWithSingleFormat(adaptiveFormats);
-	// const videoLength = formatTime(lengthSeconds);
-	// const imagePreview = fetchThumbnailImage(thumbnail);
+	const formats = videosWithSingleFormat(adaptiveFormats);
+	const videoLength = formatTime(lengthSeconds);
+	const imagePreview = fetchThumbnailImage(thumbnail);
 
 	return (
 		<PageContainer>
@@ -236,7 +238,7 @@ const DownloadVideos = () => {
 							</ResultTableBodyInner>
 						</ResultTableBody>
 					</ResultContainer>
-					{/* {currentState.data && (
+					{currentState.flag === true && (
 						<>
 							<ResultContainer>
 								<ResultHeader>
@@ -279,7 +281,7 @@ const DownloadVideos = () => {
 								</ResultTableBody>
 							</ResultContainer>
 						</>
-					)} */}
+					)}
 				</FormMainContainer>
 			</FormOuterContainer>
 			<Container>
