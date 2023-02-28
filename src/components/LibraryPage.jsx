@@ -51,7 +51,9 @@ const Librarypage = () => {
 
 	useEffect(() => {
 		const handleDropdownItem = (event) => {
-			// console.log(DropdownRef.current);
+			if (DropdownRef.current && !DropdownRef.current.contains(event.target)) {
+				setIsActive(false);
+			}
 		};
 		document.addEventListener("mousedown", handleDropdownItem);
 
