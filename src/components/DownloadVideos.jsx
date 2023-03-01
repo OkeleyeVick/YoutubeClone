@@ -235,7 +235,7 @@ const DownloadVideos = () => {
 							</ResultTableBodyInner>
 						</ResultTableBody>
 					</ResultContainer>
-					{currentState.data && (
+					{/* {currentState.data && (
 						<>
 							<ResultContainer>
 								<ResultHeader>
@@ -278,7 +278,7 @@ const DownloadVideos = () => {
 								</ResultTableBody>
 							</ResultContainer>
 						</>
-					)}
+					)} */}
 				</FormMainContainer>
 			</FormOuterContainer>
 			<Container>
