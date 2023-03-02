@@ -89,6 +89,7 @@ export const ResultImage = styled.div`
 export const Image = styled.img`
 	height: auto;
 	max-width: 100%;
+	width: 100%;
 `;
 
 export const ContentContainer = styled.div`
