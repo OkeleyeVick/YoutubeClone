@@ -303,7 +303,7 @@ export const gridItems = [
 	},
 	{
 		icon: <Icon icon="fluent:notepad-32-filled" />,
-		text: "2. Go back to this page and paste the copied url into the address field on the top of this page and then click on the Download button",
+		text: "2. Come back to this page and paste the copied url into the address field on the top of this page and then click on the Download button",
 	},
 	{
 		icon: <Icon icon="ph:download-fill" />,
