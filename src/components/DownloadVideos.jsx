@@ -229,8 +229,8 @@ const DownloadVideos = () => {
 					</MimeType>
 					<ResultTableHeader>
 						<HeadTitle>Quality</HeadTitle>
-						<HeadTitle>Type</HeadTitle>
-						<HeadTitle willChange>File size</HeadTitle>
+						<HeadTitle willChange>Type</HeadTitle>
+						<HeadTitle>File size</HeadTitle>
 						<HeadTitle>Download</HeadTitle>
 					</ResultTableHeader>
 					<ResultTableBody>
@@ -239,8 +239,8 @@ const DownloadVideos = () => {
 							return (
 								<ResultTableBodyInner key={index}>
 									<Quality>{format}</Quality>
-									<Type>mp4</Type>
-									<FileSize willChange>{fileSize !== "" ? fileSize : "-"}</FileSize>
+									<Type willChange>mp4</Type>
+									<FileSize>{fileSize !== "" ? fileSize : "-"}</FileSize>
 									<DownloadLink to={url} download={title}>
 										<Em>
 											<Icon icon="ph:download-simple-light" />
