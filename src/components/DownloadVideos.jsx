@@ -51,7 +51,7 @@ const global = {
 
 const initialState = {
 	youtubeId: null,
-	data: null,
+	data: {},
 	error: null,
 };
 
@@ -85,42 +85,10 @@ const reducerFunc = (state, action) => {
 	}
 };
 
-function videosWithSingleFormat(adaptiveFormats) {
-	let formats = [];
-	let newArray = [];
-	const finalFormats = [];
-
-	// filter qualitylabels that have redundant things
-	const allVideosWithQualityLabel = adaptiveFormats?.filter((video) => {
-		const { qualityLabel } = video;
-		return qualityLabel;
+function videosWithSingleFormat(linkOfFormats) {
+	linkOfFormats.forEach((link) => {
+		console.log(link);
 	});
-
-	// push to all formats to the array
-	allVideosWithQualityLabel?.forEach((video) => {
-		const { qualityLabel } = video;
-		formats.push(qualityLabel);
-	});
-
-	// get all available unique format as an array for formats
-	const perFormats = formats?.filter((quality, index) => formats.indexOf(quality) === index);
-
-	// run a fetch for unique format
-	function fetchBasedOnFormat(format) {
-		const formattedVideos = allVideosWithQualityLabel?.filter((video) => {
-			return video.qualityLabel.indexOf(format) !== -1;
-		});
-		newArray.push(formattedVideos); //push to the newArray
-	}
-	// for eachformat, run a fetch of each format
-	perFormats?.forEach((format) => fetchBasedOnFormat(format));
-
-	newArray.forEach((array) => {
-		const getFirstItem = array[0];
-		finalFormats.push(getFirstItem);
-	});
-
-	return finalFormats;
 }
 
 function formatTime(timeInSeconds) {
@@ -129,14 +97,6 @@ function formatTime(timeInSeconds) {
 	const minutes = Math?.floor((totalSeconds % 3600) / 60);
 	const seconds = totalSeconds % 60;
 	return `${hours}:${minutes}:${seconds}`.toString();
-}
-
-function fetchThumbnailImage(thumbnail) {
-	return thumbnail?.[thumbnail.length - 1];
-}
-
-function convertToMb(data) {
-	return Math?.floor(data / 1024);
 }
 
 const DownloadVideos = () => {
@@ -151,20 +111,18 @@ const DownloadVideos = () => {
 	const [currentState, doAction] = useReducer(reducerFunc, initialState);
 
 	useEffect(() => {
-		// "X-RapidAPI-Host": "youtube-media-downloader.p.rapidapi.com",
-		// const api_url = `https://youtube-media-downloadWer.p.rapidapi.com/v2/video/details?videoId=${currentState.youtubeId}`;
 		const controller = new AbortController();
 
 		const options = {
 			method: "GET",
 			headers: {
 				"X-RapidAPI-Key": "6473c3ce7dmsh28c8afd093343dep1d0f1fjsn02e8bc02b53a",
-				"X-RapidAPI-Host": "ytstream-download-youtube-videos.p.rapidapi.com", //! 50 per day
+				"X-RapidAPI-Host": "youtube-video-download-info.p.rapidapi.com",
 			},
 			signal: controller.signal,
 		};
 
-		const api_url = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${currentState.youtubeId}`; //!50 per day
+		const api_url = `https://youtube-video-download-info.p.rapidapi.com/dl?id=${currentState.youtubeId}`;
 		const fetchVideos = async () => {
 			if (currentState.youtubeId !== null) {
 				const response = await fetch(api_url, options);
@@ -180,10 +138,56 @@ const DownloadVideos = () => {
 		return () => controller.abort();
 	}, [currentState.youtubeId]);
 
-	const { adaptiveFormats, lengthSeconds, thumbnail, title, viewCount, channelTitle } = currentState.data;
-	const formats = videosWithSingleFormat(adaptiveFormats);
-	const videoLength = formatTime(lengthSeconds);
-	const imagePreview = fetchThumbnailImage(thumbnail);
+	console.log(currentState.data);
+
+	let finalResult;
+	if (currentState.data) {
+		const { length, title, thumb, view_count, link } = currentState.data;
+
+		const formats = videosWithSingleFormat(link);
+		// finalResult = (
+		// 	<ResultContainer>
+		// 		<ResultHeader>
+		// 			<ResultImage>
+		// 				<Image src={imagePreview} />
+		// 			</ResultImage>
+		// 			<ContentContainer>
+		// 				<Title>{title}</Title>
+		// 				<span>Duration: {videoLength}</span>
+		// 				<span>Views: {viewCount}</span>
+		// 			</ContentContainer>
+		// 		</ResultHeader>
+		// 		<MimeType>
+		// 			<h3>Video</h3>
+		// 		</MimeType>
+		// 		<ResultTableHeader>
+		// 			<HeadTitle>Quality</HeadTitle>
+		// 			<HeadTitle>Type</HeadTitle>
+		// 			<HeadTitle willChange>File size</HeadTitle>
+		// 			<HeadTitle>Download</HeadTitle>
+		// 		</ResultTableHeader>
+		// 		<ResultTableBody>
+		// 			{formats.map((format, index) => {
+		// 				const { bitrate, qualityLabel, url } = format;
+		// 				const fileSize = convertToMb(bitrate);
+		// 				return (
+		// 					<ResultTableBodyInner key={index}>
+		// 						<Quality>{qualityLabel}</Quality>
+		// 						<Type>mp4</Type>
+		// 						<FileSize willChange>{fileSize}MB</FileSize>
+		// 						<DownloadLink to={url} target="_blank" download={title}>
+		// 							<Em>
+		// 								<Icon icon="ph:download-simple-light" />
+		// 							</Em>
+		// 							<span>Download</span>
+		// 						</DownloadLink>
+		// 					</ResultTableBodyInner>
+		// 				);
+		// 			})}
+		// 		</ResultTableBody>
+		// 	</ResultContainer>
+		// );
+	}
 	return (
 		<PageContainer>
 			<FormOuterContainer>
@@ -201,86 +205,9 @@ const DownloadVideos = () => {
 							</FormInputContainer>
 						</FormMainContainer>
 					</form>
-					<ResultContainer>
-						<ResultHeader>
-							<ResultImage>
-								<Image src={FakeImage} />
-							</ResultImage>
-							<ContentContainer>
-								<Title>Will Smith's Life Advice Will Change You - One of the Greatest Speeches Ever | Will Smith Motivation</Title>
-								<span>Duration: 0:10:45</span>
-								<span>Views: 4,080,048</span>
-							</ContentContainer>
-						</ResultHeader>
-						<MimeType>
-							<h3>Video</h3>
-						</MimeType>
-						<ResultTableHeader>
-							<HeadTitle>Quality</HeadTitle>
-							<HeadTitle>Type</HeadTitle>
-							<HeadTitle willChange>File size</HeadTitle>
-							<HeadTitle>Download</HeadTitle>
-						</ResultTableHeader>
-						<ResultTableBody>
-							<ResultTableBodyInner>
-								<Quality>702p</Quality>
-								<Type>mp4</Type>
-								<FileSize willChange>-</FileSize>
-								<DownloadLink to="/">
-									<Em>
-										<Icon icon="ph:download-simple-light" />
-									</Em>
-									<span>Download</span>
-								</DownloadLink>
-							</ResultTableBodyInner>
-						</ResultTableBody>
-					</ResultContainer>
-					{/* {currentState.data && (
-						<>
-							<ResultContainer>
-								<ResultHeader>
-									<ResultImage>
-										<Image src={imagePreview} />
-									</ResultImage>
-									<ContentContainer>
-										<Title>{title}</Title>
-										<span>Duration: {videoLength}</span>
-										<span>Views: {viewCount}</span>
-									</ContentContainer>
-								</ResultHeader>
-								<MimeType>
-									<h3>Video</h3>
-								</MimeType>
-								<ResultTableHeader>
-									<HeadTitle>Quality</HeadTitle>
-									<HeadTitle>Type</HeadTitle>
-									<HeadTitle willChange>File size</HeadTitle>
-									<HeadTitle>Download</HeadTitle>
-								</ResultTableHeader>
-								<ResultTableBody>
-									{formats.map((format, index) => {
-										const { bitrate, qualityLabel, url } = format;
-										const fileSize = convertToMb(bitrate);
-										return (
-											<ResultTableBodyInner key={index}>
-												<Quality>{qualityLabel}</Quality>
-												<Type>mp4</Type>
-												<FileSize willChange>{fileSize}MB</FileSize>
-												<DownloadLink to={url} download>
-													<Em>
-														<Icon icon="ph:download-simple-light" />
-													</Em>
-													<span>Download</span>
-												</DownloadLink>
-											</ResultTableBodyInner>
-										);
-									})}
-								</ResultTableBody>
-							</ResultContainer>
-						</>
-					)} */}
 				</FormMainContainer>
 			</FormOuterContainer>
+			{/* {finalResult} */}
 			<Container>
 				<GridTitleContainer>
 					<GridTitle>How to download youtube videos ?</GridTitle>
