@@ -241,7 +241,7 @@ const DownloadVideos = () => {
 									<Quality>{format}</Quality>
 									<Type willChange>mp4</Type>
 									<FileSize>{fileSize !== "" ? fileSize : "-"}</FileSize>
-									<DownloadLink to={url} download={title}>
+									<DownloadLink to={url} download={title} target="_blank">
 										<Em>
 											<Icon icon="ph:download-simple-light" />
 										</Em>
