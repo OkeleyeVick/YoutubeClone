@@ -144,7 +144,6 @@ const DownloadVideos = () => {
 					arrayTwo.push(array[0]);
 				});
 
-				// console.log(arrayTwo);
 				doAction({ type: setData, data: { length, title, thumb, view_count, formats: arrayTwo } });
 			}
 			return;
@@ -155,54 +154,53 @@ const DownloadVideos = () => {
 		return () => controller.abort();
 	}, [currentState.youtubeId]);
 
-	console.log(currentState);
+	let finalResult;
+	if (currentState.data) {
+		const { length, title, thumb, view_count, formats } = currentState.data;
 
-	// let finalResult;
-	// if (currentState.data) {
-	// 	const { length, title, thumb, view_count, link } = currentState.data;
-	// 	// const formats = videosWithSingleFormat(link) || "";
-	// 	finalResult = (
-	// 		<ResultContainer>
-	// 			<ResultHeader>
-	// 				<ResultImage>
-	// 					<Image src={thumb} />
-	// 				</ResultImage>
-	// 				<ContentContainer>
-	// 					<Title>{title}</Title>
-	// 					<span>Duration: {length}</span>
-	// 					<span>Views: {view_count}</span>
-	// 				</ContentContainer>
-	// 			</ResultHeader>
-	// 			<MimeType>
-	// 				<h3>Video</h3>
-	// 			</MimeType>
-	// 			<ResultTableHeader>
-	// 				<HeadTitle>Quality</HeadTitle>
-	// 				<HeadTitle>Type</HeadTitle>
-	// 				<HeadTitle willChange>File size</HeadTitle>
-	// 				<HeadTitle>Download</HeadTitle>
-	// 			</ResultTableHeader>
-	// 			<ResultTableBody>
-	// 				{/* {formats.map((item, index) => {
-	// 					const { fileSize, format, url } = item;
-	// 					return (
-	// 						<ResultTableBodyInner key={index}>
-	// 							<Quality>{format}</Quality>
-	// 							<Type>mp4</Type>
-	// 							<FileSize willChange>{fileSize}</FileSize>
-	// 							<DownloadLink to={url} download={title}>
-	// 								<Em>
-	// 									<Icon icon="ph:download-simple-light" />
-	// 								</Em>
-	// 								<span>Download</span>
-	// 							</DownloadLink>
-	// 						</ResultTableBodyInner>
-	// 					);
-	// 				})} */}
-	// 			</ResultTableBody>
-	// 		</ResultContainer>
-	// 	);
-	// }
+		finalResult = (
+			<ResultContainer>
+				<ResultHeader>
+					<ResultImage>
+						<Image src={thumb} />
+					</ResultImage>
+					<ContentContainer>
+						<Title>{title}</Title>
+						<span>Duration: {length}</span>
+						<span>Views: {view_count}</span>
+					</ContentContainer>
+				</ResultHeader>
+				<MimeType>
+					<h3>Video</h3>
+				</MimeType>
+				<ResultTableHeader>
+					<HeadTitle>Quality</HeadTitle>
+					<HeadTitle>Type</HeadTitle>
+					<HeadTitle willChange>File size</HeadTitle>
+					<HeadTitle>Download</HeadTitle>
+				</ResultTableHeader>
+				<ResultTableBody>
+					{currentState.data &&
+						formats.map((item, index) => {
+							const { fileSize, format, url } = item;
+							return (
+								<ResultTableBodyInner key={index}>
+									<Quality>{format}</Quality>
+									<Type>mp4</Type>
+									<FileSize willChange>{fileSize}</FileSize>
+									<DownloadLink to={url} download={title}>
+										<Em>
+											<Icon icon="ph:download-simple-light" />
+										</Em>
+										<span>Download</span>
+									</DownloadLink>
+								</ResultTableBodyInner>
+							);
+						})}
+				</ResultTableBody>
+			</ResultContainer>
+		);
+	}
 
 	return (
 		<PageContainer>
@@ -223,7 +221,7 @@ const DownloadVideos = () => {
 					</form>
 				</FormMainContainer>
 			</FormOuterContainer>
-			{/* {currentState.data && finalResult} */}
+			{finalResult}
 			<Container>
 				<GridTitleContainer>
 					<GridTitle>How to download youtube videos ?</GridTitle>
