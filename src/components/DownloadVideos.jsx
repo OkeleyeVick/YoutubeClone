@@ -156,50 +156,51 @@ const DownloadVideos = () => {
 
 	let finalResult;
 	if (currentState.data) {
+		// founded a to push the actual DATA to usereducer but erro still happens
 		const { length, title, thumb, view_count, formats } = currentState.data;
 
-		finalResult = (
-			<ResultContainer>
-				<ResultHeader>
-					<ResultImage>
-						<Image src={thumb} />
-					</ResultImage>
-					<ContentContainer>
-						<Title>{title}</Title>
-						<span>Duration: {length}</span>
-						<span>Views: {view_count}</span>
-					</ContentContainer>
-				</ResultHeader>
-				<MimeType>
-					<h3>Video</h3>
-				</MimeType>
-				<ResultTableHeader>
-					<HeadTitle>Quality</HeadTitle>
-					<HeadTitle>Type</HeadTitle>
-					<HeadTitle willChange>File size</HeadTitle>
-					<HeadTitle>Download</HeadTitle>
-				</ResultTableHeader>
-				<ResultTableBody>
-					{currentState.data &&
-						formats.map((item, index) => {
-							const { fileSize, format, url } = item;
-							return (
-								<ResultTableBodyInner key={index}>
-									<Quality>{format}</Quality>
-									<Type>mp4</Type>
-									<FileSize willChange>{fileSize}</FileSize>
-									<DownloadLink to={url} download={title}>
-										<Em>
-											<Icon icon="ph:download-simple-light" />
-										</Em>
-										<span>Download</span>
-									</DownloadLink>
-								</ResultTableBodyInner>
-							);
-						})}
-				</ResultTableBody>
-			</ResultContainer>
-		);
+		// finalResult = (
+		// 	<ResultContainer>
+		// 		<ResultHeader>
+		// 			<ResultImage>
+		// 				<Image src={thumb} />
+		// 			</ResultImage>
+		// 			<ContentContainer>
+		// 				<Title>{title}</Title>
+		// 				<span>Duration: {length}</span>
+		// 				<span>Views: {view_count}</span>
+		// 			</ContentContainer>
+		// 		</ResultHeader>
+		// 		<MimeType>
+		// 			<h3>Video</h3>
+		// 		</MimeType>
+		// 		<ResultTableHeader>
+		// 			<HeadTitle>Quality</HeadTitle>
+		// 			<HeadTitle>Type</HeadTitle>
+		// 			<HeadTitle willChange>File size</HeadTitle>
+		// 			<HeadTitle>Download</HeadTitle>
+		// 		</ResultTableHeader>
+		// 		<ResultTableBody>
+		// 			{currentState.data &&
+		// 				formats.map((item, index) => {
+		// 					const { fileSize, format, url } = item;
+		// 					return (
+		// 						<ResultTableBodyInner key={index}>
+		// 							<Quality>{format}</Quality>
+		// 							<Type>mp4</Type>
+		// 							<FileSize willChange>{fileSize}</FileSize>
+		// 							<DownloadLink to={url} download={title}>
+		// 								<Em>
+		// 									<Icon icon="ph:download-simple-light" />
+		// 								</Em>
+		// 								<span>Download</span>
+		// 							</DownloadLink>
+		// 						</ResultTableBodyInner>
+		// 					);
+		// 				})}
+		// 		</ResultTableBody>
+		// 	</ResultContainer>
+		// );
 	}
 
 	return (
