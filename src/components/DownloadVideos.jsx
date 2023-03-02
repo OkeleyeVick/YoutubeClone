@@ -114,7 +114,38 @@ const DownloadVideos = () => {
 				const response = await fetch(api_url, options);
 				if (!response.ok) doAction({ type: setError, error: response.status });
 				const data = await response.json();
-				doAction({ type: setData, data });
+				const { length, title, thumb, view_count, link } = data;
+
+				let objectArray = [];
+				if (data) {
+					for (const array in link) {
+						let object = {};
+						const item = link[array];
+						const [url, fileSize, format] = [item[0], item[1], item[3]];
+						object["url"] = url;
+						object["fileSize"] = fileSize;
+						object["format"] = format;
+
+						objectArray.push(object);
+					}
+				}
+				const formats = ["144p", "240p", "360p", "480p", "720p", "1080p"];
+
+				let arrayOne = [],
+					arrayTwo = [];
+				formats.forEach((video_format) => {
+					const filterArray = objectArray.filter((object) => {
+						const { format } = object;
+						return format === video_format;
+					});
+					arrayOne.push(filterArray);
+				});
+				arrayOne.forEach((array) => {
+					arrayTwo.push(array[0]);
+				});
+
+				// console.log(arrayTwo);
+				doAction({ type: setData, data: { length, title, thumb, view_count, formats: arrayTwo } });
 			}
 			return;
 		};
@@ -124,86 +155,55 @@ const DownloadVideos = () => {
 		return () => controller.abort();
 	}, [currentState.youtubeId]);
 
-	function videosWithSingleFormat(linkOfFormats) {
-		let objectArray = [];
-		if (linkOfFormats) {
-			for (const array in linkOfFormats) {
-				let object = {};
-				const item = linkOfFormats[array];
-				const [url, fileSize, format] = [item[0], item[1], item[3]];
-				object["url"] = url;
-				object["fileSize"] = fileSize;
-				object["format"] = format;
+	console.log(currentState);
 
-				objectArray.push(object);
-			}
-		}
-		const formats = ["144p", "240p", "360p", "480p", "720p", "1080p"];
+	// let finalResult;
+	// if (currentState.data) {
+	// 	const { length, title, thumb, view_count, link } = currentState.data;
+	// 	// const formats = videosWithSingleFormat(link) || "";
+	// 	finalResult = (
+	// 		<ResultContainer>
+	// 			<ResultHeader>
+	// 				<ResultImage>
+	// 					<Image src={thumb} />
+	// 				</ResultImage>
+	// 				<ContentContainer>
+	// 					<Title>{title}</Title>
+	// 					<span>Duration: {length}</span>
+	// 					<span>Views: {view_count}</span>
+	// 				</ContentContainer>
+	// 			</ResultHeader>
+	// 			<MimeType>
+	// 				<h3>Video</h3>
+	// 			</MimeType>
+	// 			<ResultTableHeader>
+	// 				<HeadTitle>Quality</HeadTitle>
+	// 				<HeadTitle>Type</HeadTitle>
+	// 				<HeadTitle willChange>File size</HeadTitle>
+	// 				<HeadTitle>Download</HeadTitle>
+	// 			</ResultTableHeader>
+	// 			<ResultTableBody>
+	// 				{/* {formats.map((item, index) => {
+	// 					const { fileSize, format, url } = item;
+	// 					return (
+	// 						<ResultTableBodyInner key={index}>
+	// 							<Quality>{format}</Quality>
+	// 							<Type>mp4</Type>
+	// 							<FileSize willChange>{fileSize}</FileSize>
+	// 							<DownloadLink to={url} download={title}>
+	// 								<Em>
+	// 									<Icon icon="ph:download-simple-light" />
+	// 								</Em>
+	// 								<span>Download</span>
+	// 							</DownloadLink>
+	// 						</ResultTableBodyInner>
+	// 					);
+	// 				})} */}
+	// 			</ResultTableBody>
+	// 		</ResultContainer>
+	// 	);
+	// }
 
-		let arrayOne = [],
-			arrayTwo = [];
-		formats.forEach((video_format) => {
-			const filterArray = objectArray.filter((object) => {
-				const { format } = object;
-				return format === video_format;
-			});
-			arrayOne.push(filterArray);
-		});
-		arrayOne.forEach((array) => {
-			arrayTwo.push(array[0]);
-		});
-
-		return arrayTwo;
-	}
-
-	let finalResult;
-	if (currentState.data) {
-		const { length, title, thumb, view_count, link } = currentState.data;
-		const formats = videosWithSingleFormat(link);
-		finalResult = (
-			<ResultContainer>
-				<ResultHeader>
-					<ResultImage>
-						<Image src={thumb} />
-					</ResultImage>
-					<ContentContainer>
-						<Title>{title}</Title>
-						<span>Duration: {length}</span>
-						<span>Views: {view_count}</span>
-					</ContentContainer>
-				</ResultHeader>
-				<MimeType>
-					<h3>Video</h3>
-				</MimeType>
-				<ResultTableHeader>
-					<HeadTitle>Quality</HeadTitle>
-					<HeadTitle>Type</HeadTitle>
-					<HeadTitle willChange>File size</HeadTitle>
-					<HeadTitle>Download</HeadTitle>
-				</ResultTableHeader>
-				<ResultTableBody>
-					{formats !== undefined
-						? formats.map((item, index) => {
-								const { fileSize, format, url } = item;
-								return (
-									<ResultTableBodyInner key={index}>
-										<Quality>{format}</Quality>
-										<Type>mp4</Type>
-										<FileSize willChange>{fileSize}</FileSize>
-										<DownloadLink to={url} download={title}>
-											<Em>
-												<Icon icon="ph:download-simple-light" />
-											</Em>
-											<span>Download</span>
-										</DownloadLink>
-									</ResultTableBodyInner>
-								);
-						  })
-						: ""}
-				</ResultTableBody>
-			</ResultContainer>
-		);
-	}
 	return (
 		<PageContainer>
 			<FormOuterContainer>
@@ -224,7 +224,6 @@ const DownloadVideos = () => {
 				</FormMainContainer>
 			</FormOuterContainer>
 			{/* {currentState.data && finalResult} */}
-			{console.log(currentState.data)}
 			<Container>
 				<GridTitleContainer>
 					<GridTitle>How to download youtube videos ?</GridTitle>
@@ -246,3 +245,37 @@ const DownloadVideos = () => {
 };
 
 export default DownloadVideos;
+
+// function videosWithSingleFormat(linkOfFormats) {
+// 	let objectArray = [];
+// 	if (data) {
+// 		for (const array in data) {
+// 			let object = {};
+// 			const item = data[array];
+// 			const [url, fileSize, format] = [item[0], item[1], item[3]];
+// 			object["url"] = url;
+// 			object["fileSize"] = fileSize;
+// 			object["format"] = format;
+
+// 			objectArray.push(object);
+// 		}
+// 	}
+// 	const formats = ["144p", "240p", "360p", "480p", "720p", "1080p"];
+
+// 	let arrayOne = [],
+// 		arrayTwo = [];
+// 	formats.forEach((video_format) => {
+// 		const filterArray = objectArray.filter((object) => {
+// 			const { format } = object;
+// 			return format === video_format;
+// 		});
+// 		arrayOne.push(filterArray);
+// 	});
+// 	arrayOne.forEach((array) => {
+// 		arrayTwo.push(array[0]);
+// 	});
+
+// 	doAction({ type: setData, arrayTwo });
+
+// 	return arrayTwo;
+// }
