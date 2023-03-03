@@ -35,7 +35,6 @@ import {
 	Sumbit,
 } from "../assets/css/FormStyles";
 import { Em } from "../assets/css/IndexPageStyles";
-import FakeImage from "../assets/images/netflix.webp";
 import { gridItems } from "./Objects";
 
 const extractAndCopyId = (youtubeLink) => {
@@ -116,6 +115,7 @@ const DownloadVideos = () => {
 			const response = await fetch(api_url, options);
 			if (!response.ok) doAction({ type: setError, error: response.status });
 			const data = await response.json();
+
 			const { length, title, thumb, view_count, link } = data;
 
 			let objectArray = [];
@@ -142,7 +142,11 @@ const DownloadVideos = () => {
 				});
 				arrayOne.push(filterArray);
 			});
-			arrayOne.forEach((array) => {
+
+			const filteredEmptyArray = arrayOne.filter((array) => {
+				return array.length !== 0;
+			});
+			filteredEmptyArray.forEach((array) => {
 				arrayTwo.push(array[0]);
 			});
 
