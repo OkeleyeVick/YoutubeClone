@@ -47,7 +47,7 @@ const Navbar = () => {
 		return () => {
 			document.removeEventListener("mousedown", handleDropdownFromDoc);
 		};
-	}, [setDropdown]);
+	}, [setDropdown, dropdown]);
 
 	return (
 		<div>
