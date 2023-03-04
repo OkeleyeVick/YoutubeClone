@@ -7,7 +7,6 @@ import Librarypage from "./LibraryPage";
 import Navbar from "./Navbar";
 import ShortsPage from "./ShortsPage";
 import Subscriptions from "./Subscriptions";
-import SearchPageResult from "./SearchPageResult";
 
 const MainBody = () => {
 	return (
@@ -20,7 +19,6 @@ const MainBody = () => {
 					<Route path="/library" element={<Librarypage />} />
 					<Route path="/subscriptions" element={<Subscriptions />} />
 					<Route path="/downloads" element={<DownloadVideos />} />
-					<Route path="/search" element={<SearchPageResult />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</ContainerInner>
