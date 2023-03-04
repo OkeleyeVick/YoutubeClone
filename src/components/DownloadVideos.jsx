@@ -116,7 +116,8 @@ const DownloadVideos = () => {
 			if (!response.ok) doAction({ type: setError, error: response.status });
 			const data = await response.json();
 
-			const { length, title, thumb, view_count, link } = data;
+			console.log(data);
+			const { length, title, thumb, view_count, link, description } = data;
 
 			let objectArray = [];
 			if (data) {
@@ -150,7 +151,7 @@ const DownloadVideos = () => {
 				arrayTwo.push(array[0]);
 			});
 
-			doAction({ type: setData, data: { length, title, thumb, view_count, formats: arrayTwo } });
+			doAction({ type: setData, data: { length, title, thumb, view_count, formats: arrayTwo, description } });
 		};
 
 		fetchVideos();
@@ -163,7 +164,7 @@ const DownloadVideos = () => {
 			<PageContainer>
 				<FormOuterContainer>
 					<FormTitleContainer>
-						<FormTitle>Enter youtube link</FormTitle>
+						<FormTitle>Enter Youtube link</FormTitle>
 					</FormTitleContainer>
 					<FormMainContainer>
 						<form action="">
@@ -197,7 +198,7 @@ const DownloadVideos = () => {
 			</PageContainer>
 		);
 	} else {
-		const { length, title, thumb, view_count, formats } = currentState.data;
+		const { length, title, thumb, view_count, formats, description } = currentState.data;
 		return (
 			<PageContainer>
 				<FormOuterContainer>
@@ -226,6 +227,7 @@ const DownloadVideos = () => {
 							<Title>{title}</Title>
 							<span>Duration: {length}</span>
 							<span>Views: {view_count}</span>
+							<small>{description}</small>
 						</ContentContainer>
 					</ResultHeader>
 					<MimeType>
