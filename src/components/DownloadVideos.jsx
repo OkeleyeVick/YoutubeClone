@@ -116,7 +116,6 @@ const DownloadVideos = () => {
 			if (!response.ok) doAction({ type: setError, error: response.status });
 			const data = await response.json();
 
-			console.log(data);
 			const { length, title, thumb, view_count, link, description } = data;
 
 			let objectArray = [];
